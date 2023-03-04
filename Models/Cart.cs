@@ -1,10 +1,19 @@
-﻿namespace RocketEshop.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RocketEshop.Models
 {
     public class Cart
     {
-        public int cartId { get; set; }
-        public int gameId { get; set; }
-        public int userId { get; set; }
-        public int quantiry { get; set; }
+        [Key]
+        public int CartId { get; set; }
+
+        public int GameId { get; set; }
+        [ForeignKey("GameId")]
+        public virtual Game Game{ get; set; }
+
+        public int UserId { get; set; }
+        public int Quantity { get; set; }
+
     }
 }

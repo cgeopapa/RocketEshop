@@ -1,17 +1,19 @@
 ﻿using RocketEshop.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace RocketEshop.Models
 {
     public class Game
     {
-        public int gameId { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public float price { get; set; }
-        public string imgUrl { get; set; }
-        public string features { get; set; }
-        public int quantity { get; set; }
-        public bool availability { get; set; }
-        public Rating rating { get; set; }
+        [Key]
+        public int GameId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public float Price { get; set; }
+        public string ImageUrl { get; set; }
+        public string Features { get; set; }
+        public int Quantity { get; set; }
+        public bool Availability { get; set; }
+        public Rating Rating { get; set; }
     }
 }

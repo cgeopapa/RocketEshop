@@ -1,3 +1,7 @@
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using RocketEshop.Data;
+
 namespace RocketEshop
 {
     public class Program
@@ -8,6 +12,12 @@ namespace RocketEshop
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
+
+            var cnn = new SqliteConnection("Filename=:memory:");
+            cnn.Open();
+            builder.Services.AddDbContext
+            <AppDbContext>(o => o.UseSqlite(cnn));
 
             var app = builder.Build();
 
@@ -25,6 +35,8 @@ namespace RocketEshop
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            AppDbInitializer.Seed(app);
 
             app.Run();
         }
