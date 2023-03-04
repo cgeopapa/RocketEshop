@@ -13,11 +13,11 @@ namespace RocketEshop
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=app.db"));
 
-            var cnn = new SqliteConnection("Filename=:memory:");
-            cnn.Open();
-            builder.Services.AddDbContext
-            <AppDbContext>(o => o.UseSqlite(cnn));
+            //var cnn = new SqliteConnection("Data Source=app.db");
+            //cnn.Open();
+            //builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlite(cnn));
 
             var app = builder.Build();
 
@@ -36,7 +36,7 @@ namespace RocketEshop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            AppDbInitializer.Seed(app);
+            MockDbInitializer.AddMockData(app);
 
             app.Run();
         }

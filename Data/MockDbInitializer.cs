@@ -2,19 +2,22 @@
 
 namespace RocketEshop.Data
 {
-    public class AppDbInitializer
+    public class MockDbInitializer
     {
-        public static void Seed(WebApplication app)
+        public static void AddMockData(WebApplication app)
         {
             var scope = app.Services.CreateScope();
-            var db = scope.ServiceProvider.GetService<AppDbContext>();
+            AppDbContext? db = scope.ServiceProvider.GetService<AppDbContext>();
+            if(db == null)
+            {
+                Console.Error.WriteLine("could not get AppDbContext service");
+                return;
+            }
 
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
-
-            var game1 = new Game
-            {
-                GameId = 1,
+            
+            db.games.Add(new Game {
                 Title = "Skata1",
                 Description = "Kati1",
                 Price = 10,
@@ -23,12 +26,7 @@ namespace RocketEshop.Data
                 Quantity = 10,
                 Availability = true,
                 Rating = Enums.Rating.Average
-            };
-            
-
-            db.games.Add(game1);
-            
-
+            });
             db.SaveChanges();
         }
     }

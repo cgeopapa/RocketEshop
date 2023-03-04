@@ -1,11 +1,13 @@
 ﻿using RocketEshop.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RocketEshop.Models
 {
     public class Game
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GameId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
