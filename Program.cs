@@ -15,10 +15,6 @@ namespace RocketEshop
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=app.db"));
 
-            //var cnn = new SqliteConnection("Data Source=app.db");
-            //cnn.Open();
-            //builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlite(cnn));
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -36,7 +32,11 @@ namespace RocketEshop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            MockDbInitializer.AddMockData(app);
+            // Gets value from appsettings.json at "AddMockDbData"
+            if (builder.Configuration.GetValue<bool>("AddMockDbData"))
+            { 
+                MockDbInitializer.AddMockData(app);
+            }
 
             app.Run();
         }
