@@ -6,7 +6,7 @@ namespace RocketEshop.Controllers
 {
     public class GamesController : Controller
     {
-        // Service
+        // Service 
         private readonly IGamesService _service;
 
         public GamesController(IGamesService service)
