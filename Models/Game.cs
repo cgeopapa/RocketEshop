@@ -37,13 +37,7 @@ namespace RocketEshop.Models
         public bool Availability {
             set
             {
-                if (Quantity == 0){
-                    value = false;
-                }
-                else
-                {
-                    value = true;
-                }
+                value = Quantity > 0;
             }
         }
 

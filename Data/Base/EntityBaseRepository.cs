@@ -21,7 +21,11 @@ namespace RocketEshop.Data.Base
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await _context.Set<T>().FirstOrDefaultAsync(x => x.id == id);
+            var entity = await _context.Set<T>().FirstOrDefaultAsync(x => x.GameId == id);
+            if(entity == null)
+            {
+                return;
+            }
             EntityEntry entityEntry = _context.Entry<T>(entity);
             entityEntry.State = EntityState.Deleted;
             await _context.SaveChangesAsync();
@@ -30,7 +34,7 @@ namespace RocketEshop.Data.Base
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
 
-        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(x => x.id == id);
+        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(x => x.GameId == id);
 
         public async Task UpdateAsync(int id, T entity)
         {
