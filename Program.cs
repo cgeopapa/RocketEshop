@@ -15,7 +15,7 @@ namespace RocketEshop
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddTransient<IGamesService, GamesService>();
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=app.db"));
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=ALEXMET2;Initial Catalog=RocketEshop;Integrated Security=True"));
 
             var app = builder.Build();
 
