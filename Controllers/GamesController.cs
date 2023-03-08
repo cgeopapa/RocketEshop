@@ -32,9 +32,8 @@ namespace RocketEshop.Controllers
             return View();
         }
 
-        // POST: Games/Create
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("GameId,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
         {
             await _service.AddAsync(game);
             return RedirectToAction(nameof(Index));
@@ -46,8 +45,8 @@ namespace RocketEshop.Controllers
             return await GetGameDetails(id);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Edit([Bind("GameId,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
+        [HttpPost]
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
         {
             await _service.UpdateAsync(game);
             return RedirectToAction(nameof(Index));
@@ -59,8 +58,7 @@ namespace RocketEshop.Controllers
             return await GetGameDetails(id);
         }
 
-        // DELETE: Games/Delete/5
-        [HttpDelete, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _service.DeleteAsync(id);

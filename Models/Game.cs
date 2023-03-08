@@ -34,12 +34,7 @@ namespace RocketEshop.Models
         [Display(Name = "Game Quantity")]
         [Required(ErrorMessage = "Game Quantity is required")]
         public int Quantity { get; set; }
-        public bool Availability {
-            set
-            {
-                value = Quantity > 0;
-            }
-        }
+        public bool Availability { get; set; }
 
         [Display(Name = "Game Rating")]
         [Required(ErrorMessage = "Game Rating is required")]
