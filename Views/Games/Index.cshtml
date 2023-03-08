@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Game>
+
+@{
+    ViewData["Title"] = "All games";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4 d-flex align-items-stretch">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-primary">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Title
+                                    @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }*@
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.ImageUrl" width="100%" alt="@item.Title">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text"><b>Title: </b>@item.Title</p>
+                            <p class="card-text"><b>Price: </b>@item.Price€</p>
+                            <p class="card-text"><b>Quantity </b>@item.Quantity</p>
+                            <p class="card-text"><b>Rating: </b>@item.Rating</p>
+                            @if(item.Quantity > 0){
+                                <p class="card-text"><b>Available: </b>Yes</p>
+                            }
+                            else
+                            {
+                                <p class="card-text"><b>Available: </b>No</p>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.GameId">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>                             
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

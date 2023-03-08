@@ -1,7 +1,7 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using RocketEshop.Data;
 using RocketEshop.Data.Services;
+using System.Configuration;
 
 namespace RocketEshop
 {
@@ -15,7 +15,7 @@ namespace RocketEshop
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddTransient<IGamesService, GamesService>();
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=app.db"));
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
             var app = builder.Build();
 
@@ -32,9 +32,9 @@ namespace RocketEshop
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Games}/{action=Index}/{id?}");
 
-            MockDbInitializer.AddMockData(app);
+            AppDbInitializer.Seed(app);
 
             app.Run();
         }

@@ -1,0 +1,53 @@
+﻿@model Game
+
+@{
+    ViewData["Title"] = "Game details";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-primary">
+                        <p class="card-text">
+                            <h5 class="card-title text-center">
+                                @Model.Title
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.ImageUrl" width="100%" alt="@Model.Title">
+                </div>
+                <div class="col-md-8 text-center">
+                    <div class="card-body">
+                        <p class="card-text"><b>Release Date: </b>@Model.Release_Date.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Price: </b>@Model.Price€</p>
+                        <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
+                        <p class="card-text"><b>Rating: </b>@Model.Rating</p>
+                        @if(Model.Quantity > 0)
+                        {
+                            <p class="card-text"><b>Available: </b>Yes</p>
+                        }
+                        else
+                        {
+                            <p class="card-text"><b>Available: </b>No</p>
+                        }    
+                        <p class="card-text"><b>Description: </b></p>
+                        <p class="card-text">@Model.Description</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                Back to List
+                            </a>                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
