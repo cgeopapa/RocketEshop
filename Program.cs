@@ -1,4 +1,3 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using RocketEshop.Data;
 using RocketEshop.Data.Services;
@@ -15,7 +14,7 @@ namespace RocketEshop
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddTransient<IGamesService, GamesService>();
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=ALEXMET2;Initial Catalog=RocketEshop;Integrated Security=True"));
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=app.db"));
 
             var app = builder.Build();
 
@@ -34,7 +33,11 @@ namespace RocketEshop
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            MockDbInitializer.AddMockData(app);
+            // Gets value from appsettings.json at "AddMockDbData"
+            if (builder.Configuration.GetValue<bool>("AddMockDbData"))
+            { 
+                MockDbInitializer.AddMockData(app);
+            }
 
             app.Run();
         }

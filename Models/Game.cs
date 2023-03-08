@@ -9,7 +9,7 @@ namespace RocketEshop.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int GameId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Game Title")]
         [Required(ErrorMessage = "Game Title is required")]

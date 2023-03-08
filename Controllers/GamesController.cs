@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RocketEshop.Data;
+using RocketEshop.Models;
 using RocketEshop.Data.Services;
 
 namespace RocketEshop.Controllers
 {
     public class GamesController : Controller
     {
-        // Service
         private readonly IGamesService _service;
 
         public GamesController(IGamesService service)
@@ -14,14 +13,72 @@ namespace RocketEshop.Controllers
             _service = service;
         }
 
+        // GET: Games
         //Display all Games
         public async Task<IActionResult> Index()
         {
-            var allGames = await _service.GetAllAsync();
-            return View(allGames);
+              return View(await _service.GetAllAsync());
         }
 
-        // Noris einai ta alla
+        // GET: Games/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            return await GetGameDetails(id);
+        }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Games/Create
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("GameId,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
+        {
+            await _service.AddAsync(game);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            return await GetGameDetails(id);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Edit([Bind("GameId,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
+        {
+            await _service.UpdateAsync(game);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            return await GetGameDetails(id);
+        }
+
+        // DELETE: Games/Delete/5
+        [HttpDelete, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<IActionResult> GetGameDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Game? game = await _service.GetByIdAsync(id.Value);
+            if (game == null)
+            {
+                return NotFound();
+            }
+            return View(game);
+        }
     }
 }

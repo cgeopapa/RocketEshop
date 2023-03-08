@@ -5,6 +5,6 @@ namespace RocketEshop.Data.Base
     public interface IEntityBase
     {
         [Required]
-        int GameId { get; set; }
+        int Id { get; set; }
     }
 }

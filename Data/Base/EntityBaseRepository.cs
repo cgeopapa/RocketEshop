@@ -15,31 +15,30 @@ namespace RocketEshop.Data.Base
 
         public async Task AddAsync(T entity)
         {
-            await _context.Set<T>().AddAsync(entity);
+            _context.Add(entity);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await _context.Set<T>().FirstOrDefaultAsync(x => x.GameId == id);
-            if(entity == null)
-            {
-                return;
-            }
-            EntityEntry entityEntry = _context.Entry<T>(entity);
-            entityEntry.State = EntityState.Deleted;
+            _context.Remove(id);
             await _context.SaveChangesAsync();
-
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
-
-        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(x => x.GameId == id);
-
-        public async Task UpdateAsync(int id, T entity)
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            EntityEntry entityEntry = _context.Entry<T>(entity);
-            entityEntry.State = EntityState.Modified;
+            return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<T?> GetByIdAsync(int id)
+        {
+            T? entity = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+            return entity == null ? null : entity;
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _context.Update(entity);
             await _context.SaveChangesAsync();
         }
     }
