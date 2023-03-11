@@ -6,6 +6,7 @@ namespace RocketEshop.Controllers
 {
     public class GamesController : Controller
     {
+        // Service
         private readonly IGamesService _service;
 
         public GamesController(IGamesService service)
@@ -33,7 +34,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Rating")] Game game)
         {
             await _service.AddAsync(game);
             return RedirectToAction(nameof(Index));
@@ -46,7 +47,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Features,Quantity,Availability,Rating")] Game game)
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Rating")] Game game)
         {
             await _service.UpdateAsync(game);
             return RedirectToAction(nameof(Index));
