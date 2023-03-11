@@ -11,13 +11,12 @@ namespace RocketEshop.Data
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
                 
-                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
                 // Games
-                if(!context.games.Any())
+                if(!context.Games.Any())
                 {
-                    context.games.AddRange(new List<Game>(){
+                    context.Games.AddRange(new List<Game>(){
 
                         new Game()
                         {

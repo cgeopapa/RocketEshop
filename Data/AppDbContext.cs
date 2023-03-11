@@ -9,7 +9,7 @@ namespace RocketEshop.Data
         {
         }
 
-        public DbSet<Game> games { get; set; }
+        public DbSet<Game> Games { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
