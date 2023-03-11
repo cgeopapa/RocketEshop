@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RocketEshop.Data;
 using RocketEshop.Data.Services;
-using System.Configuration;
 
 namespace RocketEshop
 {
@@ -34,7 +33,10 @@ namespace RocketEshop
                 name: "default",
                 pattern: "{controller=Games}/{action=Index}/{id?}");
 
-            AppDbInitializer.Seed(app);
+            if (builder.Configuration.GetValue<bool>("InitializeDB"))
+            {
+                AppDbInitializer.Seed(app);
+            }
 
             app.Run();
         }
