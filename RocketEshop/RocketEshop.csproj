@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\ApplicationTier.ApplicationCore\ApplicationTier.ApplicationCore.csproj" />
+    <ProjectReference Include="..\ApplicationTier.Infrastructure\ApplicationTier.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
