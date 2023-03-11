@@ -1,11 +1,11 @@
-﻿using RocketEshop.Data.Base;
-using RocketEshop.Data.Enums;
+﻿using RocketEshop.Core.Interfaces;
+using RocketEshop.Core.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RocketEshop.Models
+namespace RocketEshop.Core.Models
 {
-    public class Game : IEntityBase
+    public class Game : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

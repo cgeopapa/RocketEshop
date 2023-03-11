@@ -1,4 +1,4 @@
-﻿namespace RocketEshop.Data.Enums
+﻿namespace RocketEshop.Core.Enums
 {
     public enum Rating
     {

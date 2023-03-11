@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RocketEshop.Models;
+using RocketEshop.Core.Models;
 
-namespace RocketEshop.Data
+namespace RocketEshop.Infrastructure
 {
     public class AppDbContext : DbContext
     {

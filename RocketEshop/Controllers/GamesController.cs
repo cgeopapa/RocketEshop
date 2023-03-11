@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RocketEshop.Models;
-using RocketEshop.Data.Services;
+using RocketEshop.Core.Interfaces;
+using RocketEshop.Core.Models;
 
 namespace RocketEshop.Controllers
 {

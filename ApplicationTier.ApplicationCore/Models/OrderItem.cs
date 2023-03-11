@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RocketEshop.Models
+namespace RocketEshop.Core.Models
 {
     public class OrderItem
     {

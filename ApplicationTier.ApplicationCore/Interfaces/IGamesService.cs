@@ -1,9 +1,8 @@
-﻿using RocketEshop.Data.Base;
-using RocketEshop.Models;
+﻿using RocketEshop.Core.Models;
 
-namespace RocketEshop.Data.Services
+namespace RocketEshop.Core.Interfaces
 {
-    public interface IGamesService : IEntityBaseRepository<Game>
+    public interface IGamesService : IRepository<Game>
     {
     }
 }

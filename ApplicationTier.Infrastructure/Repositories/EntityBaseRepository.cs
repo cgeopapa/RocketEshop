@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using RocketEshop.Core.Interfaces;
 
-namespace RocketEshop.Data.Base
+namespace RocketEshop.Infrastructure.Repositories
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
+    public class EntityBaseRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
 
         private readonly AppDbContext _context;

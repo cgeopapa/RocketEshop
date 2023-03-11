@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RocketEshop.Data.Base
+namespace RocketEshop.Core.Interfaces
 {
-    public interface IEntityBase
+    public interface IEntity
     {
         [Required]
         int Id { get; set; }

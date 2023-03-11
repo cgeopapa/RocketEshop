@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RocketEshop.Models
+namespace RocketEshop.Core.Models
 {
     public class ShoppingCartItem
     {

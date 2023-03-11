@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RocketEshop.Data;
-using RocketEshop.Data.Services;
+using RocketEshop.Core.Interfaces;
+using RocketEshop.Infrastructure;
+using RocketEshop.Infrastructure.Services;
 
 namespace RocketEshop
 {

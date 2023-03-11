@@ -1,6 +1,6 @@
-﻿namespace RocketEshop.Data.Base
+﻿namespace RocketEshop.Core.Interfaces
 {
-    public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
+    public interface IRepository<T> where T : class, IEntity, new()
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T?> GetByIdAsync(int id);
