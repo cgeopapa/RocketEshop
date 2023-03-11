@@ -1,0 +1,83 @@
+﻿@model IEnumerable<RocketEshop.Core.Models.Game>
+@{
+    ViewData["Title"] = "Index_Admin";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Games List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Games" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-square"></i> &nbsp; Add New Game
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<table class="table tale-bordered table-striped" style="width:100%">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                Game Title
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Image URL
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Rating
+            </th>
+            <th>
+                Release Date
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr class="table-dark">
+                <td>
+                    @obj.Title
+                </td>
+                <td>
+                    @obj.Price
+                </td>
+                <td>
+                    @obj.ImageUrl
+                </td>
+                <td>
+                    @obj.Quantity
+                </td>
+                <td>
+                    @obj.Rating
+                </td>
+                <td>
+                    @obj.Release_Date
+                </td>
+                <td>
+                    @obj.Description
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+
+                        <a asp-controller="Games" asp-action="Edit" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2"><i class="bi bi-pencil"></i>Edit</a>
+                        <a asp-controller="Games" asp-action="Delete" asp-route-id="@obj.Id"
+                           class="btn btn-danger mx-2"><i class="bi bi-trash"></i>Delete</a>
+
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
