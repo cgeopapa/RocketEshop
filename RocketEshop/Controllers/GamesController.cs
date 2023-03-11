@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Plugins;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 
@@ -36,8 +37,18 @@ namespace RocketEshop.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Rating")] Game game)
         {
-            await _service.AddAsync(game);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.AddAsync(game);
+                TempData["success"] = "Game added successfully!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception)
+            {
+                TempData["error"] = "There was an error.";
+                return NotFound();
+            }
+            
         }
 
         [HttpGet]
@@ -49,8 +60,18 @@ namespace RocketEshop.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Rating")] Game game)
         {
-            await _service.UpdateAsync(game);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.UpdateAsync(game);
+                TempData["success"] = "Game updated successfully!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                TempData["error"] = "There was an error.";
+                return NotFound();
+            }
+            
         }
 
         [HttpGet]
@@ -62,8 +83,18 @@ namespace RocketEshop.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _service.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.DeleteAsync(id);
+                TempData["success"] = "Game deleted successfully!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                TempData["error"] = "There was an error.";
+                return NotFound();
+            }
+            
         }
 
         private async Task<IActionResult> GetGameDetails(int? id)
