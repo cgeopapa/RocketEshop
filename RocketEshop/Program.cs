@@ -32,7 +32,7 @@ namespace RocketEshop
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Games}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             if (builder.Configuration.GetValue<bool>("InitializeDB"))
             {

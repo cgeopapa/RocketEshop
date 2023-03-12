@@ -26,14 +26,14 @@
                         <p class="card-text"><b>Price: </b>@Model.Price€</p>
                         <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
                         <p class="card-text"><b>Rating: </b>@Model.Rating</p>
-                        @if(Model.Quantity > 0)
+                        @if (Model.Quantity > 0)
                         {
                             <p class="card-text"><b>Available: </b>Yes</p>
                         }
                         else
                         {
                             <p class="card-text"><b>Available: </b>No</p>
-                        }    
+                        }
                         <p class="card-text"><b>Description: </b></p>
                         <p class="card-text">@Model.Description</p>
                     </div>
@@ -43,7 +43,7 @@
                         <p class="card-text">
                             <a class="btn btn-outline-primary float-right" asp-action="Index">
                                 Back to List
-                            </a>                            
+                            </a>
                         </p>
                     </div>
                 </div>

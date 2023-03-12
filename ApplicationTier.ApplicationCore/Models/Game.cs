@@ -16,6 +16,7 @@ namespace RocketEshop.Core.Models
         public string Title { get; set; }
 
         [Display(Name = "Game Price")]
+        [Range(0.5, 500.0, ErrorMessage = "Price must be at between 0.50 and 500.0.")]
         [Required(ErrorMessage = "Game Price is required")]
         public float Price { get; set; }
 
@@ -23,7 +24,9 @@ namespace RocketEshop.Core.Models
         [Required(ErrorMessage = "Game Image URL is required")]
         public string ImageUrl { get; set; }
 
+
         [Display(Name = "Game Quantity")]
+        [Range(0, 100000, ErrorMessage = "Quantity must be at least 0.")]
         [Required(ErrorMessage = "Game Quantity is required")]
         public int Quantity { get; set; }
 

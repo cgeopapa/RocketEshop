@@ -15,22 +15,9 @@ namespace RocketEshop.Controllers
             _service = service;
         }
 
-        // GET: Games
-        //Display all Games
         public async Task<IActionResult> Index()
         {
-              return View(await _service.GetAllAsync());
-        }
-
-        public async Task<IActionResult> Index_Admin()
-        {
             return View(await _service.GetAllAsync());
-        }
-
-        // GET: Games/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            return await GetGameDetails(id);
         }
 
         [HttpGet]
@@ -46,14 +33,12 @@ namespace RocketEshop.Controllers
             {
                 await _service.AddAsync(game);
                 TempData["success"] = "Game added successfully!";
-                return RedirectToAction(nameof(Index_Admin));
             }
             catch(Exception)
             {
                 TempData["error"] = "There was an error.";
-                return NotFound();
             }
-            
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -69,13 +54,12 @@ namespace RocketEshop.Controllers
             {
                 await _service.UpdateAsync(game);
                 TempData["success"] = "Game updated successfully!";
-                return RedirectToAction(nameof(Index_Admin));
             }
             catch (Exception)
             {
                 TempData["error"] = "There was an error.";
-                return NotFound();
             }
+            return RedirectToAction(nameof(Index));
             
         }
 
@@ -92,13 +76,12 @@ namespace RocketEshop.Controllers
             {
                 await _service.DeleteAsync(id);
                 TempData["success"] = "Game deleted successfully!";
-                return RedirectToAction(nameof(Index_Admin));
             }
             catch (Exception)
             {
                 TempData["error"] = "There was an error.";
-                return NotFound();
             }
+            return RedirectToAction(nameof(Index));
             
         }
 
