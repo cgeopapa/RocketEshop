@@ -27,7 +27,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Rating")] Game game)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Release_Date,Rating")] Game game)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Rating")] Game game)
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Release_Date,Rating")] Game game)
         {
             try
             {
@@ -70,17 +70,17 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Game game)
         {
-            try
-            {
-                await _service.DeleteAsync(id);
+            //try
+            //{
+                await _service.DeleteAsync(game);
                 TempData["success"] = "Game deleted successfully!";
-            }
-            catch (Exception)
-            {
-                TempData["error"] = "There was an error.";
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    TempData["error"] = "There was an error.";
+            //}
             return RedirectToAction(nameof(Index));
             
         }

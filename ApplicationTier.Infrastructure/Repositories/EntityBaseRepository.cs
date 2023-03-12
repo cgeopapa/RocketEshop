@@ -19,9 +19,10 @@ namespace RocketEshop.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(T entity)
         {
-            _context.Remove(id);
+            
+            _context.Remove(entity);
             await _context.SaveChangesAsync();
         }
 

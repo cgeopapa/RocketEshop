@@ -45,6 +45,11 @@
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Release_Date" class="control-label"></label>
+                <input class="form-control" type="date" asp-for="Release_Date" />
+                <span asp-validation-for="Release_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
                 <select asp-for="Rating" class="form-control">
                     @foreach (Rating rating in Enum.GetValues(typeof(Rating)))

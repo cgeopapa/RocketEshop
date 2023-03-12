@@ -34,13 +34,18 @@
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
-            @*Βάλε να μην μπορεί να πάει κάτω από το 0*@
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
-            @*Εδώ να μπει για το Release Date με μορφή dd MMM yy (Δες στο Details για το release date)*@
+
+            <div class="form-group">
+                <label asp-for="Release_Date" class="control-label"></label>
+                <input class="form-control" type="date" asp-for="Release_Date" />
+                <span asp-validation-for="Release_Date" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
                 <select asp-for="Rating" class="form-control">
@@ -62,11 +67,12 @@
 </div>
 
 <div>
-    <a asp-action="Index_Admin">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
 }
 @*@section Scripts {
     <script>
