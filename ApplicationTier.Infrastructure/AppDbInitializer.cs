@@ -14,8 +14,10 @@ namespace RocketEshop.Infrastructure
             
             context.Database.EnsureCreated();
             // Remove all from Games table. Do not delete the entire DB. Will be useful later
-            context.Games.RemoveRange(context.Games);
-            context.Games.AddRange(new List<Game>(){
+            //context.Games.RemoveRange(context.Games);
+            if (!context.Games.Any())
+            {
+                context.Games.AddRange(new List<Game>(){
                     new Game()
                     {
                         Title = "RISE OF THE TOMB RAIDER 20 YEARS CELEBRATION",
@@ -67,7 +69,8 @@ namespace RocketEshop.Infrastructure
                         Description = "Wasteland 3 is a role-playing video game developed by inXile Entertainment and published by Deep Silver. It is a sequel to Wasteland 2 (2014) and was released for Microsoft Windows, PlayStation 4 and Xbox One on August 28, 2020. It was ported to Linux and macOS on December 17, 2020."
                     }
                 });
-            context.SaveChanges();
+                context.SaveChanges();
+            }
         }
     }
 }
