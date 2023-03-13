@@ -1,10 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RocketEshop.Core.Models;
 
-namespace RocketEshop.Core.Models
+namespace ApplicationTier.ApplicationCore.Models
 {
     public class OrderItem
     {
+
         [Key]
         public int Id { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ApplicationTier.ApplicationCore.Models;
+using Microsoft.EntityFrameworkCore;
 using RocketEshop.Core.Models;
 
 namespace RocketEshop.Infrastructure

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ApplicationTier.ApplicationCore.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RocketEshop.Infrastructure;
 
 namespace RocketEshop.Core.Models
@@ -6,7 +8,6 @@ namespace RocketEshop.Core.Models
     public class ShoppingCart
     {
         public AppDbContext _context { get; set; }
-
         public string ShoppingCartId { get; set; }
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
@@ -15,9 +16,11 @@ namespace RocketEshop.Core.Models
             _context = context;
         }
 
+        public double GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Game.Price * n.Amount).Sum();
+
         public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {
-            ISession? session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = services.GetService<AppDbContext>();
 
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
@@ -70,8 +73,6 @@ namespace RocketEshop.Core.Models
         {
             return ShoppingCartItems ?? (ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Include(n => n.Game).ToList());
         }
-
-        public double GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Game.Price * n.Amount).Sum();
 
         public async Task ClearShoppingCartAsync()
         {
