@@ -34,12 +34,12 @@
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
-@*            <div class="form-group">
-                <label asp-for="Features" class="control-label"></label>
-                <input asp-for="Features" class="form-control" />
-                <span asp-validation-for="Features" class="text-danger"></span>
+
+            <div class="form-group text-center">
+                <img id="ProfilePicturePreview" class="border-info" style="max-width: 150px" />
             </div>
-*@            <div class="form-group">
+
+            <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
@@ -74,4 +74,15 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#ImageUrl").val();
+        })
+
+        $("#ImageUrl").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $(this).val();
+        })
+    </script>
 }

@@ -28,24 +28,29 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
             @*Έχει θέμα και δεν εμφανίζει την εικόνα ενώρα του create (Δες Javascript κώδικα κάτω)*@
             <div class="form-group">
                 <label asp-for="ImageUrl" class="control-label"></label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
+            @*Εμφάνιση εικόνας*@
+            <div class="form-group text-center">
+                <img id="ProfilePicturePreview" class="border-info" style="max-width: 150px" />
+            </div>
+
+
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Release_Date" class="control-label"></label>
                 <input class="form-control" type="date" asp-for="Release_Date" />
                 <span asp-validation-for="Release_Date" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
                 <select asp-for="Rating" class="form-control">
@@ -72,18 +77,17 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-   
-}
-@*@section Scripts {
     <script>
-        $(document).ready(function () {
-            var output = document.getElementById("ImageUrlPreview");
-            output.src = $("#ImageURL").val();
-        });
 
-        $("#ImageURL").on("change", function () {
-            var output = document.getElementById("ImageUrlPreview");
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#ImageUrl").val();
+        })
+
+        $("#ImageUrl").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
             output.src = $(this).val();
         })
     </script>
-}*@
+}
+
