@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RocketEshop.Core.Models
 {
-    public class Game : IEntity
+    public class Game: IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -41,5 +41,8 @@ namespace RocketEshop.Core.Models
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
+
+        [Display(Name = "Genres")]
+        public Genre[] Genres { get; set; }
     }
 }
