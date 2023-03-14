@@ -11,11 +11,11 @@ namespace RocketEshop.Data.ViewComponents
             _shoppingCart = shoppingCart;
         }
 
-        public IViewComponentResult Invoke()
+        public Task<IViewComponentResult> InvokeAsync()
         {
             var items = _shoppingCart.GetShoppingCartItems();
 
-            return View(items.Count);
+            return Task.FromResult<IViewComponentResult>(View("default" , items.Count));            
         }
     }
 }
