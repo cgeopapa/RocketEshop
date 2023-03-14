@@ -1,6 +1,7 @@
 ﻿using RocketEshop.Core.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RocketEshop.Core.Models
 {
@@ -17,6 +18,9 @@ namespace RocketEshop.Core.Models
 
         [Display(Name = "Description")]
         [StringLength(200)]
-        public string Description { get; set; } = "";
+        public string? Description { get; set; }
+
+        [Display(Name = "Games")]
+        public List<GameGenre> Games { get; set; }
     }
 }

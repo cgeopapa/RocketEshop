@@ -1,14 +1,8 @@
-﻿using ApplicationTier.ApplicationCore.Interfaces;
-using ApplicationTier.ApplicationCore.Models;
+﻿using RocketEshop.Core.Interfaces;
+using RocketEshop.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using RocketEshop.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ApplicationTier.Infrastructure.Services
+namespace RocketEshop.Infrastructure.Services
 {
     public class OrdersService : IOrdersService
     {

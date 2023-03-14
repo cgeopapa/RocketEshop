@@ -24,7 +24,6 @@ namespace RocketEshop.Core.Models
         [Required(ErrorMessage = "Game Image URL is required")]
         public string ImageUrl { get; set; }
 
-
         [Display(Name = "Game Quantity")]
         [Range(0, 100000, ErrorMessage = "Quantity must be at least 0.")]
         [Required(ErrorMessage = "Game Quantity is required")]
@@ -43,6 +42,6 @@ namespace RocketEshop.Core.Models
         public string Description { get; set; }
 
         [Display(Name = "Genres")]
-        public Genre[] Genres { get; set; }
+        public List<GameGenre> Genres { get; set; }
     }
 }

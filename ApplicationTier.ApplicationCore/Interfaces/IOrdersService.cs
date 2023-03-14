@@ -1,11 +1,6 @@
-﻿using ApplicationTier.ApplicationCore.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RocketEshop.Core.Models;
 
-namespace ApplicationTier.ApplicationCore.Interfaces
+namespace RocketEshop.Core.Interfaces
 {
     public interface IOrdersService
     {
