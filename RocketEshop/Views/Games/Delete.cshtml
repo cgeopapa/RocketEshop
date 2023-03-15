@@ -1,4 +1,4 @@
-﻿@model RocketEshop.Model.GameCreateUpdateRequestDto
+﻿@model RocketEshop.Dtos.Game.GameUpdateRequestDto
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,22 +12,22 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.game.Title)
+            @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.game.Title)
+            @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.game.Description)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.game.Description)
+            @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.game.Price)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.game.Price)
+            @Html.DisplayFor(model => model.Price)
         </dd>
         @* Καλύτερα να βγει το image από το delete *@
 @*        <dt class = "col-sm-2">
@@ -39,21 +39,21 @@
             </div>
         </dd>*@
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.game.Quantity)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.game.Quantity)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.game.Rating)
+            @Html.DisplayNameFor(model => model.Rating)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.game.Rating)
+            @Html.DisplayFor(model => model.Rating)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="game.Id" />
+        <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

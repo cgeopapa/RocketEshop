@@ -1,5 +1,5 @@
 ﻿@using RocketEshop.Core.Enums;
-@model RocketEshop.Model.GameCreateUpdateRequestDto;
+@model RocketEshop.Dtos.Game.GameUpdateRequestDto;
 
 @{
     ViewData["Title"] = "Create";
@@ -14,26 +14,26 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="game.Title" class="control-label"></label>
-                <input asp-for="game.Title" class="form-control" />
-                <span asp-validation-for="game.Title" class="text-danger"></span>
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="game.Description" class="control-label"></label>
-                <input asp-for="game.Description" class="form-control" />
-                <span asp-validation-for="game.Description" class="text-danger"></span>
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="game.Price" class="control-label"></label>
-                <input asp-for="game.Price" class="form-control" />
-                <span asp-validation-for="game.Price" class="text-danger"></span>
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
             @*Έχει θέμα και δεν εμφανίζει την εικόνα ενώρα του create (Δες Javascript κώδικα κάτω)*@
             <div class="form-group">
-                <label asp-for="game.ImageUrl" class="control-label"></label>
-                <input asp-for="game.ImageUrl" class="form-control" />
-                <span asp-validation-for="game.ImageUrl" class="text-danger"></span>
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             @*Εμφάνιση εικόνας*@
             <div class="form-group text-center">
@@ -42,29 +42,29 @@
 
 
             <div class="form-group">
-                <label asp-for="game.Quantity" class="control-label"></label>
-                <input asp-for="game.Quantity" class="form-control" />
-                <span asp-validation-for="game.Quantity" class="text-danger"></span>
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="game.Release_Date" class="control-label"></label>
-                <input class="form-control" type="date" asp-for="game.Release_Date" />
-                <span asp-validation-for="game.Release_Date" class="text-danger"></span>
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input class="form-control" type="date" asp-for="ReleaseDate" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="game.Rating" class="control-label"></label>
-                <select asp-for="game.Rating" class="form-control">
+                <label asp-for="Rating" class="control-label"></label>
+                <select asp-for="Rating" class="form-control">
                     @foreach (Rating rating in Enum.GetValues(typeof(Rating)))
                     {
                         {<option value="@rating">@rating.ToString()</option>}
                     }
                 </select>
-                <span asp-validation-for="game.Rating" class="text-danger"></span>
+                <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="game.Genres" class="control-label"></label>
-                <select asp-for="game.Genres" class="form-control" multiple asp-items="Model.genres"></select>
-                <span asp-validation-for="game.Genres" class="text-danger"></span>
+                <label asp-for="Genres" class="control-label"></label>
+                <select asp-for="Genres" class="selectpicker form-control" multiple="multiple" asp-items="Model.genreOptions"></select>
+                <span asp-validation-for="Genres" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

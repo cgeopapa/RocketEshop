@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using RocketEshop.Model;
+using RocketEshop.Dtos.Game;
 
 namespace RocketEshop.Controllers
 {
@@ -26,7 +26,7 @@ namespace RocketEshop.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            GameCreateUpdateRequestDto game = new GameCreateUpdateRequestDto(await GetGameOptions());
+            GameUpdateRequestDto game = new GameUpdateRequestDto(await GetGameOptions());
             return View(game);
         }
 
@@ -53,15 +53,16 @@ namespace RocketEshop.Controllers
             {
                 return NotFound();
             }
-            GameCreateUpdateRequestDto gameCreateUpdateRequestDto = new GameCreateUpdateRequestDto(game, await GetGameOptions());
-            return View(gameCreateUpdateRequestDto);
+            GameUpdateRequestDto gameUpdateRequestDto = new GameUpdateRequestDto(game, await GetGameOptions());
+            return View(gameUpdateRequestDto);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,Release_Date,Rating,Genres")] Game game)
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameUpdateRequestDto gameUpdateRequestDto)
         {
             try
             {
+                Game game = await gameEntityFromGameUpdateRequestDto(gameUpdateRequestDto);
                 await _gamesService.UpdateAsync(game);
                 TempData["success"] = "Game updated successfully!";
             }
@@ -81,7 +82,7 @@ namespace RocketEshop.Controllers
             {
                 return NotFound();
             }
-            GameCreateUpdateRequestDto gameCreateUpdateRequestDto = new GameCreateUpdateRequestDto(game);
+            GameUpdateRequestDto gameCreateUpdateRequestDto = new GameUpdateRequestDto(game);
             return View(gameCreateUpdateRequestDto);
         }
 
@@ -112,15 +113,31 @@ namespace RocketEshop.Controllers
             return await _gamesService.GetByIdAsync(id.Value);
         }
 
-        private async Task<List<SelectListItem>> GetGameOptions()
+        private async Task<SelectList> GetGameOptions()
         {
-            List<SelectListItem> genreOptions = new List<SelectListItem>();
             IEnumerable<Genre> genres = await _genresService.GetAllAsync();
-            foreach (var genre in genres)
+            return new SelectList(genres, "Id", "Name");
+        }
+
+        private async Task<Game> gameEntityFromGameUpdateRequestDto(GameUpdateRequestDto gameUpdateRequestDto)
+        {
+            Game game = new Game();
+            game.Id = gameUpdateRequestDto.Id;
+            game.Title = gameUpdateRequestDto.Title;
+            game.Price = gameUpdateRequestDto.Price;
+            game.ImageUrl = gameUpdateRequestDto.ImageUrl;
+            game.Quantity = gameUpdateRequestDto.Quantity;
+            game.Rating = gameUpdateRequestDto.Rating;
+            game.Release_Date = gameUpdateRequestDto.ReleaseDate;
+            game.Description = gameUpdateRequestDto.Description;
+
+            game.Genres = new List<Genre>();
+            foreach (int genreId in gameUpdateRequestDto.Genres)
             {
-                genreOptions.Add(new SelectListItem(genre.Name, genre.Id.ToString()));
+                Genre? genre = await _genresService.GetByIdAsync(genreId) ?? throw new Exception("cannot find genre with id " + genreId);
+                game.Genres.Add(genre);
             }
-            return genreOptions;
+            return game;
         }
     }
 }

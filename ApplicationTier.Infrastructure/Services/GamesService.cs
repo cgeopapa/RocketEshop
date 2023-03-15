@@ -1,4 +1,5 @@
-﻿using RocketEshop.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure.Repositories;
 
@@ -6,8 +7,16 @@ namespace RocketEshop.Infrastructure.Services
 {
     public class GamesService : EntityBaseRepository<Game>, IGamesService
     {
+        private readonly AppDbContext context;
         public GamesService(AppDbContext context) : base(context)
         {
+            this.context = context;
+        }
+        
+        public new async Task<Game?> GetByIdAsync(int id)
+        {
+            Game? entity = await context.Games.Include(x => x.Genres).FirstOrDefaultAsync(x => x.Id == id);
+            return entity ?? null;
         }
     }
 }

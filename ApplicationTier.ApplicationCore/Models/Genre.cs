@@ -21,6 +21,6 @@ namespace RocketEshop.Core.Models
         public string? Description { get; set; }
 
         [Display(Name = "Games")]
-        public List<GameGenre> Games { get; set; }
+        public List<Game> Games { get; set; }
     }
 }
