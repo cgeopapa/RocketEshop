@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Dtos.Game;
+using RocketEshop.Dtos.Search;
 
 namespace RocketEshop.Controllers
 {
@@ -18,6 +19,7 @@ namespace RocketEshop.Controllers
             _genresService = genresService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _gamesService.GetAllAsync());
@@ -72,7 +74,6 @@ namespace RocketEshop.Controllers
                 TempData["error"] = "There was an error.";
             }
             return RedirectToAction(nameof(Index));
-            
         }
 
         [HttpGet]

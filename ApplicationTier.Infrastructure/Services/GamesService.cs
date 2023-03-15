@@ -29,5 +29,11 @@ namespace RocketEshop.Infrastructure.Services
             context.Update(game);
             await context.SaveChangesAsync();
         }
+
+        public IEnumerable<Game> GetByQuickSearchFilter(string quickSearchFilter)
+        {
+            var games = context.Games.Include(x => x.Genres).Where(game => game.Title.Contains(quickSearchFilter));
+            return games;
+        }
     }
 }
