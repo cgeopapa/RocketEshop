@@ -3,7 +3,10 @@
 @{
     ViewData["Title"] = "Game details";
 }
-
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a></li>
+    <li class="breadcrumb-item active">@Model.Title</li>
+</ol>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card mb-12">
