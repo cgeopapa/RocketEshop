@@ -8,53 +8,43 @@
     @foreach (var item in Model)
     {
         <div class="col-md-4 mb-4 d-flex align-items-stretch">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-primary">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @item.Title                                    
-                                </h5>
-                            </p>
-                        </div>
+            <div class="card d-flex flex-column justify-content-between mb-3" style="max-width: 540px;">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-primary">
+                        @item.Title
                     </div>
-                    <div class="col-md-6">
-                        <img src="@item.ImageUrl" style="width: 100%; height: 250px" alt="@item.Title">
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <img src="@item.ImageUrl" style="width: 100%" alt="@item.Title">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="card-body">
-                            <p class="card-text"><b>Title: </b>@item.Title</p>
                             <p class="card-text"><b>Price: </b>@item.Price€</p>
                             <p class="card-text"><b>Quantity </b>@item.Quantity</p>
                             <p class="card-text"><b>Rating: </b>@item.Rating</p>
                             @if (item.Quantity > 0)
                             {
-                                <p class="card-text"><b>Available: </b>Yes</p>
+                                <span class="badge badge-success">Available</span>
                             }
                             else
                             {
-                                <p class="card-text"><b>Available: </b>No</p>
+                                <span class="badge badge-danger">Sold out</span>
                             }
+                            @*Add genre badges*@
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="card-footer">
-                            <p class="card-text">
-                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
-                                </a>
-
-                                <a class="btn btn-success text-white @((item.Quantity <= 0 ) ? "disabled" : "")"
-                                    asp-controller="Orders"
-                                    asp-action="AddItemToShoppingCart"
-                                    asp-route-id="@item.Id">
-                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
-                                </a>
-
-                            </p>
-                        </div>
-                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-around">
+                    <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                        <i class="bi bi-eye-fill"></i> Show Details
+                    </a>
+                    <a class="btn btn-success text-white @((item.Quantity <= 0 ) ? "disabled" : "")"
+                        asp-controller="Orders"
+                        asp-action="AddItemToShoppingCart"
+                        asp-route-id="@item.Id">
+                        <i class="bi bi-cart-plus"></i> Add to Cart
+                    </a>
                 </div>
             </div>
         </div>
