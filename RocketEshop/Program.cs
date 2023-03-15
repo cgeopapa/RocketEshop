@@ -1,6 +1,9 @@
+using ApplicationTier.ApplicationCore.Models;
+using ApplicationTier.Infrastructure.Core.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RocketEshop.Core.Interfaces;
-using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
 using RocketEshop.Infrastructure.Services;
 
@@ -27,6 +30,15 @@ namespace RocketEshop
             builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
             builder.Services.AddSession();
 
+            // Identity Services
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,6 +53,8 @@ namespace RocketEshop
 
             app.UseRouting();
 
+            //Authentication & Authorization
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -50,6 +64,7 @@ namespace RocketEshop
             if (builder.Configuration.GetValue<bool>("InitializeDB"))
             {
                 AppDbInitializer.Seed(app);
+                AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
             }
 
             app.Run();
