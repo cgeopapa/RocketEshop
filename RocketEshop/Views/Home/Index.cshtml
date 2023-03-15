@@ -4,8 +4,12 @@
     ViewData["Title"] = "All games";
 }
 
+<form asp-action="Search" class="d-flex my-4 px-4">
+    <input name="QuickSearchFilter" class="form-control me-sm-2" type="search" placeholder="Search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (Game item in Model)
     {
         <div class="col-md-4 mb-4 d-flex align-items-stretch">
             <div class="card d-flex flex-column justify-content-between mb-3" style="max-width: 540px;">
