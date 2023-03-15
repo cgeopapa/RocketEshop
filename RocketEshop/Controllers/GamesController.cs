@@ -26,15 +26,16 @@ namespace RocketEshop.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            GameUpdateRequestDto game = new GameUpdateRequestDto(await GetGameOptions());
+            GameCreateRequestDto game = new GameCreateRequestDto(await GetGameOptions());
             return View(game);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,Release_Date,Rating")] Game game)
+        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameCreateRequestDto gameCreateRequestDto)
         {
             try
             {
+                Game game = await gameEntityFromGameCreateRequestDto(gameCreateRequestDto);
                 await _gamesService.AddAsync(game);
                 TempData["success"] = "Game added successfully!";
             }
@@ -82,8 +83,7 @@ namespace RocketEshop.Controllers
             {
                 return NotFound();
             }
-            GameUpdateRequestDto gameCreateUpdateRequestDto = new GameUpdateRequestDto(game);
-            return View(gameCreateUpdateRequestDto);
+            return View(game);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -133,6 +133,26 @@ namespace RocketEshop.Controllers
 
             game.Genres = new List<Genre>();
             foreach (int genreId in gameUpdateRequestDto.Genres)
+            {
+                Genre? genre = await _genresService.GetByIdAsync(genreId) ?? throw new Exception("cannot find genre with id " + genreId);
+                game.Genres.Add(genre);
+            }
+            return game;
+        }
+
+        private async Task<Game> gameEntityFromGameCreateRequestDto(GameCreateRequestDto gameCreateRequestDto)
+        {
+            Game game = new Game();
+            game.Title = gameCreateRequestDto.Title;
+            game.Price = gameCreateRequestDto.Price;
+            game.ImageUrl = gameCreateRequestDto.ImageUrl;
+            game.Quantity = gameCreateRequestDto.Quantity;
+            game.Rating = gameCreateRequestDto.Rating;
+            game.Release_Date = gameCreateRequestDto.ReleaseDate;
+            game.Description = gameCreateRequestDto.Description;
+
+            game.Genres = new List<Genre>();
+            foreach (int genreId in gameCreateRequestDto.Genres)
             {
                 Genre? genre = await _genresService.GetByIdAsync(genreId) ?? throw new Exception("cannot find genre with id " + genreId);
                 game.Genres.Add(genre);

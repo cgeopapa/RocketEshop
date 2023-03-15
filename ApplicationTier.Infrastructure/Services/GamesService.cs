@@ -18,5 +18,16 @@ namespace RocketEshop.Infrastructure.Services
             Game? entity = await context.Games.Include(x => x.Genres).FirstOrDefaultAsync(x => x.Id == id);
             return entity ?? null;
         }
+
+        public new async Task UpdateAsync(Game game)
+        {
+            var existingGame = await GetByIdAsync(game.Id);
+            if (existingGame != null)
+            {
+                context.Remove(existingGame);
+            }
+            context.Update(game);
+            await context.SaveChangesAsync();
+        }
     }
 }

@@ -26,16 +26,6 @@ namespace RocketEshop.Dtos.Game
             this.genreOptions = genreOptions;
         }
 
-        public GameUpdateRequestDto(Core.Models.Game game)
-        {
-            this.gameFromGameEntity(game);
-        }
-
-        public GameUpdateRequestDto(SelectList genreOptions)
-        {
-            this.genreOptions = genreOptions;
-        }
-
         private void gameFromGameEntity(Core.Models.Game game)
         {
             this.Id = game.Id;
@@ -46,7 +36,6 @@ namespace RocketEshop.Dtos.Game
             this.Rating = game.Rating;
             this.ReleaseDate = game.Release_Date;
             this.Description = game.Description;
-            //this.Genres = game.Genres;
 
             this.Genres = new List<int>();
             foreach (Genre genre in game.Genres)
