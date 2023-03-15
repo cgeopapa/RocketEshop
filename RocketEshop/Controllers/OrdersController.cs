@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApplicationTier.Infrastructure.Core.Models;
+using ApplicationTier.Infrastructure.Data.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Core.Interfaces;
-using RocketEshop.Core.Models;
-using RocketEshop.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {

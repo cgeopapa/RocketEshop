@@ -1,4 +1,5 @@
-﻿using RocketEshop.Core.Models;
+﻿using ApplicationTier.ApplicationCore.Models;
+using RocketEshop.Core.Models;
 
 namespace RocketEshop.Core.Interfaces
 {
