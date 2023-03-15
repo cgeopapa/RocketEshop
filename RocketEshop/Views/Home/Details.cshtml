@@ -45,6 +45,7 @@
                                 Back to List
                             </a>
                             <a class="btn btn-success text-white @((Model.Quantity <= 0 ) ? "disabled" : "")"
+                               style="float: right;"
                                asp-controller="Orders"
                                asp-action="AddItemToShoppingCart"
                                asp-route-id="@Model.Id">
