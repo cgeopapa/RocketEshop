@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -45,7 +46,7 @@
     <tbody>
         @foreach (var obj in Model)
         {
-            <tr class="table-dark">
+            <tr >
                 <td>
                     @obj.Title
                 </td>

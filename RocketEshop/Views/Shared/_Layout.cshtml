@@ -11,32 +11,29 @@
     @*for toast popup*@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/RocketEshop.styles.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Rocket E-shop</a>
+                <a class="navbar-brand"  href="#">Rocket E-shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
+                            <a class="nav-link"  asp-area="" asp-controller="Home" asp-action="Index">
                                 Home
-                                
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
+                            <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
                                 <a class="dropdown-item" asp-area="" asp-controller="Genres" asp-action="Index">Genres</a>
-                                @*<a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>*@
-                                <div class="dropdown-divider"></div>
-                                @*<a class="dropdown-item" href="#">Separated link</a>*@
+                                @*<div class="dropdown-divider"></div>*@
                             </div>
                         </li>
                     </ul>
@@ -56,7 +53,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
                         <i class="bi bi-box-arrow-in-right"></i> Log in
                     </a>
@@ -66,37 +62,17 @@
                         <i class="bi bi-person-plus"></i> Register
                     </a>
                     <span style="padding: 5px;"></span>
-
                     <span style="padding: 5px;"></span>
                     <form asp-controller="Account" asp-action="Logout">
                         <button class="btn -btn-ouline-danger my-2 my-sm-0">
                             <i class="bi bi-box-arrow-in-right"></i> Log out
                         </button>
                     </form>
-
                 </div>
             </div>
         </nav>
-       @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RocketEshop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Games" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
     </header>
+    <br />
     <div class="container">
         <main role="main" class="pb-3">
             @*to show toast popup*@
@@ -104,7 +80,7 @@
             @RenderBody()
         </main>
     </div>
-
+    <br /><br /><br />
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - RocketEshop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
