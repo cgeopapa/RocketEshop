@@ -45,8 +45,8 @@
 </div>
 <br /><br />
 <div class="row">
-    <h4>Latest Additions (Not really)</h4>
-    @foreach (var item in Model)
+    <h4>Latest Additions</h4>
+    @foreach (var item in Model.Reverse())
     {
         <div class="col-lg-4 mb-3 d-flex align-items-stretch">
             <div class="card d-flex flex-column justify-content-between mb-3" style="width: 500px;">
