@@ -47,13 +47,22 @@
                             <a class="btn btn-outline-primary float-right" asp-action="Index">
                                 Back to List
                             </a>
-                            <a class="btn btn-success text-white @((Model.Quantity <= 0 ) ? "disabled" : "")"
-                               style="float: right;"
+                            @if (Model.Quantity <= 0)
+                            {
+                                <a class="btn btn-secondary text-white disabled"
+                               style="float: right;">
+                                <i class="bi bi-cart-plus"></i> Out of Stock
+                                </a>
+                            }else{
+                                <a class="btn btn-success text-white"
+                                   style="float: right;"
                                asp-controller="Orders"
                                asp-action="AddItemToShoppingCart"
                                asp-route-id="@Model.Id">
-                                <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
-                            </a>
+                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
+                                </a>
+                            }
+                            
                         </p>
                     </div>
                 </div>

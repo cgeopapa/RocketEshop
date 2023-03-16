@@ -85,12 +85,22 @@
                     <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">
                         <i class="bi bi-eye-fill"></i> Show Details
                     </a>
-                    <a class="btn btn-success text-white @((item.Quantity <= 0 ) ? "disabled" : "")"
+                    @if (item.Quantity <= 0)
+                    {
+                        <a class="btn btn-secondary text-white disabled">
+                            <i class="bi bi-cart-plus"></i> Out of Stock
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success text-white"
                         asp-controller="Orders"
                         asp-action="AddItemToShoppingCart"
                         asp-route-id="@item.Id">
                         <i class="bi bi-cart-plus"></i> Add to Cart
-                    </a>
+                        </a>
+                    }
+                    
                 </div>
             </div>
         </div>
