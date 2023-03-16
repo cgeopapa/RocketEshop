@@ -1,9 +1,9 @@
 ﻿using RocketEshop.Core.Enums;
 using RocketEshop.Core.Models;
 
-namespace RocketEshop.Dtos.Game
+namespace RocketEshop.Model
 {
-    public class GameDto
+    public class GameViewModel
     {
         public int? Id { get; set; }
         public string Title { get; set; }
@@ -15,23 +15,23 @@ namespace RocketEshop.Dtos.Game
         public string Description { get; set; }
         public List<int> Genres { get; set; }
 
-        public GameDto() { }
+        public GameViewModel() { }
 
-        public GameDto(Core.Models.Game game)
+        public GameViewModel(Game game)
         {
-            this.Id = game.Id;
-            this.Title = game.Title;
-            this.Price = game.Price;
-            this.ImageUrl = game.ImageUrl;
-            this.Quantity = game.Quantity;
-            this.Rating = game.Rating;
-            this.ReleaseDate = game.Release_Date;
-            this.Description = game.Description;
+            Id = game.Id;
+            Title = game.Title;
+            Price = game.Price;
+            ImageUrl = game.ImageUrl;
+            Quantity = game.Quantity;
+            Rating = game.Rating;
+            ReleaseDate = game.Release_Date;
+            Description = game.Description;
 
-            this.Genres = new List<int>();
+            Genres = new List<int>();
             foreach (Genre genre in game.Genres)
             {
-                this.Genres.Add(genre.Id);
+                Genres.Add(genre.Id);
             }
         }
 
