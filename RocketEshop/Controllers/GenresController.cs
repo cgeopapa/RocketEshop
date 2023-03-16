@@ -47,7 +47,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Name,Description")] Genre genre)
+        public async Task<IActionResult> Edit([Bind("Id,Name,Description")] Genre genre)
         {
             try
             {

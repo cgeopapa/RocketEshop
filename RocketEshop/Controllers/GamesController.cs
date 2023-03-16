@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Dtos.Game;
-using RocketEshop.Dtos.Search;
 
 namespace RocketEshop.Controllers
 {
@@ -33,11 +32,11 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameCreateRequestDto gameCreateRequestDto)
+        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameDto gameDto)
         {
             try
             {
-                Game game = await gameEntityFromGameCreateRequestDto(gameCreateRequestDto);
+                Game game = await gameEntityFromGameCreateRequestDto(gameDto);
                 await _gamesService.AddAsync(game);
                 TempData["success"] = "Game added successfully!";
             }
@@ -61,11 +60,11 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameUpdateRequestDto gameUpdateRequestDto)
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameDto gameDto)
         {
             try
             {
-                Game game = await gameEntityFromGameUpdateRequestDto(gameUpdateRequestDto);
+                Game game = await gameEntityFromGameUpdateRequestDto(gameDto);
                 await _gamesService.UpdateAsync(game);
                 TempData["success"] = "Game updated successfully!";
             }
@@ -120,10 +119,10 @@ namespace RocketEshop.Controllers
             return new SelectList(genres, "Id", "Name");
         }
 
-        private async Task<Game> gameEntityFromGameUpdateRequestDto(GameUpdateRequestDto gameUpdateRequestDto)
+        private async Task<Game> gameEntityFromGameUpdateRequestDto(GameDto gameUpdateRequestDto)
         {
             Game game = new Game();
-            game.Id = gameUpdateRequestDto.Id;
+            game.Id = gameUpdateRequestDto.Id ?? throw new Exception("A game with no Id was given");
             game.Title = gameUpdateRequestDto.Title;
             game.Price = gameUpdateRequestDto.Price;
             game.ImageUrl = gameUpdateRequestDto.ImageUrl;
@@ -141,19 +140,19 @@ namespace RocketEshop.Controllers
             return game;
         }
 
-        private async Task<Game> gameEntityFromGameCreateRequestDto(GameCreateRequestDto gameCreateRequestDto)
+        private async Task<Game> gameEntityFromGameCreateRequestDto(GameDto gameDto)
         {
             Game game = new Game();
-            game.Title = gameCreateRequestDto.Title;
-            game.Price = gameCreateRequestDto.Price;
-            game.ImageUrl = gameCreateRequestDto.ImageUrl;
-            game.Quantity = gameCreateRequestDto.Quantity;
-            game.Rating = gameCreateRequestDto.Rating;
-            game.Release_Date = gameCreateRequestDto.ReleaseDate;
-            game.Description = gameCreateRequestDto.Description;
+            game.Title = gameDto.Title;
+            game.Price = gameDto.Price;
+            game.ImageUrl = gameDto.ImageUrl;
+            game.Quantity = gameDto.Quantity;
+            game.Rating = gameDto.Rating;
+            game.Release_Date = gameDto.ReleaseDate;
+            game.Description = gameDto.Description;
 
             game.Genres = new List<Genre>();
-            foreach (int genreId in gameCreateRequestDto.Genres)
+            foreach (int genreId in gameDto.Genres)
             {
                 Genre? genre = await _genresService.GetByIdAsync(genreId) ?? throw new Exception("cannot find genre with id " + genreId);
                 game.Genres.Add(genre);
