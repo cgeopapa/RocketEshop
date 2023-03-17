@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections;
+using Microsoft.EntityFrameworkCore;
+using RocketEshop.Core.Domain;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure.Repositories;
@@ -68,10 +70,21 @@ namespace RocketEshop.Infrastructure.Services
                 .ThenInclude(x => x.Genre);
         }
 
-        public IEnumerable<Game> GetByQuickSearchFilter(string quickSearchFilter)
+        public IEnumerable<Game> FetchFilteredGamesList(Filters filters)
         {
-            var games = context.Games.Include(x => x.GameGenreLink).Where(game => game.Title.Contains(quickSearchFilter));
-            return games;
+            var games = context.Games.Include(x => x.GameGenreLink).ThenInclude(x => x.Genre);
+            IEnumerable<Game> filteredGames = new List<Game>(games);
+
+            if (filters.QuickSearchFilter != null)
+            {
+                filteredGames = games.Where(game => game.Title.Contains(filters.QuickSearchFilter));
+            }
+            if (filters.Availability)
+            {
+                filteredGames = games.Where(game => game.Quantity > 0);
+            }
+
+            return filteredGames;
         }
     }
 }

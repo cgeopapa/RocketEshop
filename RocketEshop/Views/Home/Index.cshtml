@@ -46,8 +46,11 @@
 </div>
 <br /><br />
 <form asp-action="Search" class="d-flex my-4 px-4">
-    <input asp-for="QuickSearchFilter" class="form-control me-sm-2" type="search" placeholder="Search">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    <input asp-for="Filters.QuickSearchFilter" name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
+    <button class="btn btn-primary m-2" type="submit">Search</button>
+    <button type="button" class="btn btn-secondary m-2" data-bs-toggle="offcanvas" data-bs-target="#advancedFilters">
+        Advanced Search
+    </button>
 </form>
 <div class="row">
     <h4>Latest Additions</h4>
@@ -186,3 +189,21 @@
 <div class="row">
     <h4>Trailers</h4>
 </div>
+
+<form asp-action="Search" class="offcanvas offcanvas-start" style="z-index: 10000" tabindex="-1" id="advancedFilters" aria-labelledby="advancedFilters">
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvasExampleLabel">Advanced Filter Search</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            <h5>Availability</h5>
+            <div class="form-check">
+                <input asp-for="Filters.Availability" name="Availability" type="checkbox" class="form-check-input"/>
+                <label class="form-check-label" asp-for="Filters.Availability"></label>
+            </div>
+        </div>
+        <hr/>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="offcanvas" aria-label="Apply">Apply</button>
+    </div>
+</form>

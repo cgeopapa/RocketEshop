@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RocketEshop.Core.Domain;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure.Data.ViewModel;
@@ -9,28 +10,25 @@ namespace RocketEshop.Controllers
     {
         private readonly IGamesService _gamesService;
         private static string? quickSearchFilter = null;
+        private static bool availability = false;
 
         public HomeController(IGamesService service)
         {
             _gamesService = service;
         }
 
-        // GET: Games
-        //Display all Games
         public async Task<IActionResult> Index()
         {
-            if(quickSearchFilter == null)
-            {
-                return View(new HomeVM(_gamesService.FetchAllWithGenres(), quickSearchFilter));
-            }
-            return View(new HomeVM(_gamesService.GetByQuickSearchFilter(quickSearchFilter), quickSearchFilter));
+            Filters filters = new Filters(quickSearchFilter, availability);
+            return View(new HomeVM(_gamesService.FetchFilteredGamesList(filters), filters));
         }
 
         [HttpPost]
         [ActionName("Search")]
-        public IActionResult Index([Bind("QuickSearchFilter")] string QuickSearchFilter)
+        public IActionResult Index([Bind("QuickSearchFilter,Availability")] Filters filtersVm)
         {
-            quickSearchFilter = QuickSearchFilter;
+            quickSearchFilter = filtersVm.QuickSearchFilter;
+            availability = filtersVm.Availability;
             return RedirectToAction(nameof(Index));
         }
 
