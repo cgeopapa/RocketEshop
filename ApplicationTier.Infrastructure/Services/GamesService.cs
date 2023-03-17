@@ -15,7 +15,10 @@ namespace RocketEshop.Infrastructure.Services
         
         public new async Task<Game?> GetByIdAsync(int id)
         {
-            Game? entity = await context.Games.Include(x => x.GameGenreLink).ThenInclude(x => x.Genre).FirstOrDefaultAsync(x => x.Id == id);
+            Game? entity = await context.Games
+                .Include(x => x.GameGenreLink)
+                .ThenInclude(x => x.Genre)
+                .FirstOrDefaultAsync(x => x.Id == id);
             return entity ?? null;
         }
 
@@ -56,6 +59,13 @@ namespace RocketEshop.Infrastructure.Services
             existingGame.GameGenreLink.AddRange(gameGenresForAdd);
 
             await context.SaveChangesAsync();
+        }
+
+        public IEnumerable<Game> FetchAllWithGenres()
+        {
+            return context.Games
+                .Include(x => x.GameGenreLink)
+                .ThenInclude(x => x.Genre);
         }
 
         public IEnumerable<Game> GetByQuickSearchFilter(string quickSearchFilter)

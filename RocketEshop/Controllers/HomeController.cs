@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
+using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
@@ -20,14 +21,10 @@ namespace RocketEshop.Controllers
         {
             if(quickSearchFilter == null)
             {
-                return View(await _gamesService.GetAllAsync());
-            } 
-            else
-            {
-                return View(_gamesService.GetByQuickSearchFilter(quickSearchFilter));
+                return View(new HomeVM(_gamesService.FetchAllWithGenres(), quickSearchFilter));
             }
+            return View(new HomeVM(_gamesService.GetByQuickSearchFilter(quickSearchFilter), quickSearchFilter));
         }
-
 
         [HttpPost]
         [ActionName("Search")]
