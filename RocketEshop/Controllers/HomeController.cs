@@ -28,6 +28,7 @@ namespace RocketEshop.Controllers
             }
         }
 
+
         [HttpPost]
         [ActionName("Search")]
         public IActionResult Index([Bind("QuickSearchFilter")] string QuickSearchFilter)
