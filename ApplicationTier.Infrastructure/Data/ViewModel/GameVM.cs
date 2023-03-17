@@ -1,16 +1,12 @@
-﻿using RocketEshop.Core.Interfaces;
-using RocketEshop.Core.Enums;
+﻿using RocketEshop.Core.Enums;
+using RocketEshop.Core.Models;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using ApplicationTier.ApplicationCore.Models;
 
-namespace RocketEshop.Core.Models
+namespace RocketEshop.Infrastructure.Data.ViewModel
 {
-    public class Game: IEntity
+    public class GameVM
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Display(Name = "Game Title")]
         [Required(ErrorMessage = "Game Title is required")]
@@ -36,13 +32,36 @@ namespace RocketEshop.Core.Models
 
         [Display(Name = "Release Date")]
         [Required(ErrorMessage = "Release Date is required")]
-        public DateTime Release_Date { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
         [Display(Name = "Genres")]
-        public List<GameGenre> GameGenreLink { get; set; }
+        public List<int> Genres { get; set; }
+
+
+        public GameVM()
+        {
+        }
+
+        public GameVM(Game game)
+        {
+            Id = game.Id;
+            Title = game.Title;
+            Price = game.Price;
+            ImageUrl = game.ImageUrl;
+            Quantity = game.Quantity;
+            Rating = game.Rating;
+            ReleaseDate = game.Release_Date;
+            Description = game.Description;
+
+            Genres = new List<int>();
+            foreach (GameGenre genre in game.GameGenreLink)
+            {
+                Genres.Add(genre.Genre.Id);
+            }
+        }
     }
 }

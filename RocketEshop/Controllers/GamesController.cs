@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using RocketEshop.Model;
-using RocketEshop.Model.Games;
+using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
@@ -28,16 +27,16 @@ namespace RocketEshop.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            Create game = new Create(await GetGameOptions());
-            return View(game);
+            TempData["genreOptions"] = await GetGameOptions();
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameViewModel gameViewModel)
+        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameVM gameVm)
         {
             try
             {
-                Core.Models.Game game = await gameEntityFromGameCreateRequestDto(gameViewModel);
+                Core.Models.Game game = await gameEntityFromGameCreateRequestDto(gameVm);
                 await _gamesService.AddAsync(game);
                 TempData["success"] = "GameViewModel added successfully!";
             }
@@ -56,16 +55,17 @@ namespace RocketEshop.Controllers
             {
                 return NotFound();
             }
-            Edit gameUpdateRequestDto = new Edit(game, await GetGameOptions());
-            return View(gameUpdateRequestDto);
+            GameVM gameVm = new GameVM(game);
+            TempData["genreOptions"] = await GetGameOptions();
+            return View(gameVm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameViewModel gameViewModel)
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameVM gameVm)
         {
             try
             {
-                Game game = await gameEntityFromGameUpdateRequestDto(gameViewModel);
+                Game game = await gameEntityFromUpdateGameVm(gameVm);
                 await _gamesService.UpdateAsync(game);
                 TempData["success"] = "Game updated successfully!";
             }
@@ -121,43 +121,53 @@ namespace RocketEshop.Controllers
             return new SelectList(genres, "Id", "Name");
         }
 
-        private async Task<Game> gameEntityFromGameUpdateRequestDto(GameViewModel gameUpdateRequestDto)
+        private async Task<Game> gameEntityFromUpdateGameVm(GameVM gameVm)
         {
             Game game = new Game();
-            game.Id = gameUpdateRequestDto.Id ?? throw new Exception("A game with no Id was given");
-            game.Title = gameUpdateRequestDto.Title;
-            game.Price = gameUpdateRequestDto.Price;
-            game.ImageUrl = gameUpdateRequestDto.ImageUrl;
-            game.Quantity = gameUpdateRequestDto.Quantity;
-            game.Rating = gameUpdateRequestDto.Rating;
-            game.Release_Date = gameUpdateRequestDto.ReleaseDate;
-            game.Description = gameUpdateRequestDto.Description;
+            game.Id = gameVm.Id ?? throw new Exception("A game with no Id was given");
+            game.Title = gameVm.Title;
+            game.Price = gameVm.Price;
+            game.ImageUrl = gameVm.ImageUrl;
+            game.Quantity = gameVm.Quantity;
+            game.Rating = gameVm.Rating;
+            game.Release_Date = gameVm.ReleaseDate;
+            game.Description = gameVm.Description;
 
-            game.Genres = new List<Genre>();
-            foreach (int genreId in gameUpdateRequestDto.Genres)
+            game.GameGenreLink = new List<GameGenre>();
+            foreach (int genreId in gameVm.Genres)
             {
                 Genre? genre = await _genresService.GetByIdAsync(genreId) ?? throw new Exception("cannot find genre with id " + genreId);
-                game.Genres.Add(genre);
+                
+                GameGenre gameGenre = new GameGenre();
+                gameGenre.Game = game;
+                gameGenre.Genre = genre;
+
+                game.GameGenreLink.Add(gameGenre);
             }
             return game;
         }
 
-        private async Task<Game> gameEntityFromGameCreateRequestDto(GameViewModel gameDto)
+        private async Task<Game> gameEntityFromGameCreateRequestDto(GameVM gameVm)
         {
             Game game = new Game();
-            game.Title = gameDto.Title;
-            game.Price = gameDto.Price;
-            game.ImageUrl = gameDto.ImageUrl;
-            game.Quantity = gameDto.Quantity;
-            game.Rating = gameDto.Rating;
-            game.Release_Date = gameDto.ReleaseDate;
-            game.Description = gameDto.Description;
+            game.Title = gameVm.Title;
+            game.Price = gameVm.Price;
+            game.ImageUrl = gameVm.ImageUrl;
+            game.Quantity = gameVm.Quantity;
+            game.Rating = gameVm.Rating;
+            game.Release_Date = gameVm.ReleaseDate;
+            game.Description = gameVm.Description;
 
-            game.Genres = new List<Genre>();
-            foreach (int genreId in gameDto.Genres)
+            game.GameGenreLink = new List<GameGenre>();
+            foreach (int genreId in gameVm.Genres)
             {
                 Genre? genre = await _genresService.GetByIdAsync(genreId) ?? throw new Exception("cannot find genre with id " + genreId);
-                game.Genres.Add(genre);
+
+                GameGenre gameGenre = new GameGenre();
+                gameGenre.Game = game;
+                gameGenre.Genre = genre;
+
+                game.GameGenreLink.Add(gameGenre);
             }
             return game;
         }
