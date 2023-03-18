@@ -1,7 +1,7 @@
 ﻿using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using ApplicationTier.ApplicationCore.Models;
+using RocketEsgop.ApplicationCore.Models;
 
 namespace RocketEshop.Infrastructure.Services
 {

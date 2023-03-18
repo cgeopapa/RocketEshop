@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationTier.ApplicationCore.Models
+namespace RocketEsgop.ApplicationCore.Models
 {
     public class ApplicationUser : IdentityUser
     {

@@ -1,7 +1,7 @@
 ﻿using RocketEshop.Core.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ApplicationTier.ApplicationCore.Models;
+using RocketEsgop.ApplicationCore.Models;
 
 namespace RocketEshop.Core.Models
 {

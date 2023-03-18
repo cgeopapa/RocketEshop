@@ -1,5 +1,5 @@
-﻿using ApplicationTier.Infrastructure.Core.Models;
-using ApplicationTier.Infrastructure.Data.ViewModel;
+﻿using RocketEsgop.Infrastructure.Core.Models;
+using RocketEsgop.Infrastructure.Data.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Core.Interfaces;
 

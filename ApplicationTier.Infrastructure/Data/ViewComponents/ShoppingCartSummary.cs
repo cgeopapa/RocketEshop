@@ -1,8 +1,8 @@
-﻿using ApplicationTier.Infrastructure.Core.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using RocketEsgop.Infrastructure.Core.Models;
 using RocketEshop.Core.Models;
 
-namespace ApplicationTier.Infrastructure.Data.ViewComponents
+namespace RocketEsgop.Infrastructure.Data.ViewComponents
 {
     public class ShoppingCartSummary : ViewComponent
     {

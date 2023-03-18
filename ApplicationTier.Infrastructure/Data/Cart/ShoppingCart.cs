@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
 
-namespace ApplicationTier.Infrastructure.Core.Models
+namespace RocketEsgop.Infrastructure.Core.Models
 {
     public class ShoppingCart
     {

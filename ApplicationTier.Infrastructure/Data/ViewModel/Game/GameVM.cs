@@ -2,7 +2,7 @@
 using RocketEshop.Core.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RocketEshop.Infrastructure.Data.ViewModel
+namespace RocketEsgop.Infrastructure.Data.ViewModel
 {
     public class GameVM
     {
@@ -39,7 +39,7 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
         public string Description { get; set; }
 
         [Display(Name = "Genres")]
-        public List<int> Genres { get; set; }
+        public List<Genre> Genres { get; set; }
 
 
         public GameVM()
@@ -57,10 +57,10 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
             ReleaseDate = game.Release_Date;
             Description = game.Description;
 
-            Genres = new List<int>();
+            Genres = new List<Genre>();
             foreach (GameGenre genre in game.GameGenreLink)
             {
-                Genres.Add(genre.Genre.Id);
+                Genres.Add(genre.Genre);
             }
         }
     }

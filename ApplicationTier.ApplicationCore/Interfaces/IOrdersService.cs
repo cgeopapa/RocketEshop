@@ -1,4 +1,4 @@
-﻿using ApplicationTier.ApplicationCore.Models;
+﻿using RocketEsgop.ApplicationCore.Models;
 using RocketEshop.Core.Models;
 
 namespace RocketEshop.Core.Interfaces

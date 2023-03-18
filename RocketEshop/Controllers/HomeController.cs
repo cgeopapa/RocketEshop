@@ -9,12 +9,14 @@ namespace RocketEshop.Controllers
     public class HomeController : Controller
     {
         private readonly IGamesService _gamesService;
+        private readonly IGenresService _genresService;
         private static string? quickSearchFilter = null;
         private static bool availability = false;
 
-        public HomeController(IGamesService service)
+        public HomeController(IGamesService service, IGenresService genresService)
         {
-            _gamesService = service;
+            this._gamesService = service;
+            this._genresService = genresService;
         }
 
         public async Task<IActionResult> Index()

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using RocketEshop.Infrastructure.Data.ViewModel;
 using System.Globalization;
+using RocketEsgop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
@@ -33,7 +33,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameVM gameVm)
+        public async Task<IActionResult> Create([Bind("Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameCreateUpdateVM gameVm)
         {
             try
             {
@@ -56,13 +56,13 @@ namespace RocketEshop.Controllers
             {
                 return NotFound();
             }
-            GameVM gameVm = new GameVM(game);
+            GameCreateUpdateVM gameVm = new GameCreateUpdateVM(game);
             TempData["genreOptions"] = await GetGameOptions();
             return View(gameVm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameVM gameVm)
+        public async Task<IActionResult> Edit([Bind("Id,Title,Description,Price,ImageUrl,Quantity,ReleaseDate,Rating,Genres")] GameCreateUpdateVM gameVm)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(Core.Models.Game game)
+        public async Task<IActionResult> DeleteConfirmed(Game game)
         {
             //try
             //{
@@ -107,7 +107,7 @@ namespace RocketEshop.Controllers
 
         // PRIVATE - UTILS
 
-        private async Task<Core.Models.Game?> GetGameDetails(int? id)
+        private async Task<Game?> GetGameDetails(int? id)
         {
             if (id == null)
             {
@@ -122,7 +122,7 @@ namespace RocketEshop.Controllers
             return new SelectList(genres, "Id", "Name");
         }
 
-        private async Task<Game> gameEntityFromUpdateGameVm(GameVM gameVm)
+        private async Task<Game> gameEntityFromUpdateGameVm(GameCreateUpdateVM gameVm)
         {
             Game game = new Game();
             game.Id = gameVm.Id ?? throw new Exception("A game with no Id was given");
@@ -148,7 +148,7 @@ namespace RocketEshop.Controllers
             return game;
         }
 
-        private async Task<Game> gameEntityFromGameCreateRequestDto(GameVM gameVm)
+        private async Task<Game> gameEntityFromGameCreateRequestDto(GameCreateUpdateVM gameVm)
         {
             Game game = new Game();
             game.Title = gameVm.Title;

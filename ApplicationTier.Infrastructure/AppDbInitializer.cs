@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using RocketEshop.Core.Models;
 using RocketEshop.Core.Enums;
-using ApplicationTier.ApplicationCore.Models;
+using RocketEsgop.ApplicationCore.Models;
 using Microsoft.AspNetCore.Identity;
 using RocketEshop.Data.Static;
 

@@ -1,4 +1,5 @@
-﻿@using RocketEshop.Infrastructure.Data.ViewModel
+﻿@using RocketEsgop.Infrastructure.Data.ViewModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model RocketEshop.Infrastructure.Data.ViewModel.HomeVM
 
 @{
@@ -72,15 +73,20 @@
                             <p class="card-text"><b>Price: </b>@item.Price &euro;</p>
                             <p class="card-text"><b>Quantity </b>@item.Quantity</p>
                             <p class="card-text"><b>Rating: </b>@item.Rating</p>
+                            <div class="my-4">
+                                @foreach (Genre genre in item.Genres)
+                                {
+                                    <span class="badge rounded-pill text-bg-info">@genre.Name</span>
+                                }
+                            </div>
                             @if (item.Quantity > 0)
                             {
-                                <span class="badge rounded-pill text-bg-primary">Available</span>
+                                <span class="badge fs-6 rounded-pill text-bg-primary">Available</span>
                             }
                             else
                             {
-                                <span class="badge rounded-pill text-bg-danger">Sold out</span>
+                                <span class="badge fs-6 rounded-pill text-bg-danger">Sold out</span>
                             }
-                            @* TODO Add genre badges*@
                         </div>
                     </div>
                 </div>

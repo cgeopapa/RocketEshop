@@ -1,4 +1,5 @@
-﻿using RocketEshop.Core.Domain;
+﻿using RocketEsgop.Infrastructure.Data.ViewModel;
+using RocketEshop.Core.Domain;
 using RocketEshop.Core.Models;
 
 namespace RocketEshop.Infrastructure.Data.ViewModel

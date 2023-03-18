@@ -1,5 +1,5 @@
-using ApplicationTier.ApplicationCore.Models;
-using ApplicationTier.Infrastructure.Core.Models;
+using RocketEsgop.ApplicationCore.Models;
+using RocketEsgop.Infrastructure.Core.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

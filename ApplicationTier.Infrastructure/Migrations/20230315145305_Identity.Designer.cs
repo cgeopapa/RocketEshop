@@ -9,7 +9,7 @@ using RocketEshop.Infrastructure;
 
 #nullable disable
 
-namespace ApplicationTier.Infrastructure.Migrations
+namespace RocketEsgop.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20230315145305_Identity")]

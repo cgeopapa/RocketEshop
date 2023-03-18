@@ -1,5 +1,5 @@
-﻿using ApplicationTier.ApplicationCore.Models;
-using ApplicationTier.Infrastructure.Data.ViewModel;
+﻿using RocketEsgop.ApplicationCore.Models;
+using RocketEsgop.Infrastructure.Data.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Data.Static;
