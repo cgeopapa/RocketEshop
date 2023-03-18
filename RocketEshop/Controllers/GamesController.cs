@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure.Data.ViewModel;
+using System.Globalization;
 
 namespace RocketEshop.Controllers
 {
@@ -126,7 +127,7 @@ namespace RocketEshop.Controllers
             Game game = new Game();
             game.Id = gameVm.Id ?? throw new Exception("A game with no Id was given");
             game.Title = gameVm.Title;
-            game.Price = gameVm.Price;
+            game.Price = float.Parse(gameVm.Price, CultureInfo.InvariantCulture);
             game.ImageUrl = gameVm.ImageUrl;
             game.Quantity = gameVm.Quantity;
             game.Rating = gameVm.Rating;
@@ -151,7 +152,7 @@ namespace RocketEshop.Controllers
         {
             Game game = new Game();
             game.Title = gameVm.Title;
-            game.Price = gameVm.Price;
+            game.Price = float.Parse(gameVm.Price, CultureInfo.InvariantCulture);
             game.ImageUrl = gameVm.ImageUrl;
             game.Quantity = gameVm.Quantity;
             game.Rating = gameVm.Rating;
