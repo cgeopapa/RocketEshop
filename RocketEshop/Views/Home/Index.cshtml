@@ -1,5 +1,6 @@
 ﻿@using RocketEsgop.Infrastructure.Data.ViewModel
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using RocketEshop.Core.Enums
 @model RocketEshop.Infrastructure.Data.ViewModel.HomeVM
 
 @{
@@ -203,10 +204,29 @@
     </div>
     <div class="offcanvas-body">
         <div>
+            <h5>Sorting</h5>
+            <div class="form-check">
+                <select asp-for="Filters.Sorting" name="Sorting" asp-items="@Html.GetEnumSelectList(typeof(SortingFilter))"></select>
+            </div>
+        </div>
+        <hr/>
+        <div>
             <h5>Availability</h5>
             <div class="form-check">
                 <input asp-for="Filters.Availability" name="Availability" type="checkbox" class="form-check-input"/>
                 <label class="form-check-label" asp-for="Filters.Availability"></label>
+            </div>
+        </div>
+        <hr/>
+        <div>
+            <h5>Price</h5>
+            <p>Min - Max</p>
+            <div class="row m-0">
+                <div class="input-group mb-3">
+                    <input type="number" step="5" asp-for="Filters.MinPrice" name="MinPrice" class="form-control" placeholder="Min Price">
+                    <span class="input-group-text">-</span>
+                    <input type="number" step="5" asp-for="Filters.MaxPrice" name="MaxPrice" class="form-control" placeholder="Max Price">
+                </div>
             </div>
         </div>
         <hr/>

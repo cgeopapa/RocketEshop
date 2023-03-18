@@ -9,28 +9,25 @@ namespace RocketEshop.Controllers
     public class HomeController : Controller
     {
         private readonly IGamesService _gamesService;
-        private readonly IGenresService _genresService;
-        private static string? quickSearchFilter = null;
-        private static bool availability = false;
+        private static Filters Filters;
 
-        public HomeController(IGamesService service, IGenresService genresService)
+        public HomeController(IGamesService service)
         {
             this._gamesService = service;
-            this._genresService = genresService;
+            Filters ??= new Filters();
         }
 
         public async Task<IActionResult> Index()
         {
-            Filters filters = new Filters(quickSearchFilter, availability);
-            return View(new HomeVM(_gamesService.FetchFilteredGamesList(filters), filters));
+            return View(new HomeVM(_gamesService.FetchFilteredGamesList(Filters), HomeController.Filters));
         }
 
         [HttpPost]
         [ActionName("Search")]
-        public IActionResult Index([Bind("QuickSearchFilter,Availability")] Filters filtersVm)
+        public IActionResult Index([Bind("QuickSearchFilter,Availability,Sorting,MinPrice,MaxPrice")] Filters filtersVm)
         {
-            quickSearchFilter = filtersVm.QuickSearchFilter;
-            availability = filtersVm.Availability;
+            Filters = filtersVm;
+
             return RedirectToAction(nameof(Index));
         }
 

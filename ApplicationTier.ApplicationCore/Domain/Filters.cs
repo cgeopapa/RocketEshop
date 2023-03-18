@@ -1,20 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using RocketEshop.Core.Enums;
 
 namespace RocketEshop.Core.Domain
 {
     public class Filters
     {
+        public SortingFilter Sorting { get; set; }
+
         public string? QuickSearchFilter { get; set; }
 
         [Display(Name = "Show only available Games")]
-        public bool Availability { get; set; } = false;
+        public bool Availability { get; set; }
+        public int MinPrice { get; set; }
+        public int MaxPrice { get; set; }
 
-        public Filters() { }
-
-        public Filters(string? quickSearchFilter, bool availability)
+        public Filters()
         {
-            this.QuickSearchFilter = quickSearchFilter;
-            this.Availability = availability;
+            QuickSearchFilter = null;
+            Availability = false;
+            Sorting = SortingFilter.NameAsc;
+            MinPrice = 0;
+            MaxPrice = 500;
         }
     }
 }

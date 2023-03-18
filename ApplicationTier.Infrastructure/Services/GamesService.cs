@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using RocketEshop.Core.Domain;
+using RocketEshop.Core.Enums;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure.Repositories;
@@ -77,11 +79,34 @@ namespace RocketEshop.Infrastructure.Services
 
             if (filters.QuickSearchFilter != null)
             {
-                filteredGames = games.Where(game => game.Title.Contains(filters.QuickSearchFilter));
+                filteredGames = filteredGames.Where(game => game.Title.Contains(filters.QuickSearchFilter));
             }
             if (filters.Availability)
             {
-                filteredGames = games.Where(game => game.Quantity > 0);
+                filteredGames = filteredGames.Where(game => game.Quantity > 0);
+            }
+            filteredGames = filteredGames.Where(game => game.Price >= filters.MinPrice && game.Price <= filters.MaxPrice);
+
+            switch (filters.Sorting)
+            {
+                case SortingFilter.NameAsc:
+                    filteredGames = filteredGames.OrderBy(game => game.Title);
+                    break;
+                case SortingFilter.NameDesc:
+                    filteredGames = filteredGames.OrderByDescending(game => game.Title);
+                    break;
+                case SortingFilter.PriceAsc:
+                    filteredGames = filteredGames.OrderBy(game => game.Price);
+                    break;
+                case SortingFilter.PriceDsc:
+                    filteredGames = filteredGames.OrderByDescending(game => game.Price);
+                    break;
+                case SortingFilter.ReleaseDateAsc:
+                    filteredGames = filteredGames.OrderBy(game => game.Release_Date);
+                    break;
+                case SortingFilter.ReleaseDateDsc:
+                    filteredGames = filteredGames.OrderByDescending(game => game.Release_Date);
+                    break;
             }
 
             return filteredGames;
