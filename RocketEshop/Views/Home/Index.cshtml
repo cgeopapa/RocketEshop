@@ -52,65 +52,9 @@
 </form>
 <div class="row">
     <h4>Latest Additions</h4>
-    @foreach (GameVM item in Model.LatestReleases)
+    @foreach (GameVM game in Model.LatestReleases)
     {
-        <div class="col-lg-4 mb-3 d-flex align-items-stretch">
-            <div class="card d-flex flex-column justify-content-between mb-3" style="width: 500px;">
-                <div class="col-md-12">
-                    <div class="card-header text-white bg-primary">
-                        @item.Title
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <img src="@item.ImageUrl" style="width: 100%" alt="@item.Title">
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <p class="card-text"><b>Price: </b>@item.Price &euro;</p>
-                            <p class="card-text"><b>Quantity </b>@item.Quantity</p>
-                            <p class="card-text"><b>Rating: </b>@item.Rating</p>
-                            <div class="my-4">
-                                @foreach (Genre genre in item.Genres)
-                                {
-                                    <span class="badge rounded-pill text-bg-info">@genre.Name</span>
-                                }
-                            </div>
-                            @if (item.Quantity > 0)
-                            {
-                                <span class="badge fs-6 rounded-pill text-bg-primary">Available</span>
-                            }
-                            else
-                            {
-                                <span class="badge fs-6 rounded-pill text-bg-danger">Sold out</span>
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-around">
-
-                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">
-                        <i class="bi bi-eye-fill"></i> Show Details
-                    </a>
-                    @if (item.Quantity <= 0)
-                    {
-                        <a class="btn btn-secondary text-white disabled">
-                            <i class="bi bi-cart-plus"></i> Out of Stock
-                        </a>
-                    }
-                    else
-                    {
-                        <a class="btn btn-success text-white"
-                        asp-controller="Orders"
-                        asp-action="AddItemToShoppingCart"
-                        asp-route-id="@item.Id">
-                        <i class="bi bi-cart-plus"></i> Add to Cart
-                        </a>
-                    }
-                    
-                </div>
-            </div>
-        </div>
+        @Html.Partial("Components/GameDetails", game)
     }
 </div>
 <br /><br />
@@ -130,65 +74,9 @@
 <br /><br />
 <div class="row">
     <h4>Good Ratings</h4>
-    @foreach (var item in Model.GoodRatings)
+    @foreach (var game in Model.GoodRatings)
     {
-        <div class="col-lg-4 mb-3 d-flex align-items-stretch">
-            <div class="card d-flex flex-column justify-content-between mb-3" style="width: 500px;">
-                <div class="col-md-12">
-                    <div class="card-header text-white bg-primary">
-                        @item.Title
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <img src="@item.ImageUrl" style="width: 100%" alt="@item.Title">
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <p class="card-text"><b>Price: </b>@item.Price &euro;</p>
-                            <p class="card-text"><b>Quantity </b>@item.Quantity</p>
-                            <p class="card-text"><b>Rating: </b>@item.Rating</p>
-                            <div class="my-4">
-                                @foreach (Genre genre in item.Genres)
-                                {
-                                    <span class="badge rounded-pill text-bg-info">@genre.Name</span>
-                                }
-                            </div>
-                            @if (item.Quantity > 0)
-                            {
-                                <span class="badge fs-6 rounded-pill text-bg-primary">Available</span>
-                            }
-                            else
-                            {
-                                <span class="badge fs-6 rounded-pill text-bg-danger">Sold out</span>
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-around">
-
-                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">
-                        <i class="bi bi-eye-fill"></i> Show Details
-                    </a>
-                    @if (item.Quantity <= 0)
-                    {
-                        <a class="btn btn-secondary text-white disabled">
-                            <i class="bi bi-cart-plus"></i> Out of Stock
-                        </a>
-                    }
-                    else
-                    {
-                        <a class="btn btn-success text-white"
-                   asp-controller="Orders"
-                   asp-action="AddItemToShoppingCart"
-                   asp-route-id="@item.Id">
-                            <i class="bi bi-cart-plus"></i> Add to Cart
-                        </a>
-                    }
-
-                </div>
-            </div>
-        </div>
+        @Html.Partial("Components/GameDetails", game)
     }
 </div>
 <div class="row">

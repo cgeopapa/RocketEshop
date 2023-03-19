@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RocketEsgop.Infrastructure.Data.ViewModel
+namespace RocketEshop.Infrastructure.Data.ViewModel
 {
     public class RegisterVM
     {

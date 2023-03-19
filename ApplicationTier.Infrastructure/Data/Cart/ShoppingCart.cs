@@ -2,9 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RocketEshop.Core.Models;
-using RocketEshop.Infrastructure;
 
-namespace RocketEsgop.Infrastructure.Core.Models
+namespace RocketEshop.Infrastructure.Core.Models
 {
     public class ShoppingCart
     {

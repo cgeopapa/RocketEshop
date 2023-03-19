@@ -8,7 +8,7 @@ using RocketEshop.Infrastructure;
 
 #nullable disable
 
-namespace RocketEsgop.Infrastructure.Migrations
+namespace RocketEshop.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot

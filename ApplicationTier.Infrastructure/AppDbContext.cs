@@ -1,7 +1,6 @@
-﻿using RocketEsgop.ApplicationCore.Models;
+﻿using RocketEshop.Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RocketEshop.Core.Models;
 
 namespace RocketEshop.Infrastructure
 {

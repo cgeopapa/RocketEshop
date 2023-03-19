@@ -1,7 +1,7 @@
-﻿using RocketEsgop.Infrastructure.Core.Models;
+﻿using RocketEshop.Infrastructure.Core.Models;
 using RocketEshop.Core.Models;
 
-namespace RocketEsgop.Infrastructure.Data.ViewModel
+namespace RocketEshop.Infrastructure.Data.ViewModel
 {
     public class ShoppingCartVM
     {

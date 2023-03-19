@@ -1,12 +1,8 @@
-﻿@model RocketEshop.Core.Models.Game
+﻿@model RocketEshop.Infrastructure.Data.ViewModel.GameVM
 
 @{
     ViewData["Title"] = "Game details";
 }
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a></li>
-    <li class="breadcrumb-item active">@Model.Title</li>
-</ol>
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card mb-12">
@@ -25,7 +21,7 @@
                 </div>
                 <div class="col-md-8 text-center">
                     <div class="card-body">
-                        <p class="card-text"><b>Release Date: </b>@Model.Release_Date.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Release Date: </b>@Model.ReleaseDate.ToString("dd MMM yy")</p>
                         <p class="card-text"><b>Price: </b>@Model.Price€</p>
                         <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
                         <p class="card-text"><b>Rating: </b>@Model.Rating</p>
@@ -44,25 +40,27 @@
                 <div class="col-md-12">
                     <div class="card-footer">
                         <p class="card-text">
-                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                            <a class="btn btn-outline-primary float-right" asp-controller="Browse" asp-action="Index">
                                 Back to List
                             </a>
                             @if (Model.Quantity <= 0)
                             {
                                 <a class="btn btn-secondary text-white disabled"
-                               style="float: right;">
-                                <i class="bi bi-cart-plus"></i> Out of Stock
+                                   style="float: right;">
+                                    <i class="bi bi-cart-plus"></i> Out of Stock
                                 </a>
-                            }else{
+                            }
+                            else
+                            {
                                 <a class="btn btn-success text-white"
                                    style="float: right;"
                                asp-controller="Orders"
                                asp-action="AddItemToShoppingCart"
                                asp-route-id="@Model.Id">
-                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
                                 </a>
                             }
-                            
+
                         </p>
                     </div>
                 </div>

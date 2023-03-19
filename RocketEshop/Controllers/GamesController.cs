@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using System.Globalization;
-using RocketEsgop.Infrastructure.Data.ViewModel;
+using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
@@ -23,6 +23,18 @@ namespace RocketEshop.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _gamesService.GetAllAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            Game? game = await GetGameDetails(id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+            GameVM gameVm = new GameVM(game);
+            return View(gameVm);
         }
 
         [HttpGet]
@@ -92,15 +104,8 @@ namespace RocketEshop.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(Game game)
         {
-            //try
-            //{
-                await _gamesService.DeleteAsync(game);
-                TempData["success"] = "GameViewModel deleted successfully!";
-            //}
-            //catch (Exception)
-            //{
-            //    TempData["error"] = "There was an error.";
-            //}
+            await _gamesService.DeleteAsync(game);
+            TempData["success"] = "GameViewModel deleted successfully!";
             return RedirectToAction(nameof(Index));
             
         }

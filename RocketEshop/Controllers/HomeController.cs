@@ -23,25 +23,5 @@ namespace RocketEshop.Controllers
                 _gamesService.FetchGoodRatedGames(3))
             );
         }
-
-        // GET: Games/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            return await GetGameDetails(id);
-        }
-
-        private async Task<IActionResult> GetGameDetails(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            Game? game = await _gamesService.GetByIdAsync(id.Value);
-            if (game == null)
-            {
-                return NotFound();
-            }
-            return View(game);
-        }
     }
 }

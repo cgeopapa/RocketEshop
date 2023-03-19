@@ -1,7 +1,7 @@
-﻿using RocketEsgop.ApplicationCore.Models;
-using RocketEsgop.Infrastructure.Data.ViewModel;
+﻿using RocketEshop.Infrastructure.Data.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RocketEshop.Core.Models;
 using RocketEshop.Data.Static;
 using RocketEshop.Infrastructure;
 

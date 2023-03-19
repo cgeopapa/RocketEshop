@@ -2,7 +2,7 @@
 using RocketEshop.Core.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RocketEsgop.Infrastructure.Data.ViewModel
+namespace RocketEshop.Infrastructure.Data.ViewModel
 {
     public class GameCreateUpdateVM
     {

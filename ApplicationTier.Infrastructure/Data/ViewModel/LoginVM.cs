@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RocketEsgop.Infrastructure.Data.ViewModel
+namespace RocketEshop.Infrastructure.Data.ViewModel
 {
     public class LoginVM
     {

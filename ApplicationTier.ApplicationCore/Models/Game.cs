@@ -2,7 +2,6 @@
 using RocketEshop.Core.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using RocketEsgop.ApplicationCore.Models;
 
 namespace RocketEshop.Core.Models
 {

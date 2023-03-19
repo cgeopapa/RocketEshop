@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace RocketEsgop.Infrastructure.Migrations
+namespace RocketEshop.Infrastructure.Migrations
 {
     public partial class Identity : Migration
     {

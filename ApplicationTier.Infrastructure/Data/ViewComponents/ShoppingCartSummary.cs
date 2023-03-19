@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RocketEsgop.Infrastructure.Core.Models;
-using RocketEshop.Core.Models;
+using RocketEshop.Infrastructure.Core.Models;
 
-namespace RocketEsgop.Infrastructure.Data.ViewComponents
+namespace RocketEshop.Infrastructure.Data.ViewComponents
 {
     public class ShoppingCartSummary : ViewComponent
     {

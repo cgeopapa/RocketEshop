@@ -1,9 +1,9 @@
-using RocketEsgop.ApplicationCore.Models;
-using RocketEsgop.Infrastructure.Core.Models;
+using RocketEshop.Infrastructure.Core.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RocketEshop.Core.Interfaces;
+using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
 using RocketEshop.Infrastructure.Services;
 
