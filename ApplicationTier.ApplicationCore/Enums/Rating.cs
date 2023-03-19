@@ -21,6 +21,10 @@ namespace RocketEshop.Core.Enums
         PriceAsc,
         [Display(Name = "By Price - Most expensive first")]
         PriceDsc,
+        [Display(Name = "By Rating - Best first")]
+        RatingAsc,
+        [Display(Name = "By Rating - Worst first")]
+        RatingDsc,
         [Display(Name = "By Release Date - Latest release first")]
         ReleaseDateAsc,
         [Display(Name = "By Release Date - Oldest release first")]

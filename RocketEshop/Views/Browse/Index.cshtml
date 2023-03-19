@@ -6,6 +6,16 @@
 @{
     ViewData["Title"] = "Search";
 }
+
+<script>
+    function resetFilters() {
+        document.getElementById("Filters_Sorting").value = 0;
+        document.getElementById("Filters_Availability").value = false;
+        document.getElementById("Filters_MinPrice").value = 0;
+        document.getElementById("Filters_MaxPrice").value = 500;
+    }
+</script>
+
 <img src="~/logo.png" width="10%" />
 
 <form asp-action="Search" class="d-flex my-4 px-4">
@@ -49,13 +59,16 @@
             <p>Min - Max</p>
             <div class="row m-0">
                 <div class="input-group mb-3">
-                    <input type="number" step="5" asp-for="Filters.MinPrice" name="MinPrice" class="form-control" placeholder="Min Price">
+                    <input type="number" step="1" asp-for="Filters.MinPrice" name="MinPrice" class="form-control" placeholder="Min Price">
                     <span class="input-group-text">-</span>
-                    <input type="number" step="5" asp-for="Filters.MaxPrice" name="MaxPrice" class="form-control" placeholder="Max Price">
+                    <input type="number" step="1" asp-for="Filters.MaxPrice" name="MaxPrice" class="form-control" placeholder="Max Price">
                 </div>
             </div>
         </div>
         <hr />
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="offcanvas" aria-label="Apply">Apply</button>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary d-block" data-bs-dismiss="offcanvas" aria-label="Apply">Apply</button>
+            <button type="button" class="btn btn-secondary d-block" aria-label="Reset" onclick="resetFilters();"><i class="bi bi-arrow-counterclockwise"></i>Reset</button>
+        </div>
     </div>
 </form>

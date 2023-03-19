@@ -11,8 +11,9 @@ namespace RocketEshop.Core.Domain
 
         [Display(Name = "Show only available Games")]
         public bool Availability { get; set; }
-        public int MinPrice { get; set; }
-        public int MaxPrice { get; set; }
+
+        public int MinPrice { get; set; } = 0;
+        public int MaxPrice { get; set; } = 500;
 
         public Filters()
         {

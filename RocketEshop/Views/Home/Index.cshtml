@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using RocketEshop.Core.Enums
 @using RocketEshop.Infrastructure.Data.ViewModel
 @model RocketEshop.Infrastructure.Data.ViewModel.HomeVM
 
@@ -46,7 +47,7 @@
     </button>
 </div>
 <br /><br />
-<form asp-controller="Browse" asp-action="QuickSearch" class="d-flex my-4 px-4">
+<form asp-controller="Browse" asp-action="Search" class="d-flex my-4 px-4">
     <input name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
     <button class="btn btn-primary m-2" type="submit">Search</button>
 </form>
@@ -56,6 +57,10 @@
     {
         @Html.Partial("Components/GameDetails", game)
     }
+    <form asp-controller="Browse" asp-action="Search" class="d-flex justify-content-center">
+        <input name="Sorting" class="form-control m-2" type="hidden" value="@SortingFilter.ReleaseDateAsc">
+        <button class="btn btn-outline-primary" type="submit">Show more...</button>
+    </form>
 </div>
 <br /><br />
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -78,6 +83,10 @@
     {
         @Html.Partial("Components/GameDetails", game)
     }
+    <form asp-controller="Browse" asp-action="Search" class="d-flex justify-content-center">
+        <input name="Sorting" class="form-control m-2" type="hidden" value="@SortingFilter.RatingAsc">
+        <button class="btn btn-outline-primary" type="submit">Show more...</button>
+    </form>
 </div>
 <div class="row">
     <h4>Trailers</h4>

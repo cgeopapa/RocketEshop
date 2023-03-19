@@ -99,6 +99,12 @@ namespace RocketEshop.Infrastructure.Services
                 case SortingFilter.PriceDsc:
                     filteredGames = filteredGames.OrderByDescending(game => game.Price);
                     break;
+                case SortingFilter.RatingAsc:
+                    filteredGames = filteredGames.OrderByDescending(game => game.Rating);
+                    break;
+                case SortingFilter.RatingDsc:
+                    filteredGames = filteredGames.OrderBy(game => game.Rating);
+                    break;
                 case SortingFilter.ReleaseDateAsc:
                     filteredGames = filteredGames.OrderBy(game => game.Release_Date);
                     break;
