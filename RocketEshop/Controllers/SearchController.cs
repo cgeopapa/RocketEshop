@@ -23,10 +23,9 @@ namespace RocketEshop.Controllers
 
         [HttpPost]
         [ActionName("Search")]
-        public IActionResult Index([Bind("QuickSearchFilter,Availability,Sorting,MinPrice,MaxPrice")] Filters filtersVm)
+        public async Task<IActionResult> Index([Bind("QuickSearchFilter,Availability,Sorting,MinPrice,MaxPrice")] Filters filtersVm)
         {
             Filters = filtersVm;
-
             return RedirectToAction(nameof(Index));
         }
     }

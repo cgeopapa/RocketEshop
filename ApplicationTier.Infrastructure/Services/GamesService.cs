@@ -79,7 +79,7 @@ namespace RocketEshop.Infrastructure.Services
 
             if (filters.QuickSearchFilter != null)
             {
-                filteredGames = filteredGames.Where(game => game.Title.Contains(filters.QuickSearchFilter));
+                filteredGames = filteredGames.Where(game => game.Title.ToLower().Contains(filters.QuickSearchFilter.ToLower()));
             }
             if (filters.Availability)
             {
