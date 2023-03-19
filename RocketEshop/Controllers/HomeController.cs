@@ -20,17 +20,8 @@ namespace RocketEshop.Controllers
         {
             return View(new HomeVM(
                 _gamesService.FetchLatestReleasedGames(3),
-                _gamesService.FetchGoodRatedGames(3),
-                HomeController._quickFilter));
-        }
-
-        [HttpPost]
-        [ActionName("Search")]
-        public IActionResult Index([Bind("QuickSearchFilter")] string? quickFilter)
-        {
-            HomeController._quickFilter = quickFilter;
-
-            return RedirectToAction(nameof(Index));
+                _gamesService.FetchGoodRatedGames(3))
+            );
         }
 
         // GET: Games/Details/5

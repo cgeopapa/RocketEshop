@@ -22,5 +22,14 @@ namespace RocketEshop.Core.Domain
             MinPrice = 0;
             MaxPrice = 500;
         }
+
+        public Filters(string quickSearchFilter)
+        {
+            QuickSearchFilter = quickSearchFilter;
+            Availability = false;
+            Sorting = SortingFilter.NameAsc;
+            MinPrice = 0;
+            MaxPrice = 500;
+        }
     }
 }

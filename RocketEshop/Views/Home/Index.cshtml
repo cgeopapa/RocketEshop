@@ -46,9 +46,9 @@
     </button>
 </div>
 <br /><br />
-<form asp-action="Search" class="d-flex my-4 px-4" method="GET">
-    <input asp-for="@Model.QuickFilter" name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
-    <button class="btn btn-primary m-2" type="submit" asp-area="" asp-controller="Browse" asp-action="Index">Search</button>
+<form asp-controller="Browse" asp-action="QuickSearch" class="d-flex my-4 px-4">
+    <input name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
+    <button class="btn btn-primary m-2" type="submit">Search</button>
 </form>
 <div class="row">
     <h4>Latest Additions</h4>

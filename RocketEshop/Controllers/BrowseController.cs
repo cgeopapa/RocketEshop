@@ -28,5 +28,13 @@ namespace RocketEshop.Controllers
             Filters = filtersVm;
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpPost]
+        [ActionName("QuickSearch")]
+        public async Task<IActionResult> Index([Bind("QuickSearchFilter")] string quickSearchFilter)
+        {
+            Filters.QuickSearchFilter = quickSearchFilter;
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

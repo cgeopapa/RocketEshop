@@ -6,11 +6,10 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
     {
         public IEnumerable<GameVM> LatestReleases { get; set; }
         public IEnumerable<GameVM> GoodRatings { get; set; }
-        public string? QuickFilter { get; set; } = null;
 
         public HomeVM() { }
 
-        public HomeVM(IEnumerable<Game> latestReleases, IEnumerable<Game> goodRatings, string quickFilter)
+        public HomeVM(IEnumerable<Game> latestReleases, IEnumerable<Game> goodRatings)
         {
             this.LatestReleases = new List<GameVM>();
             foreach (Game game in latestReleases)
@@ -23,8 +22,6 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
             {
                 this.GoodRatings = this.GoodRatings.Append(new GameVM(game));
             }
-            
-            this.QuickFilter = quickFilter;
         }
     }
 }
