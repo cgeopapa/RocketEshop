@@ -5,12 +5,12 @@ using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
-    public class SearchController : Controller
+    public class BrowseController : Controller
     {
         private readonly IGamesService _gamesService;
         private static Filters Filters;
 
-        public SearchController(IGamesService service)
+        public BrowseController(IGamesService service)
         {
             this._gamesService = service;
             Filters ??= new Filters();
@@ -18,7 +18,7 @@ namespace RocketEshop.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(new HomeVM(_gamesService.FetchFilteredGamesList(Filters), SearchController.Filters));
+            return View(new BrowseVM(_gamesService.FetchFilteredGamesList(Filters), BrowseController.Filters));
         }
 
         [HttpPost]

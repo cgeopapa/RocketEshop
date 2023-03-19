@@ -1,24 +1,30 @@
-﻿using RocketEsgop.Infrastructure.Data.ViewModel;
-using RocketEshop.Core.Domain;
-using RocketEshop.Core.Models;
+﻿using RocketEshop.Core.Models;
 
 namespace RocketEshop.Infrastructure.Data.ViewModel
 {
     public class HomeVM
     {
-        public List<GameVM> Games { get; set; }
-        public Filters Filters { get; set; }
+        public IEnumerable<GameVM> LatestReleases { get; set; }
+        public IEnumerable<GameVM> GoodRatings { get; set; }
+        public string? QuickFilter { get; set; } = null;
 
         public HomeVM() { }
 
-        public HomeVM(IEnumerable<Game> games, Filters filters)
+        public HomeVM(IEnumerable<Game> latestReleases, IEnumerable<Game> goodRatings, string quickFilter)
         {
-            this.Games = new List<GameVM>();
-            foreach (Game game in games)
+            this.LatestReleases = new List<GameVM>();
+            foreach (Game game in latestReleases)
             {
-                this.Games.Add(new GameVM(game));
+                this.LatestReleases = this.LatestReleases.Append(new GameVM(game));
             }
-            Filters = filters;
+
+            this.GoodRatings = new List<GameVM>();
+            foreach (Game game in goodRatings)
+            {
+                this.GoodRatings = this.GoodRatings.Append(new GameVM(game));
+            }
+            
+            this.QuickFilter = quickFilter;
         }
     }
 }

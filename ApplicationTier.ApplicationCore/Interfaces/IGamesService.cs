@@ -7,5 +7,7 @@ namespace RocketEshop.Core.Interfaces
     {
         IEnumerable<Game> FetchAllWithGenres();
         IEnumerable<Game> FetchFilteredGamesList(Filters filters);
+        IEnumerable<Game> FetchLatestReleasedGames(int? maxResults);
+        IEnumerable<Game> FetchGoodRatedGames(int? maxResults);
     }
 }

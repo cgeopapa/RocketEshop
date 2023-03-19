@@ -9,24 +9,26 @@ namespace RocketEshop.Controllers
     public class HomeController : Controller
     {
         private readonly IGamesService _gamesService;
-        private static Filters Filters;
+        private static string? _quickFilter;
 
         public HomeController(IGamesService service)
         {
             this._gamesService = service;
-            Filters ??= new Filters();
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(new HomeVM(_gamesService.FetchFilteredGamesList(Filters), HomeController.Filters));
+            return View(new HomeVM(
+                _gamesService.FetchLatestReleasedGames(3),
+                _gamesService.FetchGoodRatedGames(3),
+                HomeController._quickFilter));
         }
 
         [HttpPost]
         [ActionName("Search")]
-        public IActionResult Index([Bind("QuickSearchFilter,Availability,Sorting,MinPrice,MaxPrice")] Filters filtersVm)
+        public IActionResult Index([Bind("QuickSearchFilter")] string? quickFilter)
         {
-            Filters = filtersVm;
+            HomeController._quickFilter = quickFilter;
 
             return RedirectToAction(nameof(Index));
         }

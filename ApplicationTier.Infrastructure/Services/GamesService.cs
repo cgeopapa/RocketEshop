@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+﻿using Microsoft.EntityFrameworkCore;
 using RocketEshop.Core.Domain;
 using RocketEshop.Core.Enums;
 using RocketEshop.Core.Interfaces;
@@ -110,6 +108,18 @@ namespace RocketEshop.Infrastructure.Services
             }
 
             return filteredGames;
+        }
+
+        public IEnumerable<Game> FetchLatestReleasedGames(int? maxResults)
+        {
+            var games = context.Games.Include(x => x.GameGenreLink).ThenInclude(x => x.Genre);
+            return games.OrderBy(game => game.Release_Date).Take(maxResults ?? 3);
+        }
+
+        public IEnumerable<Game> FetchGoodRatedGames(int? maxResults)
+        {
+            var games = context.Games.Include(x => x.GameGenreLink).ThenInclude(x => x.Genre);
+            return games.OrderBy(game => game.Rating).Take(maxResults ?? 3);
         }
     }
 }
