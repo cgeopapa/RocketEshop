@@ -4,9 +4,13 @@ using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using System.Globalization;
 using RocketEshop.Infrastructure.Data.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using RocketEshop.Data.Static;
+using System.Data;
 
 namespace RocketEshop.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class GamesController : Controller
     {
         // Service
@@ -19,12 +23,14 @@ namespace RocketEshop.Controllers
             _genresService = genresService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _gamesService.GetAllAsync());
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {

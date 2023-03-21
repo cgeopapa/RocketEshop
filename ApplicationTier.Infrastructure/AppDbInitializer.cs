@@ -16,7 +16,7 @@ namespace RocketEshop.Infrastructure
             
             context.Database.EnsureCreated();
             // Remove all from Games table. Do not delete the entire DB. Will be useful later
-            context.Games.RemoveRange(context.Games);
+            // context.Games.RemoveRange(context.Games);
             context.Games.AddRange(new List<Game>(){
                 new Game()
                 {

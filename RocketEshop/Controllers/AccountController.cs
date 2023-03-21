@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Core.Models;
 using RocketEshop.Data.Static;
 using RocketEshop.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace RocketEshop.Controllers
 {
@@ -36,7 +37,7 @@ namespace RocketEshop.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Games");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 TempData["Error"] = "Wrong credentials. Please, try again!";
@@ -65,14 +66,20 @@ namespace RocketEshop.Controllers
             {
                 FullName = registerVM.FullName,
                 Email = registerVM.EmailAddress,
-                UserName = registerVM.UserName
+                UserName = registerVM.UserName           
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
             if (newUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-
+            
             return View("RegisterCompleted");
+        }
+
+        public async Task<IActionResult> Users()
+        {
+            var users = await _context.Users.ToListAsync();
+            return View(users);
         }
 
         [HttpPost]
@@ -80,6 +87,11 @@ namespace RocketEshop.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
     }
 }

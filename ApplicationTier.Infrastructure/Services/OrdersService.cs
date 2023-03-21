@@ -13,11 +13,9 @@ namespace RocketEshop.Infrastructure.Services
             _context = context;
         }
 
-        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId)
+        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
         {
-            // Edo allgi kai pos8iki user
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Game).ToListAsync();
-
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Game).Include(n => n.User).ToListAsync();
             return orders;
         }
 
