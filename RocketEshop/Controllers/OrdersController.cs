@@ -48,8 +48,8 @@ namespace RocketEshop.Controllers
         public async Task<IActionResult> AddItemToShoppingCart(int id)
         {
             var item = await _gamesService.GetByIdAsync(id);
-
-            if (item != null)
+            item.Quantity--;
+            if (item != null || item.Quantity !<= 0)
             {
                 _shoppingCart.AddItemToCart(item);
             }
@@ -59,8 +59,8 @@ namespace RocketEshop.Controllers
         public async Task<IActionResult> RemoveItemFromShoppingCart(int id)
         {
             var item = await _gamesService.GetByIdAsync(id);
-
-            if (item != null)
+            item.Quantity++;
+            if (item != null || item.Quantity! <= 0)
             {
                 _shoppingCart.RemoveItemFromCart(item);
             }
