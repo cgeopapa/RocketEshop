@@ -61,6 +61,15 @@ namespace RocketEshop.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change language to Greek.
+        /// </summary>
+        public static string change_language_tooltip {
+            get {
+                return ResourceManager.GetString("change.language.tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to gr.png.
         /// </summary>
         public static string flag {

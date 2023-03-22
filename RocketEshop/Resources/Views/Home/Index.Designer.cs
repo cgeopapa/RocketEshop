@@ -79,11 +79,11 @@ namespace RocketEshop.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to test.
+        ///   Looks up a localized string similar to Top Rated.
         /// </summary>
-        public static string test {
+        public static string top_rated {
             get {
-                return ResourceManager.GetString("test", resourceCulture);
+                return ResourceManager.GetString("top.rated", resourceCulture);
             }
         }
     }

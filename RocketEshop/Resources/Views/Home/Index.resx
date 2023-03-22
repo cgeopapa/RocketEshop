@@ -123,7 +123,7 @@
   <data name="latest.additions" xml:space="preserve">
     <value>Latest Additions</value>
   </data>
-  <data name="test" xml:space="preserve">
-    <value>test</value>
+  <data name="top.rated" xml:space="preserve">
+    <value>Top Rated</value>
   </data>
 </root>

@@ -8,7 +8,6 @@ using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
 using RocketEshop.Infrastructure.Services;
-using Microsoft.Extensions.Options;
 
 namespace RocketEshop
 {
