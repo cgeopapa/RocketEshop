@@ -1,6 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using RocketEshop.Core.Enums
 @using RocketEshop.Infrastructure.Data.ViewModel
+@using Microsoft.AspNetCore.Mvc.Localization;
+
+@inject IViewLocalizer Localizer
+
 @model RocketEshop.Infrastructure.Data.ViewModel.HomeVM
 
 @{
@@ -52,7 +56,7 @@
     <button class="btn btn-primary m-2" type="submit">Search</button>
 </form>
 <div class="row">
-    <h4>Latest Additions</h4>
+    <h4>@Localizer["latest.additions"]</h4>
     @foreach (GameVM game in Model.LatestReleases)
     {
         @Html.Partial("Components/GameDetails", game)
