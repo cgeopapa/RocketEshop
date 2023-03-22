@@ -23,6 +23,7 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
 
         [Required]
         [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "Password must be at least 8 characters long")]
         public string Password { get; set; }
 
         [Display(Name = "Confirm password")]
