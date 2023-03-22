@@ -69,11 +69,20 @@ namespace RocketEshop.Controllers
                 UserName = registerVM.UserName           
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
-
             if (newUserResponse.Succeeded)
-                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+            {
+                return View("RegisterCompleted");
+            }
+            foreach (var error in newUserResponse.Errors) 
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+            return View();
             
-            return View("RegisterCompleted");
+                
+                
+            
+            
         }
 
         public async Task<IActionResult> Users()
