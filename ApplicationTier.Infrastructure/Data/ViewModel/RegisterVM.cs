@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RocketEshop.Infrastructure.Data.ViewModel
 {
-    public class RegisterVM
+    public class RegisterVM : LoginVM
     {
         [Display(Name = "Full name")]
         [Required(ErrorMessage = "Full name is required")]

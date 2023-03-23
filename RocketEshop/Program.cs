@@ -1,6 +1,8 @@
+using System.Globalization;
 using RocketEshop.Infrastructure.Core.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
@@ -22,8 +24,25 @@ namespace RocketEshop
             builder.Services.AddTransient<IGenresService, GenresService>();
             builder.Services.AddTransient<IOrdersService, OrdersService>();
 
+            // Set up available localizations
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("el")
+            };
+            RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions()
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+            };
+            builder.Services.AddSingleton<RequestLocalizationOptions>(localizationOptions);
+
+            // Where to find translation resources
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             builder.Services.AddControllersWithViews();
-            builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages().AddViewLocalization();
 
             // Session
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -52,6 +71,9 @@ namespace RocketEshop
             app.UseSession();
 
             app.UseRouting();
+
+            // Use Localization
+            app.UseRequestLocalization(localizationOptions);
 
             //Authentication & Authorization
             app.UseAuthentication();
