@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Game>
+
+@{
+    Layout = null;
+}
+
+<form asp-controller="Games" asp-action="CsvInsert" method="post" enctype="multipart/form-data">
+    <input type="file" name="file"/>
+    <hr />
+    <button type="submit">Upload</button>
+</form>
+
+@if(Model.Count() > 0)
+{
+    <hr />
+    <table cellpadding="0" cellspacing="0" border="1">
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Price</td>
+            <td>ImageUrl</td>
+            <td>Quantity</td>
+            <td>Rating</td>
+            <td>Release Date</td>
+            <td>Description</td>
+        </tr>
+        @foreach (Game game in Model)
+        {
+            <tr>
+                <td>@game.Id</td>
+                <td>@game.Title</td>
+                <td>@game.Price</td>
+                <td>@game.ImageUrl</td>
+                <td>@game.Quantity</td>
+                <td>@game.Rating</td>
+                <td>@game.Release_Date</td>
+                <td>@game.Description</td>
+            </tr>
+        }
+    </table>
+}

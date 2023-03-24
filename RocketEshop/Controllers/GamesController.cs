@@ -7,6 +7,7 @@ using RocketEshop.Infrastructure.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using RocketEshop.Data.Static;
 using System.Data;
+using CsvHelper;
 
 namespace RocketEshop.Controllers
 {
@@ -116,6 +117,29 @@ namespace RocketEshop.Controllers
             
         }
 
+        [HttpGet]
+        public IActionResult CsvInsert(List<Game> games = null)
+        {
+            games = games == null ? new List<Game>() : games;
+            return View(games);
+        }
+
+        [HttpPost]
+        public IActionResult CsvInsert(IFormFile file, [FromServices] Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
+        {
+            #region Upload CSV
+            string fileName = $"{hostingEnvironment.WebRootPath}\\files\\{file.FileName}";
+            using (FileStream fileStream = System.IO.File.Create(fileName))
+            {
+                file.CopyTo(fileStream);
+                fileStream.Flush();
+            }
+            #endregion
+
+            var games = this.GetGamesList(file.FileName);
+            return View(games);
+        }
+
         // PRIVATE - UTILS
 
         private async Task<Game?> GetGameDetails(int? id)
@@ -182,6 +206,37 @@ namespace RocketEshop.Controllers
                 game.GameGenreLink.Add(gameGenre);
             }
             return game;
+        }
+
+        private List<Game> GetGamesList(string fileName)
+        {
+            List<Game> games = new List<Game>();
+
+            #region Read CSV
+            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\files"}" + "\\" + fileName;
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                csv.Read();
+                csv.ReadHeader();
+                while (csv.Read())
+                {
+                    var game = csv.GetRecord<Game>();
+                    games.Add(game);
+                }
+            }
+            #endregion
+
+            #region Create CSV
+            path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\FilesTo"}";
+            using (var write = new StreamWriter(path + "\\NewFile.csv"))
+            using (var csv = new CsvWriter(write, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(games);
+            }
+            #endregion
+
+            return games;
         }
     }
 }
