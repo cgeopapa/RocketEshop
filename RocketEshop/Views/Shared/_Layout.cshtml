@@ -29,12 +29,11 @@
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
                 </ul>
-                <ul class="navbar-nav">
-                        <button type="button" class="btn btn-outline-info mx-4" data-bs-toggle="tooltip" data-bs-title="@Localizer["change.language.tooltip"]" onclick="changeLanguage()">
+                    <button type="button" class="btn btn-outline-info mx-4" data-bs-toggle="tooltip" data-bs-title="@Localizer["change.language.tooltip"]" onclick="changeLanguage()">
                         <img src="@Localizer["flag"]" alt="lang_flag" height="16"/>
                     </button>
-                    @await Component.InvokeAsync("ShoppingCartSummary")
-                </ul>                  
+                       
+                    @await Component.InvokeAsync("ShoppingCartSummary")                 
                 <partial name="_Identity.cshtml" />
             </div>
         </div>
