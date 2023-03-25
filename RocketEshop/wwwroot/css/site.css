@@ -16,3 +16,27 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.my-gradient {
+    /* fallback for old browsers */
+    background: #1B1C22;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to top, rgba(82,69,255, 0.3), rgba(27,28,34, 0.9));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: radial-gradient(circle at 50%,rgba(82,69,255, 0.2) , rgba(27,28,34, 0.9));
+}
+
+.my-bg-1 {
+    /* fallback for old browsers */
+    background: #111216;
+    background: radial-gradient(circle at 40%,rgba(82,69,255, 0.5) , rgba(27,28,34, 0.1));
+}
+.my-bg {
+    background: rgba(27,28,34, 0.9);
+    height: 40px;
+    background: radial-gradient(circle at 40%,rgba(82,69,255, 0.1), rgba(27,28,34, 0.1) );
+}
+
+.label-banner {
+    background: rgba(27,28,34, 0.3);
+}

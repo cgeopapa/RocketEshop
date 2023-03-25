@@ -18,41 +18,16 @@
     <link rel="stylesheet" href="~/RocketEshop.styles.css" asp-append-version="true" />
     <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
-<body>
+<body class="my-gradient">
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border: none;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-default my-bg-1" style="border: none;">
         <div class="container-fluid">
-            <a class="navbar-brand"  href="#">Rocket E-shop</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/brand-logo.png" width="50%" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link"  asp-area="" asp-controller="Home" asp-action="Index">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Browse" asp-action="Index">
-                            Browse
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="About" asp-action="Index">
-                            About
-                        </a>
-                    </li>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Genres" asp-action="Index">Genres</a>
-                                @*<div class="dropdown-divider"></div>*@
-                            </div>
-                        </li>
-                    }
                 </ul>
                 <ul class="navbar-nav">
                         <button type="button" class="btn btn-outline-info mx-4" data-bs-toggle="tooltip" data-bs-title="@Localizer["change.language.tooltip"]" onclick="changeLanguage()">
@@ -64,7 +39,41 @@
             </div>
         </div>
     </nav>
-</header>
+    </header>
+    @*second navbar - don't put in header or sticky-top won't work*@
+    <nav class="navbar sticky-top navbar-expand-lg sticky-top navbar-dark bg-default my-bg" style="border:none;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item" style="padding-left:30px;padding-right:30px;">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                           <b> Home</b>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="padding-left:30px;padding-right:30px;">
+                        <a class="nav-link" asp-area="" asp-controller="Browse" asp-action="Index">
+                            <b>Browse</b>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="padding-left:30px;padding-right:30px;">
+                        <a class="nav-link" asp-area="" asp-controller="About" asp-action="Index">
+                            <b>About</b>
+                        </a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown" style="padding-left:30px;padding-right:30px;">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b>Content Management</b></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Genres" asp-action="Index">Genres</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
 <br />
 <div class="container">
     <main role="main" class="pb-3">
