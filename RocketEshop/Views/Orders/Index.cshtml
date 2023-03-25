@@ -24,7 +24,8 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var order in Model)
+                @*Αναμένεται διόρθωση/filtering*@
+                @foreach (var order in Model@*.Where(n => n.UserId == )*@)
                 {
                     <tr>
                         <td class="align-middle">@order.Id</td>
@@ -32,11 +33,11 @@
                             <ul style="list-style-type:none">
                                 @foreach (var item in order.OrderItems)
                                 {
-                                        <li>
-                                            <div class="alert alert-info" role="alert">
-                                                <span class="badge bg-success">@item.Amount</span> [@item.Price.ToString("c")] - @item.Game.Title
-                                            </div>
-                                        </li>
+                                    <li>
+                                        <div class="alert alert-info" role="alert">
+                                            <span class="badge bg-success">@item.Amount</span> [@item.Price.ToString("c")] - @item.Game.Title
+                                        </div>
+                                    </li>
                                 }
                             </ul>
                         </td>
