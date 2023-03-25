@@ -79,6 +79,69 @@ namespace RocketEshop.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Looking for something specific?.
+        /// </summary>
+        public static string looking_for_something {
+            get {
+                return ResourceManager.GetString("looking.for.something", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoy your favorite games with just a click..
+        /// </summary>
+        public static string slide1a {
+            get {
+                return ResourceManager.GetString("slide1a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buying and downloading games is now easier than ever with &lt;b&gt;Rocket&lt;/b&gt;!.
+        /// </summary>
+        public static string slide1b {
+            get {
+                return ResourceManager.GetString("slide1b", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discover new worlds..
+        /// </summary>
+        public static string slide2a {
+            get {
+                return ResourceManager.GetString("slide2a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find any game you want with &lt;b&gt;Rocket&lt;/b&gt;, every latest addition..
+        /// </summary>
+        public static string slide2b {
+            get {
+                return ResourceManager.GetString("slide2b", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t waste any more time..
+        /// </summary>
+        public static string slide3a {
+            get {
+                return ResourceManager.GetString("slide3a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save time and enjoy your browsing with our efficient search algorithms..
+        /// </summary>
+        public static string slide3b {
+            get {
+                return ResourceManager.GetString("slide3b", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top Rated.
         /// </summary>
         public static string top_rated {

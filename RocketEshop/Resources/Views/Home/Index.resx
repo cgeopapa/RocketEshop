@@ -123,6 +123,27 @@
   <data name="latest.additions" xml:space="preserve">
     <value>Latest Additions</value>
   </data>
+  <data name="looking.for.something" xml:space="preserve">
+    <value>Looking for something specific?</value>
+  </data>
+  <data name="slide1a" xml:space="preserve">
+    <value>Enjoy your favorite games with just a click.</value>
+  </data>
+  <data name="slide1b" xml:space="preserve">
+    <value>Buying and downloading games is now easier than ever with &lt;b&gt;Rocket&lt;/b&gt;!</value>
+  </data>
+  <data name="slide2a" xml:space="preserve">
+    <value>Discover new worlds.</value>
+  </data>
+  <data name="slide2b" xml:space="preserve">
+    <value>Find any game you want with &lt;b&gt;Rocket&lt;/b&gt;, every latest addition.</value>
+  </data>
+  <data name="slide3a" xml:space="preserve">
+    <value>Don't waste any more time.</value>
+  </data>
+  <data name="slide3b" xml:space="preserve">
+    <value>Save time and enjoy your browsing with our efficient search algorithms.</value>
+  </data>
   <data name="top.rated" xml:space="preserve">
     <value>Top Rated</value>
   </data>
