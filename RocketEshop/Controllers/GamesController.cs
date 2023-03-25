@@ -6,7 +6,6 @@ using System.Globalization;
 using RocketEshop.Infrastructure.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using RocketEshop.Data.Static;
-using System.Data;
 using CsvHelper;
 
 namespace RocketEshop.Controllers
@@ -17,6 +16,8 @@ namespace RocketEshop.Controllers
         // Service
         private readonly IGamesService _gamesService;
         private readonly IGenresService _genresService;
+
+        private static List<GameCSVRecordVM> gamesFromCSV;
 
         public GamesController(IGamesService service, IGenresService genresService)
         {
@@ -116,28 +117,66 @@ namespace RocketEshop.Controllers
             
         }
 
+        // CSV IMPORT
+        
         [HttpGet]
-        public IActionResult CsvInsert(List<Game> games = null)
+        public IActionResult CsvInsert(List<GameCSVRecordVM>? games = null)
         {
-            games = games == null ? new List<Game>() : games;
+            if (games == null)
+            {
+                games = new List<GameCSVRecordVM>();
+            }
             return View(games);
         }
 
         [HttpPost]
-        public IActionResult CsvInsert(IFormFile file, [FromServices] Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
+        public IActionResult CsvInsert(IFormFile file, [FromServices] Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnvironment)
         {
-            #region Upload CSV
             string fileName = $"{hostingEnvironment.WebRootPath}\\files\\{file.FileName}";
             using (FileStream fileStream = System.IO.File.Create(fileName))
             {
                 file.CopyTo(fileStream);
                 fileStream.Flush();
             }
-            #endregion
 
-            var games = this.GetGamesList(file.FileName);
-            return View(games);
-        }      
+            gamesFromCSV = this.GetGamesList(file.FileName);
+            return View(gamesFromCSV);
+        }
+
+        [HttpPost]
+        public IActionResult CsvInsertConfirm()
+        {
+            List<Game> gameEntities = new List<Game>();
+            foreach (GameCSVRecordVM gameCsvRecordVm in gamesFromCSV)
+            {
+                Game game = new Game();
+                game.Title = gameCsvRecordVm.Title;
+                game.Description = gameCsvRecordVm.Description;
+                game.Release_Date = gameCsvRecordVm.Release_Date;
+                game.ImageUrl = gameCsvRecordVm.ImageUrl;
+                game.Price = gameCsvRecordVm.Price;
+                game.Quantity = gameCsvRecordVm.Quantity;
+                game.Rating = gameCsvRecordVm.Rating;
+
+                game.GameGenreLink = new List<GameGenre>();
+                foreach (string genreName in gameCsvRecordVm.Genres)
+                {
+                    Genre? genre = _genresService.FetchGenreByName(genreName);
+                    if (genre != null)
+                    {
+                        GameGenre gameGenre = new GameGenre();
+                        gameGenre.Game = game;
+                        gameGenre.Genre = genre;
+                        game.GameGenreLink.Add(gameGenre);
+                    }
+                }
+
+                gameEntities.Add(game);
+            }
+            
+            _gamesService.BulkUploadGames(gameEntities);
+            return RedirectToAction(nameof(Index));
+        }
 
         // PRIVATE - UTILS
 
@@ -207,34 +246,25 @@ namespace RocketEshop.Controllers
             return game;
         }
 
-        private List<Game> GetGamesList(string fileName)
+        private List<GameCSVRecordVM> GetGamesList(string fileName)
         {
-            List<Game> games = new List<Game>();
-
-            #region Read CSV
+            List<GameCSVRecordVM> games = new List<GameCSVRecordVM>();
             var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\files"}" + "\\" + fileName;
             using (var reader = new StreamReader(path))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Read();
                 csv.ReadHeader();
+                csv.Context.RegisterClassMap<GameCSVRecordVMMap>();
                 while (csv.Read())
                 {
-                    var game = csv.GetRecord<Game>();
-                    games.Add(game);
+                    GameCSVRecordVM? game = csv.GetRecord<GameCSVRecordVM>();
+                    if (game != null)
+                    {
+                        games.Add(game);
+                    }
                 }
             }
-            #endregion
-
-            #region Create CSV
-            path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\FilesTo"}";
-            using (var write = new StreamWriter(path + "\\NewFile.csv"))
-            using (var csv = new CsvWriter(write, CultureInfo.InvariantCulture))
-            {
-                csv.WriteRecords(games);
-            }
-            #endregion
-
             return games;
         }
     }

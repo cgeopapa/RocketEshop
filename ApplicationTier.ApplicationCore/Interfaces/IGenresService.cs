@@ -4,5 +4,6 @@ namespace RocketEshop.Core.Interfaces
 {
     public interface IGenresService : IRepository<Genre>
     {
+        Genre? FetchGenreByName(string name);
     }
 }

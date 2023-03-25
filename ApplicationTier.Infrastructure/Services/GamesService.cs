@@ -127,5 +127,11 @@ namespace RocketEshop.Infrastructure.Services
             var games = context.Games.Include(x => x.GameGenreLink).ThenInclude(x => x.Genre);
             return games.OrderByDescending(game => game.Rating).Take(maxResults ?? 3);
         }
+
+        public void BulkUploadGames(List<Game> games)
+        {
+            context.Games.AddRange(games);
+            context.SaveChanges();
+        }
     }
 }

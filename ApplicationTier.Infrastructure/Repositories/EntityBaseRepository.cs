@@ -34,7 +34,7 @@ namespace RocketEshop.Infrastructure.Repositories
         public async Task<T?> GetByIdAsync(int id)
         {
             T? entity = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
-            return entity == null ? null : entity;
+            return entity;
         }
 
         public async Task UpdateAsync(T entity)
