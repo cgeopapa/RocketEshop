@@ -81,10 +81,6 @@ namespace RocketEshop.Controllers
             }
             return View();
             
-                
-                
-            
-            
         }
 
         public async Task<IActionResult> Users()
@@ -98,6 +94,11 @@ namespace RocketEshop.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
 
     }

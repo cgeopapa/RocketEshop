@@ -36,6 +36,8 @@ namespace RocketEshop.Controllers
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
 
+            if (items.Count <= 0) return RedirectToAction("Index" , "Home");
+
             var response = new ShoppingCartVM()
             {
                 ShoppingCart = _shoppingCart,

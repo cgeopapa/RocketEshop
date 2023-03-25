@@ -24,7 +24,6 @@ namespace RocketEshop.Controllers
             _genresService = genresService;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -138,7 +137,7 @@ namespace RocketEshop.Controllers
 
             var games = this.GetGamesList(file.FileName);
             return View(games);
-        }
+        }      
 
         // PRIVATE - UTILS
 
