@@ -35,3 +35,9 @@ body {
 .label-banner {
     background: rgba(27,28,34, 0.3);
 }
+
+@media only screen and (max-width: 990px) {
+    .my-bg{
+        background: none;
+    }
+}
