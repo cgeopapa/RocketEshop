@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using RocketEshop.Core.Models;
-using RocketEshop.Core.Enums;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using RocketEshop.Core.Enums;
+using RocketEshop.Core.Models;
 using RocketEshop.Data.Static;
 
 namespace RocketEshop.Infrastructure

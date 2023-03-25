@@ -1,6 +1,6 @@
-﻿using RocketEshop.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using Microsoft.EntityFrameworkCore;
 using RocketEshop.Data.Static;
 
 namespace RocketEshop.Infrastructure.Services

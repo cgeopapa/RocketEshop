@@ -1,10 +1,9 @@
-﻿using RocketEshop.Infrastructure.Data.ViewModel;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RocketEshop.Core.Models;
-using RocketEshop.Data.Static;
-using RocketEshop.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using RocketEshop.Core.Models;
+using RocketEshop.Infrastructure;
+using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {

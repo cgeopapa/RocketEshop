@@ -1,5 +1,4 @@
 ﻿using RocketEshop.Infrastructure.Core.Models;
-using RocketEshop.Core.Models;
 
 namespace RocketEshop.Infrastructure.Data.ViewModel
 {

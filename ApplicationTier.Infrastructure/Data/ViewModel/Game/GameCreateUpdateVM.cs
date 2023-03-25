@@ -1,6 +1,6 @@
-﻿using RocketEshop.Core.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using RocketEshop.Core.Enums;
 using RocketEshop.Core.Models;
-using System.ComponentModel.DataAnnotations;
 
 namespace RocketEshop.Infrastructure.Data.ViewModel
 {

@@ -1,8 +1,8 @@
-﻿using RocketEshop.Core.Interfaces;
-using RocketEshop.Core.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CsvHelper.Configuration.Attributes;
+using RocketEshop.Core.Enums;
+using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Core.Models
 {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RocketEshop.Core.Domain;
 using RocketEshop.Core.Interfaces;
-using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers

@@ -1,5 +1,5 @@
-﻿using RocketEshop.Core.Models;
-using RocketEshop.Core.Domain;
+﻿using RocketEshop.Core.Domain;
+using RocketEshop.Core.Models;
 
 namespace RocketEshop.Core.Interfaces
 {

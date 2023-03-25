@@ -1,9 +1,9 @@
-﻿using RocketEshop.Infrastructure.Core.Models;
-using RocketEshop.Infrastructure.Data.ViewModel;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Core.Interfaces;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+using RocketEshop.Infrastructure.Core.Models;
+using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {

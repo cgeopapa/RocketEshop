@@ -20,7 +20,7 @@ namespace RocketEshop.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(new BrowseVM(_gamesService.FetchFilteredGamesList(Filters), BrowseController.Filters));
+            return View(new BrowseVM(_gamesService.FetchFilteredGamesList(Filters), Filters));
         }
 
         [HttpPost]

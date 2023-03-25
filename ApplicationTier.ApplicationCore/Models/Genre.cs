@@ -1,6 +1,6 @@
-﻿using RocketEshop.Core.Interfaces;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Core.Models
 {

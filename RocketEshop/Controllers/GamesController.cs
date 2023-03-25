@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Globalization;
+using CsvHelper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using System.Globalization;
-using RocketEshop.Infrastructure.Data.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using RocketEshop.Data.Static;
-using CsvHelper;
+using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
@@ -56,7 +56,7 @@ namespace RocketEshop.Controllers
         {
             try
             {
-                Core.Models.Game game = await gameEntityFromGameCreateRequestDto(gameVm);
+                Game game = await gameEntityFromGameCreateRequestDto(gameVm);
                 await _gamesService.AddAsync(game);
                 TempData["success"] = "GameViewModel added successfully!";
             }
@@ -130,7 +130,7 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public IActionResult CsvInsert(IFormFile file, [FromServices] Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnvironment)
+        public IActionResult CsvInsert(IFormFile file, [FromServices] IWebHostEnvironment hostingEnvironment)
         {
             string fileName = $"{hostingEnvironment.WebRootPath}\\files\\{file.FileName}";
             using (FileStream fileStream = System.IO.File.Create(fileName))
