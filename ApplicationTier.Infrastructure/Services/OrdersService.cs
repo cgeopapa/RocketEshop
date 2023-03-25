@@ -1,6 +1,7 @@
 ﻿using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using Microsoft.EntityFrameworkCore;
+using RocketEshop.Data.Static;
 
 namespace RocketEshop.Infrastructure.Services
 {
@@ -15,7 +16,9 @@ namespace RocketEshop.Infrastructure.Services
 
         public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
         {
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Game).Include(n => n.User).ToListAsync();
+            var orders = await _context.Orders.Include(n => n.OrderItems)
+                .ThenInclude(n => n.Game).Include(n => n.User)
+                .Where(order => userRole == UserRoles.Admin || order.User.Id == userId).ToListAsync();
             return orders;
         }
 
