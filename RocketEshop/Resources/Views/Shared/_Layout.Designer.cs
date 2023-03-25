@@ -61,11 +61,47 @@ namespace RocketEshop.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        public static string about_us {
+            get {
+                return ResourceManager.GetString("about.us", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        public static string browse {
+            get {
+                return ResourceManager.GetString("browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change language to Greek.
         /// </summary>
         public static string change_language_tooltip {
             get {
                 return ResourceManager.GetString("change.language.tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Content Management.
+        /// </summary>
+        public static string cms {
+            get {
+                return ResourceManager.GetString("cms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Us.
+        /// </summary>
+        public static string contact_us {
+            get {
+                return ResourceManager.GetString("contact.us", resourceCulture);
             }
         }
         
@@ -79,11 +115,47 @@ namespace RocketEshop.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Latest Additions.
+        ///   Looks up a localized string similar to Games.
         /// </summary>
-        public static string latest_additions {
+        public static string games {
             get {
-                return ResourceManager.GetString("latest.additions", resourceCulture);
+                return ResourceManager.GetString("games", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Genres.
+        /// </summary>
+        public static string genre {
+            get {
+                return ResourceManager.GetString("genre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string home {
+            get {
+                return ResourceManager.GetString("home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string login {
+            get {
+                return ResourceManager.GetString("login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string register {
+            get {
+                return ResourceManager.GetString("register", resourceCulture);
             }
         }
     }

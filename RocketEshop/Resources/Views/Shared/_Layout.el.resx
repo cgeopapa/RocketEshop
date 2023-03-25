@@ -117,13 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="about.us" xml:space="preserve">
+    <value>Σχετικά με Εμάς</value>
+  </data>
+  <data name="browse" xml:space="preserve">
+    <value>Περιήγηση</value>
+  </data>
   <data name="change.language.tooltip" xml:space="preserve">
     <value>Change language to English</value>
+  </data>
+  <data name="cms" xml:space="preserve">
+    <value>Διαχείριση Περιεχομένου</value>
+  </data>
+  <data name="contact.us" xml:space="preserve">
+    <value>Επικοινωνία</value>
   </data>
   <data name="flag" xml:space="preserve">
     <value>en.png</value>
   </data>
-  <data name="latest.additions" xml:space="preserve">
-    <value>Latest Additions</value>
+  <data name="games" xml:space="preserve">
+    <value>Παιχνίδια</value>
+  </data>
+  <data name="genre" xml:space="preserve">
+    <value>Είδη</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Κεντρική</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>Σύνδεση</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>Εγγραφή</value>
   </data>
 </root>

@@ -46,26 +46,30 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item" style="padding-left:30px;padding-right:30px;">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                           <b> Home</b>
+                           <b>@Localizer["home"]</b>
                         </a>
                     </li>
                     <li class="nav-item" style="padding-left:30px;padding-right:30px;">
                         <a class="nav-link" asp-area="" asp-controller="Browse" asp-action="Index">
-                            <b>Browse</b>
+                            <b>@Localizer["browse"]</b>
                         </a>
                     </li>
                     <li class="nav-item" style="padding-left:30px;padding-right:30px;">
                         <a class="nav-link" asp-area="" asp-controller="About" asp-action="Index">
-                            <b>About</b>
+                            <b>@Localizer["about.us"]</b>
                         </a>
                     </li>
+                    <li class="nav-item" style="padding-left:30px;padding-right:30px;">
+                        <a class="nav-link" asp-area="" asp-controller="ContactUs" asp-action="Index">
+                            <b>@Localizer["contact.us"]</b>
+                        </a>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li class="nav-item dropdown" style="padding-left:30px;padding-right:30px;">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b>Content Management</b></a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b>@Localizer["cms"]</b></a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Genres" asp-action="Index">Genres</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Games" asp-action="Index">@Localizer["games"]</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Genres" asp-action="Index">@Localizer["genre"]</a>
                             </div>
                         </li>
                     }
