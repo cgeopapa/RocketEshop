@@ -36,7 +36,7 @@ body {
     background: rgba(27,28,34, 0.3);
 }
 
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1000px) {
     .my-bg{
         background: none;
     }

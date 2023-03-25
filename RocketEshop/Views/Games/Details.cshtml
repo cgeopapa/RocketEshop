@@ -19,12 +19,25 @@
                 <div class="col-md-4">
                     <img src="@Model.ImageUrl" width="100%" alt="@Model.Title">
                 </div>
-                <div class="col-md-8 text-center">
+                <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text"><b>Release Date: </b>@Model.ReleaseDate.ToString("dd MMM yy")</p>
-                        <p class="card-text"><b>Price: </b>@Model.Price€</p>
-                        <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
+                        <p class="card-text"><b>Release Date: </b>@Model.ReleaseDate.ToString("dd/MM/yy")</p>
                         <p class="card-text"><b>Rating: </b>@Model.Rating</p>
+                        <p class="card-text">
+                            <b>Genres: </b><br />
+                            @foreach (Genre genre in Model.Genres)
+                            {
+                                <span class="badge rounded-pill text-bg-info">@genre.Name</span>
+                            }
+                        </p>
+                        <p class="card-text">
+                            <b>Platforms: </b><br />
+                            @foreach (Genre genre in Model.Genres)
+                            {
+                                <span class="badge rounded-pill text-bg-info">@genre.Name</span>
+                            }
+                        </p>
+                        <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
                         @if (Model.Quantity > 0)
                         {
                             <p class="card-text"><b>Available: </b>Yes</p>
@@ -33,8 +46,10 @@
                         {
                             <p class="card-text"><b>Available: </b>No</p>
                         }
+                        <p class="card-text"><b>Price: </b>@Model.Price€</p>
+                        
                         <p class="card-text"><b>Description: </b></p>
-                        <p class="card-text">@Model.Description</p>
+                        <p class="card-text" >@Model.Description</p>
                     </div>
                 </div>
                 <div class="col-md-12">
