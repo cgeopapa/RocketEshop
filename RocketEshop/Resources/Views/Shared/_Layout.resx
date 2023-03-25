@@ -117,13 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="about.us" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
   <data name="change.language.tooltip" xml:space="preserve">
     <value>Change language to Greek</value>
+  </data>
+  <data name="cms" xml:space="preserve">
+    <value>Content Management</value>
+  </data>
+  <data name="contact.us" xml:space="preserve">
+    <value>Contact Us</value>
   </data>
   <data name="flag" xml:space="preserve">
     <value>gr.png</value>
   </data>
-  <data name="latest.additions" xml:space="preserve">
-    <value>Latest Additions</value>
+  <data name="games" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="genre" xml:space="preserve">
+    <value>Genres</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>Register</value>
   </data>
 </root>
