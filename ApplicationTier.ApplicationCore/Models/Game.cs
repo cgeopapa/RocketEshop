@@ -5,7 +5,7 @@ using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Core.Models
 {
-    public class Game: IEntity
+    public class Game: IEntity<int>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

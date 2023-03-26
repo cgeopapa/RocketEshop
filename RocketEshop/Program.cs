@@ -1,4 +1,5 @@
 using System.Globalization;
+using ApplicationTier.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -7,7 +8,6 @@ using RocketEshop.Core.Enums;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
-using RocketEshop.Infrastructure.Core.Models;
 using RocketEshop.Infrastructure.Services;
 
 namespace RocketEshop
@@ -24,6 +24,7 @@ namespace RocketEshop
             builder.Services.AddTransient<IGamesService, GamesService>();
             builder.Services.AddTransient<IGenresService, GenresService>();
             builder.Services.AddTransient<IOrdersService, OrdersService>();
+            builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
 
             // Set up available localizations
             var supportedCultures = new[]
@@ -47,7 +48,6 @@ namespace RocketEshop
 
             // Session
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
             builder.Services.AddSession();
 
             // Identity Services

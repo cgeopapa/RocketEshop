@@ -2,9 +2,9 @@
 
 namespace RocketEshop.Core.Interfaces
 {
-    public interface IEntity
+    public interface IEntity<T>
     {
         [Required]
-        int Id { get; set; }
+        T Id { get; set; }
     }
 }

@@ -1,11 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
+using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Core.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser, IEntity<string>
     {
-        [Display(Name = "Full name")]
-        public string FullName { get; set; }
+        [Display(Name = "Full name")] 
+        public string FullName { get; set; } = "";
+
+        [Display(Name = "Shopping Cart")]
+        public List<ShoppingCartItem> ShoppingCart { get; set; } = new List<ShoppingCartItem>();
     }
 }

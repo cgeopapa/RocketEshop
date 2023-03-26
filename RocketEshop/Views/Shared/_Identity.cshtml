@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity;
-@using RocketEshop.Core.Models;
+﻿@using RocketEshop.Core.Enums
 @inject UserManager<ApplicationUser> UserManager;
 @if(!User.Identity.IsAuthenticated)
 {
@@ -23,7 +22,12 @@ else{
                     <i class="bi bi-list"></i>Orders
                 </a>
             </li>
-            @if (User.IsInRole("Admin"))
+            <li>
+                <a class="dropdown-item" asp-controller="ShoppingCart" asp-action="Index">
+                    <i class="bi bi-cart4"></i>Cart
+                </a>
+            </li>
+            @if (User.IsInRole(UserRole.ADMIN.ToString()))
             {
                 <li>
                     <a class="dropdown-item" asp-controller="Account" asp-action="Users">

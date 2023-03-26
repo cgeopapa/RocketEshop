@@ -3,7 +3,7 @@ using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Infrastructure.Repositories
 {
-    public class EntityBaseRepository<T> : IRepository<T> where T : class, IEntity, new()
+    public class EntityBaseRepository<T, TK> : IRepository<T, TK> where T : class, IEntity<TK>, new() where TK: IConvertible
     {
 
         private readonly AppDbContext _context;
@@ -31,9 +31,9 @@ namespace RocketEshop.Infrastructure.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T?> GetByIdAsync(TK id)
         {
-            T? entity = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+            T? entity = await _context.Set<T>().FirstOrDefaultAsync(x => Equals(x.Id, id));
             return entity;
         }
 

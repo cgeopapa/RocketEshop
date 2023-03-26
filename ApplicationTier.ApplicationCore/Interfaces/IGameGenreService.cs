@@ -2,7 +2,7 @@
 
 namespace RocketEshop.Core.Interfaces
 {
-    public interface IGameGenreService : IRepository<GameGenre>
+    public interface IGameGenreService : IRepository<GameGenre, int>
     {
     }
 }

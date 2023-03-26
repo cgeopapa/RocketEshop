@@ -133,7 +133,8 @@ namespace RocketEshop.Infrastructure
                         FullName = "App User",
                         UserName = "app-user",
                         Email = appUserEmail,
-                        EmailConfirmed = true
+                        EmailConfirmed = true,
+                        ShoppingCart = new List<ShoppingCartItem>()
                     };
                     await userManager.CreateAsync(newAppUser, "User1234!");
                     await userManager.AddToRoleAsync(newAppUser, UserRole.USER.ToString());

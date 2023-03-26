@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Core.Models
 {
-    public class Order
+    public class Order: IEntity<int>
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string Email { get; set; }

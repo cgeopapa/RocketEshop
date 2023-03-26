@@ -4,7 +4,7 @@ using RocketEshop.Core.Interfaces;
 
 namespace RocketEshop.Core.Models
 {
-    public class Genre: IEntity
+    public class Genre: IEntity<int>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -1,5 +1,4 @@
-﻿@using RocketEshop.Infrastructure.Data.ViewModel
-@model ShoppingCartVM
+﻿@model RocketEshop.Infrastructure.Data.ViewModel.ShoppingCartVM
 
 @{
     ViewData["Title"] = "Shopping cart summary";
@@ -22,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                @foreach (var item in Model.ShoppingCart)
                 {
                     <tr>
                         <td class="align-middle">@item.Amount</td>
@@ -30,13 +29,11 @@
                         <td class="align-middle">@item.Game.Price.ToString("c")</td>
                         <td class="align-middle">@((item.Amount * item.Game.Price).ToString("c"))</td>
                         <td class="align-middle">
-                            @* Εδώ είναι τα εικονάκια για να προσθέσουμε/αφαιρέσουμε items στο cart (δεν δουλευουν τα εικονίδια) *@
-                            <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart"
+                            <a class="text-danger" asp-controller="ShoppingCart" asp-action="RemoveItemFromShoppingCart"
                                asp-route-id="@item.Game.Id">
                                 <i class="bi bi-cart-dash"></i>
                             </a>
-                            |
-                            <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                            <a class="text-success" asp-controller="ShoppingCart" asp-action="AddItemToShoppingCart"
                                asp-route-id="@item.Game.Id">
                                 <i class="bi bi-cart-plus"></i>
                             </a>
@@ -58,7 +55,7 @@
 
         <div class="text-right">
             <div class="btn-group">
-                <a class="btn btn-outline-primary" asp-action="CompleteOrder">
+                <a class="btn btn-outline-primary" asp-controller="ShoppingCart" asp-action="CompleteOrder">
                 Complete order
                 </a>
                 <div id="paypal-btn"></div>

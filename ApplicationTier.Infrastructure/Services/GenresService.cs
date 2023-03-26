@@ -4,7 +4,7 @@ using RocketEshop.Infrastructure.Repositories;
 
 namespace RocketEshop.Infrastructure.Services
 {
-    public class GenresService : EntityBaseRepository<Genre>, IGenresService
+    public class GenresService : EntityBaseRepository<Genre, int>, IGenresService
     {
         private readonly AppDbContext context;
         

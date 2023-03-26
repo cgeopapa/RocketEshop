@@ -7,7 +7,7 @@ using RocketEshop.Infrastructure.Repositories;
 
 namespace RocketEshop.Infrastructure.Services
 {
-    public class GamesService : EntityBaseRepository<Game>, IGamesService
+    public class GamesService : EntityBaseRepository<Game, int>, IGamesService
     {
         private readonly AppDbContext context;
         public GamesService(AppDbContext context) : base(context)

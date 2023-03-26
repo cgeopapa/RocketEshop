@@ -28,11 +28,9 @@
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
                 </ul>
-                    <button type="button" class="btn btn-outline-info mx-4" data-bs-toggle="tooltip" data-bs-title="@Localizer["change.language.tooltip"]" onclick="changeLanguage()">
-                        <img src="@Localizer["flag"]" alt="lang_flag" height="16"/>
-                    </button>
-                       
-                    @await Component.InvokeAsync("ShoppingCartSummary")                 
+                <button type="button" class="btn btn-outline-info mx-4" data-bs-toggle="tooltip" data-bs-title="@Localizer["change.language.tooltip"]" onclick="changeLanguage()">
+                    <img src="@Localizer["flag"]" alt="lang_flag" height="16"/>
+                </button>
                 <partial name="_Identity.cshtml" />
             </div>
         </div>
@@ -89,7 +87,7 @@
 <br /><br /><br />
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2023 - RocketEshop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2023 - RocketEshop - <a asp-area="" asp-controller="Home">Privacy</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

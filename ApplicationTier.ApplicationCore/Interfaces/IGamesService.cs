@@ -3,7 +3,7 @@ using RocketEshop.Core.Models;
 
 namespace RocketEshop.Core.Interfaces
 {
-    public interface IGamesService : IRepository<Game>
+    public interface IGamesService : IRepository<Game, int>
     {
         IEnumerable<Game> FetchAllWithGenres();
         IEnumerable<Game> FetchFilteredGamesList(Filters filters);
