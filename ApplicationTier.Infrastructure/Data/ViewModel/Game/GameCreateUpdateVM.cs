@@ -15,7 +15,7 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
         [Display(Name = "Game Price")]
         [Range(0.5, 500.0, ErrorMessage = "Price must be at between 0.50 and 500.0.")]
         [Required(ErrorMessage = "Game Price is required")]
-        public float Price { get; set; }
+        public float Price { get; set; } = 0.00f;
 
         [Display(Name = "Game Image URL")]
         [Required(ErrorMessage = "Game Image URL is required")]

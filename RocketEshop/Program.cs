@@ -28,7 +28,7 @@ namespace RocketEshop
             var supportedCultures = new[]
             {
                 new CultureInfo("en-US"),
-                new CultureInfo("el-GR")
+                new CultureInfo("el-FR")
             };
             RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions()
             {
