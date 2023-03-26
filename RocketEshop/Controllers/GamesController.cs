@@ -152,7 +152,7 @@ namespace RocketEshop.Controllers
                 Game game = new Game();
                 game.Title = gameCsvRecordVm.Title;
                 game.Description = gameCsvRecordVm.Description;
-                game.Release_Date = gameCsvRecordVm.Release_Date;
+                game.ReleaseDate = gameCsvRecordVm.ReleaseDate;
                 game.ImageUrl = gameCsvRecordVm.ImageUrl;
                 game.Price = gameCsvRecordVm.Price;
                 game.Quantity = gameCsvRecordVm.Quantity;
@@ -200,11 +200,11 @@ namespace RocketEshop.Controllers
             Game game = new Game();
             game.Id = gameVm.Id ?? throw new Exception("A game with no Id was given");
             game.Title = gameVm.Title;
-            game.Price = float.Parse(gameVm.Price, CultureInfo.InvariantCulture);
+            game.Price = gameVm.Price;
             game.ImageUrl = gameVm.ImageUrl;
             game.Quantity = gameVm.Quantity;
             game.Rating = gameVm.Rating;
-            game.Release_Date = gameVm.ReleaseDate;
+            game.ReleaseDate = gameVm.ReleaseDate;
             game.Description = gameVm.Description;
 
             game.GameGenreLink = new List<GameGenre>();
@@ -225,11 +225,11 @@ namespace RocketEshop.Controllers
         {
             Game game = new Game();
             game.Title = gameVm.Title;
-            game.Price = float.Parse(gameVm.Price, CultureInfo.InvariantCulture);
+            game.Price = gameVm.Price;
             game.ImageUrl = gameVm.ImageUrl;
             game.Quantity = gameVm.Quantity;
             game.Rating = gameVm.Rating;
-            game.Release_Date = gameVm.ReleaseDate;
+            game.ReleaseDate = gameVm.ReleaseDate;
             game.Description = gameVm.Description;
 
             game.GameGenreLink = new List<GameGenre>();

@@ -15,7 +15,7 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
         [Display(Name = "Game Price")]
         [Range(0.5, 500.0, ErrorMessage = "Price must be at between 0.50 and 500.0.")]
         [Required(ErrorMessage = "Game Price is required")]
-        public string Price { get; set; }
+        public float Price { get; set; }
 
         [Display(Name = "Game Image URL")]
         [Required(ErrorMessage = "Game Image URL is required")]
@@ -50,11 +50,11 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
         {
             Id = game.Id;
             Title = game.Title;
-            Price = game.Price.ToString();
+            Price = game.Price;
             ImageUrl = game.ImageUrl;
             Quantity = game.Quantity;
             Rating = game.Rating;
-            ReleaseDate = game.Release_Date;
+            ReleaseDate = game.ReleaseDate;
             Description = game.Description;
 
             Genres = new List<int>();

@@ -33,7 +33,7 @@ namespace RocketEshop.Infrastructure.Services
             }
             existingGame.Title = game.Title;
             existingGame.Description = game.Description;
-            existingGame.Release_Date = game.Release_Date;
+            existingGame.ReleaseDate = game.ReleaseDate;
             existingGame.ImageUrl = game.ImageUrl;
             existingGame.Price = game.Price;
             existingGame.Quantity = game.Quantity;
@@ -106,10 +106,10 @@ namespace RocketEshop.Infrastructure.Services
                     filteredGames = filteredGames.OrderBy(game => game.Rating);
                     break;
                 case SortingFilter.ReleaseDateAsc:
-                    filteredGames = filteredGames.OrderBy(game => game.Release_Date);
+                    filteredGames = filteredGames.OrderBy(game => game.ReleaseDate);
                     break;
                 case SortingFilter.ReleaseDateDsc:
-                    filteredGames = filteredGames.OrderByDescending(game => game.Release_Date);
+                    filteredGames = filteredGames.OrderByDescending(game => game.ReleaseDate);
                     break;
             }
 
@@ -119,7 +119,7 @@ namespace RocketEshop.Infrastructure.Services
         public IEnumerable<Game> FetchLatestReleasedGames(int? maxResults)
         {
             var games = context.Games.Include(x => x.GameGenreLink).ThenInclude(x => x.Genre);
-            return games.OrderBy(game => game.Release_Date).Take(maxResults ?? 3);
+            return games.OrderBy(game => game.ReleaseDate).Take(maxResults ?? 3);
         }
 
         public IEnumerable<Game> FetchGoodRatedGames(int? maxResults)
