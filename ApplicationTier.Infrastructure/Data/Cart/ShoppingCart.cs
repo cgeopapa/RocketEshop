@@ -16,7 +16,7 @@ namespace RocketEshop.Infrastructure.Core.Models
             _context = context;
         }
 
-        public double GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Game.Price * n.Amount).Sum();
+        public decimal GetShoppingCartTotal() => _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Game.Price * n.Amount).Sum();
 
         public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {

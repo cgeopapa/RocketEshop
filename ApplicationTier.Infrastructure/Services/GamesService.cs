@@ -21,7 +21,7 @@ namespace RocketEshop.Infrastructure.Services
                 .Include(x => x.GameGenreLink)
                 .ThenInclude(x => x.Genre)
                 .FirstOrDefaultAsync(x => x.Id == id);
-            return entity ?? null;
+            return entity;
         }
 
         public new async Task UpdateAsync(Game game)

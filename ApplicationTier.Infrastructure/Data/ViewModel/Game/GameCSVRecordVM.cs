@@ -6,7 +6,7 @@ namespace RocketEshop.Infrastructure.Data.ViewModel;
 public class GameCSVRecordVM
 {
     public string Title { get; set; }
-    public float Price { get; set; }
+    public decimal Price { get; set; }
     public string ImageUrl { get; set; }
     public int Quantity { get; set; }
     public Rating Rating { get; set; }

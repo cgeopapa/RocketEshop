@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using RocketEshop.Core.Domain;
 using RocketEshop.Core.Enums;
 using RocketEshop.Core.Models;
 
@@ -10,16 +12,16 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
 
         [Display(Name = "Game Title")]
         [Required(ErrorMessage = "Game Title is required")]
-        public string Title { get; set; }
+        public string Title { get; set; } = "";
 
         [Display(Name = "Game Price")]
         [Range(0.5, 500.0, ErrorMessage = "Price must be at between 0.50 and 500.0.")]
         [Required(ErrorMessage = "Game Price is required")]
-        public float Price { get; set; }
+        public decimal Price { get; set; }
 
         [Display(Name = "Game Image URL")]
         [Required(ErrorMessage = "Game Image URL is required")]
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = "";
 
         [Display(Name = "Game Quantity")]
         [Range(0, 100000, ErrorMessage = "Quantity must be at least 0.")]
@@ -36,10 +38,10 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
 
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Description is required")]
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
 
-        [Display(Name = "Genres")]
-        public List<Genre> Genres { get; set; }
+        [Display(Name = "Genres")] 
+        public List<Genre> Genres { get; set; } = new List<Genre>();
 
 
         public GameVM()
@@ -50,7 +52,13 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
         {
             Id = game.Id;
             Title = game.Title;
+
             Price = game.Price;
+            if (Equals(CultureInfo.CurrentUICulture, new CultureInfo("en-US")))
+            {
+                Price *= ConvertionRate.USD;
+            }
+            
             ImageUrl = game.ImageUrl;
             Quantity = game.Quantity;
             Rating = game.Rating;

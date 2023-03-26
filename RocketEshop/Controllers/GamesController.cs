@@ -1,8 +1,10 @@
 ﻿using System.Globalization;
+using System.Text.Json.Nodes;
 using CsvHelper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.WebUtilities;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Data.Static;
@@ -16,13 +18,16 @@ namespace RocketEshop.Controllers
         // Service
         private readonly IGamesService _gamesService;
         private readonly IGenresService _genresService;
+        
+        private readonly RequestLocalizationOptions localizationOptions;
 
         private static List<GameCSVRecordVM> gamesFromCSV;
 
-        public GamesController(IGamesService service, IGenresService genresService)
+        public GamesController(IGamesService service, IGenresService genresService, RequestLocalizationOptions localizationOptions)
         {
             _gamesService = service;
             _genresService = genresService;
+            this.localizationOptions = localizationOptions;
         }
 
         [HttpGet]
@@ -266,6 +271,27 @@ namespace RocketEshop.Controllers
                 }
             }
             return games;
+        }
+
+        // Not used due to extremely high latency
+        private async Task<dynamic> getEURtoUSDConvertionRate()
+        {
+            var http = new HttpClient();
+            var query = QueryHelpers.AddQueryString("https://api.apilayer.com/exchangerates_data/convert", "from", "EUR");
+            query = QueryHelpers.AddQueryString(query, "to", "USD");
+            query = QueryHelpers.AddQueryString(query, "amount", "1");
+            http.DefaultRequestHeaders.Add("apikey", "NjD3D4PMM2zpNdfnxKfOpZo5ro80NQRs");
+
+            string? res = await http.GetStringAsync(query);
+
+            var json = JsonNode.Parse(res)?.AsObject();
+            if (json == null)
+            {
+                return 1m;
+            }
+
+            string? result = json["result"]?.ToString();
+            return result == null ? 1m : decimal.Parse(result);
         }
     }
 }
