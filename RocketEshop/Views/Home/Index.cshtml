@@ -1,10 +1,9 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using RocketEshop.Core.Enums
 @using RocketEshop.Infrastructure.Data.ViewModel
-@using Microsoft.AspNetCore.Mvc.Localization;
-
-@inject IViewLocalizer Localizer
-
 @model RocketEshop.Infrastructure.Data.ViewModel.HomeVM
 
 @{
@@ -34,7 +33,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://external-preview.redd.it/WjNqJN8azEEu5xlYbO0kw0kcBFGqS1ukgAQ3hK_vULg.jpg?auto=webp&s=215286930af1142e3f0013a4845421e8f39fe270" class="d-block w-100" alt="banner from the game 'Persona 5' with a label."" height="430">
+            <img src="https://external-preview.redd.it/WjNqJN8azEEu5xlYbO0kw0kcBFGqS1ukgAQ3hK_vULg.jpg?auto=webp&s=215286930af1142e3f0013a4845421e8f39fe270" class="d-block w-100" alt="banner from the game 'Persona 5' with a label." height="430">
             <div class="carousel-caption d-none d-md-block label-banner">
                 <h4>@Localizer["slide3a"]</h4>
                 <p><i>@Localizer["slide3b"]</i></p>
