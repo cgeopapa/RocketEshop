@@ -51,6 +51,7 @@
                 <label asp-for="Genres" class="control-label"></label>
                 <select asp-for="Genres" class="selectpicker form-control" multiple="multiple" asp-items="@TempData["genreOptions"] as SelectList"></select>
                 <span asp-validation-for="Genres" class="text-danger"></span>
+                <p>To select genres, keep the "ctrl" button pressed and click the genres you want to add.</p>
             </div>
         </div>
         <div class="col-md-6">
