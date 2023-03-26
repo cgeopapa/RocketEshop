@@ -11,7 +11,7 @@
 }
 <img src="~/logo.png" width="10%" />
 
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleCaptions" class="carousel slide mb-4" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -49,14 +49,12 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<br /><br />
 <h5>@Localizer["looking.for.something"]</h5>
 <form asp-controller="Browse" asp-action="Search" class="d-flex my-4 px-4">
     <input name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
     <button class="btn btn-primary m-2" type="submit">Search</button>
 </form>
-<br />
-<div class="row">
+<div class="row mb-4">
     <h4>@Localizer["latest.additions"]</h4>
     @foreach (GameVM game in Model.LatestReleases)
     {
@@ -67,8 +65,7 @@
         <button class="btn btn-outline-primary" type="submit">Show more...</button>
     </form>
 </div>
-<br /><br /><br />
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleSlidesOnly " class="carousel slide mb-4" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="https://blc.edu/wp-content/uploads/2021/09/Esports-Banner-2021.jpg" class="d-block w-100" alt="...">
@@ -81,8 +78,7 @@
         </div>
     </div>
 </div>
-<br /><br /><br />
-<div class="row">
+<div class="row mb-4">
     <h4>@Localizer["top.rated"]</h4>
     @foreach (var game in Model.GoodRatings)
     {
@@ -93,10 +89,7 @@
         <button class="btn btn-outline-primary" type="submit">Show more...</button>
     </form>
 </div>
-<br />
-<br />
-<br />
-<div class="row">
+<div class="row mb-4">
     <h4>Trailers</h4>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -121,4 +114,5 @@
             <span class="visually-hidden">Next</span>
         </button>
 </div>
-<br /><br />
+</div>
+</div>
