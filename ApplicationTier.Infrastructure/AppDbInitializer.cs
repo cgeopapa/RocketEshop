@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using RocketEshop.Core.Enums;
 using RocketEshop.Core.Models;
-using RocketEshop.Data.Static;
 
 namespace RocketEshop.Infrastructure
 {
@@ -100,10 +99,10 @@ namespace RocketEshop.Infrastructure
                 // Roles
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-                if (!await roleManager.RoleExistsAsync(UserRoles.User))
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                if (!await roleManager.RoleExistsAsync(UserRole.ADMIN.ToString()))
+                    await roleManager.CreateAsync(new IdentityRole(UserRole.ADMIN.ToString()));
+                if (!await roleManager.RoleExistsAsync(UserRole.USER.ToString()))
+                    await roleManager.CreateAsync(new IdentityRole(UserRole.USER.ToString()));
 
                 // Admin
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
@@ -120,7 +119,7 @@ namespace RocketEshop.Infrastructure
                         EmailConfirmed = true
                     };
                     await userManager.CreateAsync(newAdminUser, "Rocket1234!");
-                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                    await userManager.AddToRoleAsync(newAdminUser, UserRole.ADMIN.ToString());
                 }
 
                 // Users
@@ -137,7 +136,7 @@ namespace RocketEshop.Infrastructure
                         EmailConfirmed = true
                     };
                     await userManager.CreateAsync(newAppUser, "User1234!");
-                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                    await userManager.AddToRoleAsync(newAppUser, UserRole.USER.ToString());
                 }
             }
         }

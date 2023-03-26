@@ -7,12 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using RocketEshop.Data.Static;
 using RocketEshop.Infrastructure.Data.ViewModel;
 
 namespace RocketEshop.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+    [Authorize("AdminOnly")]
     public class GamesController : Controller
     {
         // Service

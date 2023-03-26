@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using RocketEshop.Core.Enums;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
@@ -56,6 +57,10 @@ namespace RocketEshop
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole(UserRole.ADMIN.ToString()));
             });
 
             var app = builder.Build();

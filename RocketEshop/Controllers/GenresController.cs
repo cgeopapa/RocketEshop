@@ -2,11 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using RocketEshop.Data.Static;
 
 namespace RocketEshop.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+    [Authorize(Policy = "AdminOnly")]
     public class GenresController : Controller
     {
         // Service

@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using RocketEshop.Core.Enums
 @inject IViewLocalizer Localizer
 
 <!DOCTYPE html>
@@ -61,7 +62,7 @@
                         <a class="nav-link" asp-area="" asp-controller="ContactUs" asp-action="Index">
                             <b>@Localizer["contact.us"]</b>
                         </a>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    @if (User.Identity.IsAuthenticated && User.IsInRole(UserRole.ADMIN.ToString()))
                     {
                         <li class="nav-item dropdown" style="padding-left:30px;padding-right:30px;">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b>@Localizer["cms"]</b></a>
