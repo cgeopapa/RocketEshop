@@ -5,19 +5,21 @@
     ViewData["Title"] = "CSV Insert";
 }
 
+<h1>Insert CSV</h1>
+
+
+<p>Choose the CSV file you wish to upload from your directory and then click the "Upload" button. Review the file and if everything is okay click the "Submit" button. The new products will be added automatically and you will be redirected to the "Games" page.</p>
+<hr />
 <form asp-controller="Games" asp-action="CsvInsert" method="post" enctype="multipart/form-data">
-    <input type="file" name="file"/>
+    <input class="btn-close-white" type="file" name="file"/>
     <hr />
-    <button type="submit">Upload</button>
+    <button class="btn-close-white" type="submit">Upload</button>
 </form>
 
 @if(Model.Count() > 0)
 {
     <hr />
-    <form asp-controller="Games" asp-action="CsvInsertConfirm" method="post">
-        <button class="btn" type="submit">Submit</button>
-    </form>
-    <table class="table-striped">
+    <table class="table tale-bordered table-striped">
         <thead>
         <tr>
             <td>Title</td>
@@ -47,6 +49,6 @@
         </tbody>
     </table>
     <form asp-controller="Games" asp-action="CsvInsertConfirm" method="post">
-        <button class="btn" type="submit">Submit</button>
+        <button class="btn-success" type="submit">Submit</button>
     </form>
 }
