@@ -68,7 +68,6 @@ namespace RocketEshop.Controllers
                 UserName = registerVM.UserName,
                 EmailConfirmed = true
             };
-            // ERROR HERE
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
             if (newUserResponse.Succeeded)
             {

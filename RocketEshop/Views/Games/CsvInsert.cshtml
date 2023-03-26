@@ -1,8 +1,8 @@
 ﻿@using RocketEshop.Infrastructure.Data.ViewModel
-@model IEnumerable<GameCSVRecordVM>
+@model IEnumerable<RocketEshop.Infrastructure.Data.ViewModel.GameCSVRecordVM>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "CSV Insert";
 }
 
 <form asp-controller="Games" asp-action="CsvInsert" method="post" enctype="multipart/form-data">

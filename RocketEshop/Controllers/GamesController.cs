@@ -130,9 +130,9 @@ namespace RocketEshop.Controllers
         }
 
         [HttpPost]
-        public IActionResult CsvInsert(IFormFile file, [FromServices] IWebHostEnvironment hostingEnvironment)
+        public IActionResult CsvInsert(IFormFile file, [FromServices] Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
-            string fileName = $"{hostingEnvironment.WebRootPath}\\files\\{file.FileName}";
+            string fileName = $"{hostingEnvironment.WebRootPath}\\uploads\\{file.FileName}";
             using (FileStream fileStream = System.IO.File.Create(fileName))
             {
                 file.CopyTo(fileStream);
@@ -249,7 +249,7 @@ namespace RocketEshop.Controllers
         private List<GameCSVRecordVM> GetGamesList(string fileName)
         {
             List<GameCSVRecordVM> games = new List<GameCSVRecordVM>();
-            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\files"}" + "\\" + fileName;
+            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\uploads"}" + "\\" + fileName;
             using (var reader = new StreamReader(path))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
