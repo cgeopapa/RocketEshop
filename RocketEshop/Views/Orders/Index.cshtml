@@ -1,4 +1,4 @@
-﻿@using RocketEshop.Core.Models;
+﻿@using RocketEshop.Core.Enums
 @model List<Order>
 
 @{ 
@@ -17,7 +17,7 @@
                     <th>Order ID</th>
                     <th>Items</th>
                     <th>Total</th>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    @if (User.Identity.IsAuthenticated && User.IsInRole(UserRole.ADMIN.ToString()))
                     {
                         <th>User</th>
                     }
@@ -43,7 +43,7 @@
                         <td class="align-middle">
                             @order.OrderItems.Select(m => m.Game.Price * m.Amount).Sum().ToString("c")
                         </td>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        @if (User.Identity.IsAuthenticated && User.IsInRole(UserRole.ADMIN.ToString()))
                         {
                             <td class="align-middle"> @order.User.FullName </td>
                         }
