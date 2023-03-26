@@ -11,9 +11,9 @@
 <p>Choose the CSV file you wish to upload from your directory and then click the "Upload" button. Review the file and if everything is okay click the "Submit" button. The new products will be added automatically and you will be redirected to the "Games" page.</p>
 <hr />
 <form asp-controller="Games" asp-action="CsvInsert" method="post" enctype="multipart/form-data">
-    <input class="btn-close-white" type="file" name="file"/>
+    <input type="file" name="file" />
     <hr />
-    <button class="btn-close-white" type="submit">Upload</button>
+    <button class="btn btn-primary" type="submit">Upload</button>
 </form>
 
 @if(Model.Count() > 0)
@@ -49,6 +49,6 @@
         </tbody>
     </table>
     <form asp-controller="Games" asp-action="CsvInsertConfirm" method="post">
-        <button class="btn-success" type="submit">Submit</button>
+        <button class="btn btn-success" type="submit">Submit</button>
     </form>
 }
