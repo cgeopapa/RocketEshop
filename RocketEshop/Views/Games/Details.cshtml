@@ -1,7 +1,10 @@
-﻿@model RocketEshop.Infrastructure.Data.ViewModel.GameVM
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@model RocketEshop.Infrastructure.Data.ViewModel.GameVM
 
 @{
-    ViewData["Title"] = "Game details";
+    ViewData["Title"] = Localizer["game.details"];
 }
 <div class="row">
     <div class="col-md-8 offset-2">
@@ -21,34 +24,27 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-text"><b>Release Date: </b>@Model.ReleaseDate.ToString("dd/MM/yy")</p>
-                        <p class="card-text"><b>Rating: </b>@Model.Rating</p>
+                        <p class="card-text"><b>@Localizer["release.date"]: </b>@Model.ReleaseDate.ToString("dd/MM/yy")</p>
+                        <p class="card-text"><b>@Localizer["rating"]: </b>@Model.Rating</p>
                         <p class="card-text">
                             <b>Genres: </b><br />
                             @foreach (Genre genre in Model.Genres)
                             {
                                 <span class="badge rounded-pill text-bg-info">@genre.Name</span>
                             }
-                        </p>
-                        <p class="card-text">
-                            <b>Platforms: </b><br />
-                            @foreach (Genre genre in Model.Genres)
-                            {
-                                <span class="badge rounded-pill text-bg-info">@genre.Name</span>
-                            }
-                        </p>
-                        <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
+                        </p>                       
+                        <p class="card-text"><b>@Localizer["quantity"]: </b>@Model.Quantity</p>
                         @if (Model.Quantity > 0)
                         {
-                            <p class="card-text"><b>Available: </b>Yes</p>
+                            <p class="card-text"><b>@Localizer["available"]: </b>@Localizer["yes"]</p>
                         }
                         else
                         {
-                            <p class="card-text"><b>Available: </b>No</p>
+                            <p class="card-text"><b>@Localizer["available"]: </b>@Localizer["no"]</p>
                         }
-                        <p class="card-text"><b>Price: </b>@Model.Price.ToString("c")</p>
+                        <p class="card-text"><b>@Localizer["price"]: </b>@Model.Price.ToString("c")</p>
                         
-                        <p class="card-text"><b>Description: </b></p>
+                        <p class="card-text"><b>@Localizer["description"]: </b></p>
                         <p class="card-text" >@Model.Description</p>
                     </div>
                 </div>
@@ -56,13 +52,13 @@
                     <div class="card-footer">
                         <p class="card-text">
                             <a class="btn btn-outline-primary float-right" asp-controller="Browse" asp-action="Index">
-                                Back to List
+                                @Localizer["back.to.list"]
                             </a>
                             @if (Model.Quantity <= 0)
                             {
                                 <a class="btn btn-secondary text-white disabled"
                                    style="float: right;">
-                                    <i class="bi bi-cart-plus"></i> Out of Stock
+                                    <i class="bi bi-cart-plus"></i> @Localizer["out.of.stock"]
                                 </a>
                             }
                             else
@@ -72,7 +68,7 @@
                                asp-controller="ShoppingCart"
                                asp-action="AddItemToShoppingCart"
                                asp-route-id="@Model.Id">
-                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                    <i class="bi bi-cart-plus"></i> @Localizer["add.cart"]
                                 </a>
                             }
 

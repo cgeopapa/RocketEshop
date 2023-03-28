@@ -1,4 +1,7 @@
-﻿@model RocketEshop.Infrastructure.Data.ViewModel.GameVM
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@model RocketEshop.Infrastructure.Data.ViewModel.GameVM
 
 <div class="col-lg-4 mb-3 d-flex align-items-stretch">
     <div class="card d-flex flex-column justify-content-between mb-3" style="width: 500px;">
@@ -13,9 +16,9 @@
             </div>
             <div class="col-md-5">
                 <div class="card-body">
-                    <p class="card-text"><b>Price: </b>@Model.Price.ToString("c")</p>
-                    <p class="card-text"><b>Quantity </b>@Model.Quantity</p>
-                    <p class="card-text"><b>Rating: </b>@Model.Rating</p>
+                    <p class="card-text"><b>@Localizer["price"]: </b>@Model.Price.ToString("c")</p>
+                    <p class="card-text"><b>@Localizer["quantity"]: </b>@Model.Quantity</p>
+                    <p class="card-text"><b>@Localizer["rating"]: </b>@Model.Rating</p>
                     <div class="my-4">
                         @foreach (Genre genre in Model.Genres)
                         {
@@ -24,11 +27,11 @@
                     </div>
                     @if (Model.Quantity > 0)
                     {
-                        <span class="badge fs-6 rounded-pill text-bg-primary">Available</span>
+                        <span class="badge fs-6 rounded-pill text-bg-primary">@Localizer["available"]</span>
                     }
                     else
                     {
-                        <span class="badge fs-6 rounded-pill text-bg-danger">Sold out</span>
+                        <span class="badge fs-6 rounded-pill text-bg-danger">@Localizer["sold.out"]</span>
                     }
                 </div>
             </div>
@@ -36,12 +39,12 @@
         <div class="card-footer d-flex justify-content-around">
 
             <a class="btn btn-outline-primary" asp-controller="Games" asp-action="Details" asp-route-id="@Model.Id">
-                <i class="bi bi-eye-fill"></i> Show Details
+                <i class="bi bi-eye-fill"></i> @Localizer["show.details"]
             </a>
             @if (Model.Quantity <= 0)
             {
                 <a class="btn btn-secondary text-white disabled">
-                    <i class="bi bi-cart-plus"></i> Out of Stock
+                    <i class="bi bi-cart-plus"></i> @Localizer["out.of.stock"]
                 </a>
             }
             else
@@ -50,7 +53,7 @@
                    asp-controller="ShoppingCart"
                    asp-action="AddItemToShoppingCart"
                    asp-route-id="@Model.Id">
-                    <i class="bi bi-cart-plus"></i> Add to Cart
+                    <i class="bi bi-cart-plus"></i> @Localizer["add.cart"]
                 </a>
             }
 

@@ -1,37 +1,40 @@
-﻿@using RocketEshop.Core.Enums
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using RocketEshop.Core.Enums
 @inject UserManager<ApplicationUser> UserManager;
 @if(!User.Identity.IsAuthenticated)
 {
     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
-        <i class="bi bi-box-arrow-in-right"></i> Login
+        <i class="bi bi-box-arrow-in-right"></i> @Localizer["login"]
     </a>
     <span style="padding: 5px;"></span>
 
     <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
-        <i class="bi bi-person-plus"></i> Register
+        <i class="bi bi-person-plus"></i> @Localizer["register"]
     </a>
 }
 else{
     <div class="nav-item dropdown">
         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
+            <i class="bi bi-person-badge"></i> @Localizer["hello"] @UserManager.GetUserName(User)
         </button>
         <ul class="dropdown-menu" aria-labelledby="profile-btn" style="z-index: 999999">
             <li>
                 <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                    <i class="bi bi-list"></i>Orders
+                    <i class="bi bi-list"></i>@Localizer["orders"]
                 </a>
             </li>
             <li>
                 <a class="dropdown-item" asp-controller="ShoppingCart" asp-action="Index">
-                    <i class="bi bi-cart4"></i>Cart
+                    <i class="bi bi-cart4"></i>@Localizer["cart"]
                 </a>
             </li>
             @if (User.IsInRole(UserRole.ADMIN.ToString()))
             {
                 <li>
                     <a class="dropdown-item" asp-controller="Account" asp-action="Users">
-                        <i class="bi bi-people"></i> Users
+                        <i class="bi bi-people"></i> @Localizer["users"]
                     </a>
                 </li>
             }
@@ -42,7 +45,7 @@ else{
     <span style="padding: 5px;"></span>
     <form asp-controller="Account" asp-action="Logout">
         <button class="btn -btn-ouline-danger my-2 my-sm-0">
-            <i class="bi bi-box-arrow-in-right"></i> Log out
+            <i class="bi bi-box-arrow-in-right"></i> @Localizer["logout"]
         </button>
     </form>
 }
