@@ -262,6 +262,7 @@ namespace RocketEshop.Controllers
                 csv.Context.RegisterClassMap<GameCSVRecordVMMap>();
                 while (csv.Read())
                 {
+                    // Error Date
                     GameCSVRecordVM? game = csv.GetRecord<GameCSVRecordVM>();
                     if (game != null)
                     {
