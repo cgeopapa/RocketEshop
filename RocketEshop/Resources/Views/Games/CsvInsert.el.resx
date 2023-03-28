@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="csv.directions" xml:space="preserve">
-    <value />
+    <value>Διαλέξτε το CSV αρχείο που θέλετε να ανεβάσετε από τον υπολογιστή σας και πατήστε το κουμπί "Ανέβασμα". Σιγουρευτείτε ότι όλα είναι εντάξει και πατήστε το κουμπί "Αποθήκευση". Τα νέα προϊόντα θα προστεθούν αυτόματα και θα ανακατευθυνθείτε στην κεντρική σελίδα.</value>
   </data>
   <data name="csv.insert" xml:space="preserve">
     <value>Εισαγωγή από CSV</value>
