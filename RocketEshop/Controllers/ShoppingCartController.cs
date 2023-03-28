@@ -1,7 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Infrastructure.Data.ViewModel;
 

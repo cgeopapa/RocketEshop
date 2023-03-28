@@ -1,5 +1,5 @@
 ﻿@using RocketEshop.Infrastructure.Data.ViewModel
-@model IEnumerable<RocketEshop.Infrastructure.Data.ViewModel.GameCSVRecordVM>
+@model IEnumerable<RocketEshop.Infrastructure.Data.ViewModel.GameCSVRecordVM>?
 
 @{
     ViewData["Title"] = "CSV Insert";
@@ -11,12 +11,12 @@
 <p>Choose the CSV file you wish to upload from your directory and then click the "Upload" button. Review the file and if everything is okay click the "Submit" button. The new products will be added automatically and you will be redirected to the "Games" page.</p>
 <hr />
 <form asp-controller="Games" asp-action="CsvInsert" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
+    <input type="file" name="file" required="required" />
     <hr />
     <button class="btn btn-primary" type="submit">Upload</button>
 </form>
 
-@if(Model.Count() > 0)
+@if(Model != null && Model.Any())
 {
     <hr />
     <table class="table tale-bordered table-striped">
@@ -28,7 +28,7 @@
             <td>Quantity</td>
             <td>Rating</td>
             <td>Release Date</td>
-            <td>Description</td>
+            <td class="w-25">Description</td>
             <td>Genres</td>
         </tr>
         </thead>
@@ -38,12 +38,14 @@
             <tr>
                 <td>@game.Title</td>
                 <td>@game.Price</td>
-                <td>@game.ImageUrl</td>
+                <td>
+                    <img src="@game.ImageUrl" alt="import image" height="64"/> 
+                </td>
                 <td>@game.Quantity</td>
                 <td>@game.Rating</td>
                 <td>@game.ReleaseDate</td>
-                <td>@game.Description</td>
-                <td>@game.Genres</td>
+                <td class="">@game.Description</td>
+                <td>@String.Join(", ", game.Genres)</td>
             </tr>
         }
         </tbody>

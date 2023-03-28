@@ -143,7 +143,14 @@ namespace RocketEshop.Controllers
                 fileStream.Flush();
             }
 
-            gamesFromCSV = this.GetGamesList(file.FileName);
+            try
+            {
+                gamesFromCSV = this.GetGamesList(file.FileName);
+            }
+            catch(Exception e)
+            {
+                TempData["error"] = e.Message;
+            }
             return View(gamesFromCSV);
         }
 
@@ -156,7 +163,7 @@ namespace RocketEshop.Controllers
                 Game game = new Game();
                 game.Title = gameCsvRecordVm.Title;
                 game.Description = gameCsvRecordVm.Description;
-                game.ReleaseDate = gameCsvRecordVm.ReleaseDate;
+                game.ReleaseDate = gameCsvRecordVm.ReleaseDate.ToDateTime(new TimeOnly(0, 0));
                 game.ImageUrl = gameCsvRecordVm.ImageUrl;
                 game.Price = gameCsvRecordVm.Price;
                 game.Quantity = gameCsvRecordVm.Quantity;
@@ -260,13 +267,35 @@ namespace RocketEshop.Controllers
                 csv.Read();
                 csv.ReadHeader();
                 csv.Context.RegisterClassMap<GameCSVRecordVMMap>();
+
+                string[] headers = { "Title", "Price", "ImageUrl", "Quantity", "Rating", "ReleaseDate", "Description", "Genres" };
+                string[]? csvHeaders = csv.HeaderRecord;
+                if (csvHeaders == null)
+                {
+                    throw new Exception("The CAV file must contain headers");
+                }
+                if (!headers.SequenceEqual(csvHeaders))
+                {
+                    throw new Exception("The given CSV headers are not correct");
+                }
+
+                int i = 1;
                 while (csv.Read())
                 {
-                    // Error Date
-                    GameCSVRecordVM? game = csv.GetRecord<GameCSVRecordVM>();
-                    if (game != null)
+                    try
                     {
-                        games.Add(game);
+                        GameCSVRecordVM? game = csv.GetRecord<GameCSVRecordVM>();
+                        if (game != null)
+                        {
+                            games.Add(game);
+                        }
+
+                        i++;
+                    }
+                    catch (Exception)
+                    {
+                        games.Clear();
+                        throw new Exception($"There was an problematic value at row {i}");
                     }
                 }
             }
