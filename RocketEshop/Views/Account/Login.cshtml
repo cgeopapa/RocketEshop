@@ -1,14 +1,17 @@
-﻿@using RocketEshop.Infrastructure.Data.ViewModel;
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using RocketEshop.Infrastructure.Data.ViewModel;
 @model LoginVM;
 
 @{
-    ViewData["Title"] = "Log in to your account";
+    ViewData["Title"] = @Localizer["login"];
 }
 
 <div class="row">
     <div class="col-md-6 offset-3">
         <p>
-            <h4>Log in to your account</h4>
+            <h4> @Localizer["login.account"]</h4>
         </p>
 
         @if (TempData["Error"] != null)
@@ -35,8 +38,8 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="btn btn-outline-success float-right" type="submit" value="Log in" />
-                        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+                        <input class="btn btn-outline-success float-right" type="submit" value=" @Localizer["login"]" />
+                        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index"> @Localizer["cancel"]</a>
                     </div>
                 </form>
             </div>

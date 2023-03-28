@@ -1,10 +1,14 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using RocketEshop.Core.Enums
 @using RocketEshop.Infrastructure.Data.ViewModel
 @model RocketEshop.Infrastructure.Data.ViewModel.BrowseVM
 
 @{
-    ViewData["Title"] = "Search";
+    ViewData["Title"] = @Localizer["browse"];
 }
 
 <script>
@@ -17,16 +21,16 @@
 </script>
 
 <img src="~/logo.png" width="10%" />
-
+<h2>@Localizer["search"]</h2>
 <form asp-action="Search" class="d-flex my-4 px-4">
     <input asp-for="Filters.QuickSearchFilter" name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
-    <button class="btn btn-primary m-2" type="submit">Search</button>
+    <button class="btn btn-primary m-2" type="submit">@Localizer["search"]</button>
     <button type="button" class="btn btn-secondary m-2" data-bs-toggle="offcanvas" data-bs-target="#advancedFilters">
-        Advanced Search
+        @Localizer["advanced.search"]
     </button>
 </form>
 <div class="row">
-    <h4>Results</h4>
+    <h4>@Localizer["results"]</h4>
     @foreach (GameVM game in Model.Games)
     {
         @Html.Partial("Components/GameDetails", game)
@@ -35,19 +39,19 @@
 
 <form asp-action="Search" class="offcanvas offcanvas-start" style="z-index: 10000" tabindex="-1" id="advancedFilters" aria-labelledby="advancedFilters">
     <div class="offcanvas-header">
-        <h4 class="offcanvas-title" id="offcanvasExampleLabel">Advanced Filter Search</h4>
+        <h4 class="offcanvas-title" id="offcanvasExampleLabel">@Localizer["advanced.filter.search"]</h4>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <div>
-            <h5>Sorting</h5>
+            <h5>@Localizer["sorting"]</h5>
             <div class="form-check">
                 <select asp-for="Filters.Sorting" name="Sorting" asp-items="@Html.GetEnumSelectList(typeof(SortingFilter))"></select>
             </div>
         </div>
         <hr />
         <div>
-            <h5>Availability</h5>
+            <h5>@Localizer["availability"]</h5>
             <div class="form-check">
                 <input asp-for="Filters.Availability" name="Availability" type="checkbox" class="form-check-input" />
                 <label class="form-check-label" asp-for="Filters.Availability"></label>
@@ -55,8 +59,8 @@
         </div>
         <hr />
         <div>
-            <h5>Price</h5>
-            <p>Min - Max</p>
+            <h5>@Localizer["price"]</h5>
+            <p>@Localizer["min.max"]</p>
             <div class="row m-0">
                 <div class="input-group mb-3">
                     <input type="number" step="1" asp-for="Filters.MinPrice" name="MinPrice" class="form-control" placeholder="Min Price">
@@ -67,8 +71,8 @@
         </div>
         <hr />
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary d-block" data-bs-dismiss="offcanvas" aria-label="Apply">Apply</button>
-            <button type="button" class="btn btn-secondary d-block" aria-label="Reset" onclick="resetFilters();"><i class="bi bi-arrow-counterclockwise"></i>Reset</button>
+            <button type="submit" class="btn btn-primary d-block" data-bs-dismiss="offcanvas" aria-label="Apply">@Localizer["apply"]</button>
+            <button type="button" class="btn btn-secondary d-block" aria-label="Reset" onclick="resetFilters();"><i class="bi bi-arrow-counterclockwise"></i>@Localizer["reset"]</button>
         </div>
     </div>
 </form>

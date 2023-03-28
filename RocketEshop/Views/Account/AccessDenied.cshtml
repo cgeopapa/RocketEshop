@@ -1,7 +1,15 @@
-﻿<div class="row">
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    ViewData["Title"] = @Localizer["access.denied"];
+}
+
+<div class="row">
     <div class="col-md-6 offset-3 alert alert-danger text-center">
-        <h2>You are not allowed to access this page</h2>
-        <p>Please, click the button below to be redirected to the home page.</p>
+        <h2>@Localizer["not.allowed"]</h2>
+        <p>@Localizer["directions"]</p>
         <hr />
         <p>
             <a asp-controller="Home" asp-action="Index" class="btn btn-outline-success">Home Page</a>
