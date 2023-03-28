@@ -1,13 +1,14 @@
-﻿@using RocketEshop.Core.Enums
+﻿@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization
+@using RocketEshop.Core.Enums
 @model RocketEshop.Core.Models.Genre
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = Localizer["edit"];
 }
 
-<h1>Edit</h1>
+<h2>@Localizer["edit"]</h2>
 
-<h4>Genre</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,24 +16,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">@Localizer["name"]</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">@Localizer["description"]</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value=@Localizer["save"] class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["back.to.list"]</a>
 </div>
 
 @section Scripts {
