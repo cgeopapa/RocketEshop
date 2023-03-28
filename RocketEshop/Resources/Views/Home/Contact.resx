@@ -117,34 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="flag" xml:space="preserve">
-    <value>gr.png</value>
+  <data name="address" xml:space="preserve">
+    <value>Athens, PO 10431, Greece</value>
   </data>
-  <data name="latest.additions" xml:space="preserve">
-    <value>Τελευταίες Προσθήκες</value>
+  <data name="contact.text" xml:space="preserve">
+    <value>Do you have any question? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.</value>
   </data>
-  <data name="looking.for.something" xml:space="preserve">
-    <value>Ψάχνεις κάτι συγκεκριμένο;</value>
-  </data>
-  <data name="slide1a" xml:space="preserve">
-    <value>Απόλαυσε τα αγαπημένα σου παιχνίδια με το πάτημα ενός κουμπιού.</value>
-  </data>
-  <data name="slide1b" xml:space="preserve">
-    <value>Το κατέβασμα παιχνιδιών γίνεται πιο εύκολο από ποτέ με το &lt;b&gt;Rocket&lt;/b&gt;!</value>
-  </data>
-  <data name="slide2a" xml:space="preserve">
-    <value>Ανακάλυψε νέους κόσμους.</value>
-  </data>
-  <data name="slide2b" xml:space="preserve">
-    <value>Βρες οποιοδήποτε παιχνίδι ψάχνεις με το &lt;b&gt;Rocket &lt;/b&gt;, κάθε νέα προσθήκη.</value>
-  </data>
-  <data name="slide3a" xml:space="preserve">
-    <value>Μην ξοδεύεις άλλο χρόνο.</value>
-  </data>
-  <data name="slide3b" xml:space="preserve">
-    <value>Εξοικονόμησε χρόνο και απόλαυσε την περιήγησή σου μέσω των αποδιτικών αλγορίθμων αναζήτησης του &lt;b&gt;Rocket &lt;/b&gt;.</value>
-  </data>
-  <data name="top.rated" xml:space="preserve">
-    <value>Καλύτερα στις Βαθμολογίες</value>
+  <data name="contact.us" xml:space="preserve">
+    <value>Contact Us</value>
   </data>
 </root>

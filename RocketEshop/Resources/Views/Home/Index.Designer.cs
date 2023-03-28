@@ -61,7 +61,7 @@ namespace RocketEshop.Resources.Views.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;img src=&quot;en.png&quot; alt=&quot;flag&quot;/&gt;.
+        ///   Looks up a localized string similar to en.png.
         /// </summary>
         public static string flag {
             get {

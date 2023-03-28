@@ -38,3 +38,9 @@ body {
 .label-banner {
     background: rgba(27,28,34, 0.3);
 }
+
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

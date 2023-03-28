@@ -1,20 +1,24 @@
-﻿@{
-    ViewData["Title"] = "About Us";
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    ViewData["Title"] = @Localizer["about.us"];
 }
-
-<div class="about-section">
-    <h1>About Us</h1>
-    <p>This is our final Project for Mind the Code.</p>
+<center>
+<div class="mb-4">
+    <h2>@Localizer["about.us"]</h2>
+        <img src="~/rocket logo.png" width="10%" class="img-center" />
+    <p style="color: white;">@Localizer["about.text"]</p>
 </div>
-
-<h2 style="text-align:center">Our Team</h2>
-<div class="row">
+<hr>
+<div class="row mt-4">
     <div class="card pt-4" style="width: 300px; text-align: center; background: url(https://cdn.wallpapersafari.com/43/97/vt85Jw.png) ;">
-        <center> <img src="https://64.media.tumblr.com/e0308bd83e684efe25f6b702dabc8862/a573b16385afb9b8-b7/s640x960/ba38a4cbe705ae55023b23c123e6132ccad9d921.png" alt="A dog wearing a scarf" style="width:50%"></center>
+        <center> <img src="https://64.media.tumblr.com/e0308bd83e684efe25f6b702dabc8862/a573b16385afb9b8-b7/s640x960/ba38a4cbe705ae55023b23c123e6132ccad9d921.png" alt="A dog eating a lollie" style="width:50%"></center>
         <div class="container">
-            <h2>Eleni</h2>
-            <p class="title">Member</p>
-            <p>Henlo.</p>
+                <h3>@Localizer["eleni"]</h3>
+                <p class="title">@Localizer["member"]</p>
+                <p>@Localizer["hello"]</p>
         </div>
     </div>
 
@@ -23,9 +27,9 @@
             <img src="https://64.media.tumblr.com/5cfebbb6cc3cfd1351da3756ac30587f/tumblr_pg5bbzjsGQ1u2eo2uo8_400.png" alt="Mike" style="width:50%">
         </center>
         <div class="container">
-            <h2>George</h2>
-            <p class="title">Member</p>
-            <p>Henlo.</p>
+                <h3>@Localizer["george"]</h3>
+                <p class="title">@Localizer["member"]</p>
+                <p>@Localizer["hello"]</p>
         </div>
     </div>
 
@@ -34,9 +38,9 @@
             <img src="https://i.pinimg.com/236x/fa/32/a6/fa32a68574c3e9a8b97da857930a8f22.jpg" alt="John" style="width:50%">
         </center>
         <div class="container">
-            <h2>Vasilis</h2>
-            <p class="title">Member</p>
-            <p>Henlo.</p>
+                <h3>@Localizer["vasilis"]</h3>
+                <p class="title">@Localizer["member"]</p>
+                <p>@Localizer["hello"]</p>
         </div>
     </div>
     <div class="card pt-4" style="width: 300px; text-align: center;background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ff3f1ab9-e3ad-4b37-883b-ffb0cc9b5bdc/d96txtj-5d565df7-832c-44b6-870c-6a46028beebf.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZmM2YxYWI5LWUzYWQtNGIzNy04ODNiLWZmYjBjYzliNWJkY1wvZDk2dHh0ai01ZDU2NWRmNy04MzJjLTQ0YjYtODcwYy02YTQ2MDI4YmVlYmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.u-mA3FFps6FoCguiOrGIluikH5xLo__HsPsVW9XgFsM) ;">
@@ -44,9 +48,9 @@
             <img src="https://i.pinimg.com/564x/24/d1/0a/24d10a00df895b1c7bf3eb5499827f88.jpg" alt="John" style="width:50%">
         </center>
         <div class="container">
-            <h2>Alex</h2>
-            <p class="title">Member</p>
-            <p>Henlo.</p>
+                <h3>@Localizer["alex"]</h3>
+                <p class="title">@Localizer["member"]</p>
+                <p>@Localizer["hello"]</p>
         </div>
     </div>
     <div class="card pt-4" style="width: 300px; text-align: center;background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCMjoOi65cs3nPzslZhOc1Ts2QKlSoO4bPsw-Y4nqOij5MlEb1ylzU0CpgnwO6ZD5zG2XbHkzqIaVzY0EzgxXCXyTUhNIx5Al_Nse8tSmkm--iqs4UnSpi2igTwGMKrhh5K5ki4jCbql-IhFQQj_vpiDkaLAgx9RfepLFOk1YDEVdR5Fdsevhz7mLy/w1600/pixelart%20wallpaper%20(1).png') ;">
@@ -54,10 +58,11 @@
             <img src="https://64.media.tumblr.com/552c55f641a73502774f1cacfd14c466/76285e96a00d7583-43/s540x810/04ff00319d9fdf88ab33d6010450c913a934ac2a.png" alt="John" style="width:50%">
         </center>
         <div class="container">
-            <h2>Dimitris</h2>
-            <p class="title">Member</p>
-            <p>Henlo.</p>
+                <h3>@Localizer["dimitris"]</h3>
+                <p class="title">@Localizer["member"]</p>
+                <p>@Localizer["hello"]</p>
         </div>
 
     </div>
-</div> 
+    </div>
+</center>

@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="about.text" xml:space="preserve">
+    <value>Αυτό είναι το τελικό μας project για το &lt;b&gt;&amp;lt;Mind The Code&amp;gt;&lt;/b&gt;! Γνωρίστε τους ανθρώπους που δημιούργησαν το Rocker-Eshop.</value>
+  </data>
+  <data name="about.us" xml:space="preserve">
+    <value>Η Ομάδας μας</value>
+  </data>
+  <data name="alex" xml:space="preserve">
+    <value>Αλέξανδρος</value>
+  </data>
+  <data name="dimitris" xml:space="preserve">
+    <value>Δημήτρης</value>
+  </data>
+  <data name="eleni" xml:space="preserve">
+    <value>Ελένη</value>
+  </data>
   <data name="flag" xml:space="preserve">
     <value>gr.png</value>
   </data>
-  <data name="latest.additions" xml:space="preserve">
-    <value>Τελευταίες Προσθήκες</value>
+  <data name="george" xml:space="preserve">
+    <value>Γιώργος</value>
   </data>
-  <data name="looking.for.something" xml:space="preserve">
-    <value>Ψάχνεις κάτι συγκεκριμένο;</value>
+  <data name="hello" xml:space="preserve">
+    <value>Γεια σας!</value>
   </data>
-  <data name="slide1a" xml:space="preserve">
-    <value>Απόλαυσε τα αγαπημένα σου παιχνίδια με το πάτημα ενός κουμπιού.</value>
+  <data name="member" xml:space="preserve">
+    <value>Μέλος</value>
   </data>
-  <data name="slide1b" xml:space="preserve">
-    <value>Το κατέβασμα παιχνιδιών γίνεται πιο εύκολο από ποτέ με το &lt;b&gt;Rocket&lt;/b&gt;!</value>
-  </data>
-  <data name="slide2a" xml:space="preserve">
-    <value>Ανακάλυψε νέους κόσμους.</value>
-  </data>
-  <data name="slide2b" xml:space="preserve">
-    <value>Βρες οποιοδήποτε παιχνίδι ψάχνεις με το &lt;b&gt;Rocket &lt;/b&gt;, κάθε νέα προσθήκη.</value>
-  </data>
-  <data name="slide3a" xml:space="preserve">
-    <value>Μην ξοδεύεις άλλο χρόνο.</value>
-  </data>
-  <data name="slide3b" xml:space="preserve">
-    <value>Εξοικονόμησε χρόνο και απόλαυσε την περιήγησή σου μέσω των αποδιτικών αλγορίθμων αναζήτησης του &lt;b&gt;Rocket &lt;/b&gt;.</value>
-  </data>
-  <data name="top.rated" xml:space="preserve">
-    <value>Καλύτερα στις Βαθμολογίες</value>
+  <data name="vasilis" xml:space="preserve">
+    <value>Βασίλης</value>
   </data>
 </root>

@@ -1,26 +1,27 @@
-﻿@{
-    ViewData["Title"] = "Contact Us";
+﻿@inject IViewLocalizer Localizer
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    ViewData["Title"] = @Localizer["contact.us"];
 }
-
-<section class="mb-4">
-    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+<center>
+<section class="mb-4" style="color: white;">
+    <h2>@Localizer["contact.us"]</h2>
+    <img src="~/rocket logo.png" width="10%" class="img-center" />
     <p class="text-center w-responsive mx-auto mb-5">
-        Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-        a matter of hours to help you.
+        @Localizer["contact.text"]
     </p>
-
-    <div class="text-center bg-gradient">
+    <hr>
+    <div class="text-center">
         <i class="bi bi-geo-alt-fill mt-4" style="font-size: 70px;"></i>
-        <p>Athens, PO 10431, Greece</p>
-
+        <p>@Localizer["address"]</p>
 
         <i class="bi bi-telephone-fill mt-4" style="font-size: 70px;"></i>
         <p>+ 01 234 567 89</p>
 
-
         <i class="bi bi-envelope-at-fill mt-4" style="font-size: 70px;"></i>
         <p>admin@RocketEshop.com</p>
-
     </div>
-
 </section>
+</center>
