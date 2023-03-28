@@ -118,18 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cancel" xml:space="preserve">
-    <value>Ακύρωση</value>
+    <value>Cancel</value>
   </data>
-  <data name="login" xml:space="preserve">
-    <value>Σύνδεση</value>
+  <data name="confirm.pswd" xml:space="preserve">
+    <value>Confirm Password</value>
   </data>
-  <data name="login.account" xml:space="preserve">
-    <value>Συνδεθείτε στον Λογαριασμό σας</value>
+  <data name="fullname" xml:space="preserve">
+    <value>Fullname</value>
   </data>
   <data name="password" xml:space="preserve">
-    <value>Κωδικός</value>
+    <value>Password</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="register.new.account" xml:space="preserve">
+    <value>Create a new account</value>
   </data>
   <data name="show.pswd" xml:space="preserve">
-    <value>Εμφάνιση Κωδικού</value>
+    <value>Show Password</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>

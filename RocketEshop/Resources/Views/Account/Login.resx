@@ -126,4 +126,10 @@
   <data name="login.account" xml:space="preserve">
     <value>Login to your account</value>
   </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="show.pswd" xml:space="preserve">
+    <value>Show Password</value>
+  </data>
 </root>

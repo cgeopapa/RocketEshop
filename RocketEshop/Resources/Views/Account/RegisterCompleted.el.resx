@@ -117,19 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cancel" xml:space="preserve">
-    <value>Ακύρωση</value>
+  <data name="login.now" xml:space="preserve">
+    <value>Μπορείτε να συνδεθείτε στον λογαριασμό σας χρησιμοποιώντας τα στοιχεία σας.</value>
   </data>
-  <data name="login" xml:space="preserve">
-    <value>Σύνδεση</value>
+  <data name="success.msg" xml:space="preserve">
+    <value>Ο λογαριασμός σας δημιουργήθηκε επιτυχώς!</value>
   </data>
-  <data name="login.account" xml:space="preserve">
-    <value>Συνδεθείτε στον Λογαριασμό σας</value>
+  <data name="successful.creation" xml:space="preserve">
+    <value>Επιτυχής Δημιουργία Λογαριασμού</value>
   </data>
-  <data name="password" xml:space="preserve">
-    <value>Κωδικός</value>
-  </data>
-  <data name="show.pswd" xml:space="preserve">
-    <value>Εμφάνιση Κωδικού</value>
+  <data name="thank.you" xml:space="preserve">
+    <value>Σας ευχαριστούμε!</value>
   </data>
 </root>

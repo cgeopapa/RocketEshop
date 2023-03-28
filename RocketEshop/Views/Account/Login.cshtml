@@ -32,9 +32,10 @@
                         <span asp-validation-for="EmailAddress" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-4">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
+                        <label asp-for="Password" class="control-label">@Localizer["password"]</label>
+                        <input asp-for="Password" class="form-control" id="pswdInput"/>
                         <span asp-validation-for="Password" class="text-danger"></span>
+                        <input type="checkbox" onclick="myFunction()">@Localizer["show.pswd"]
                     </div>
 
                     <div class="form-group mb-4">
@@ -46,3 +47,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("pswdInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

@@ -120,16 +120,25 @@
   <data name="cancel" xml:space="preserve">
     <value>Ακύρωση</value>
   </data>
-  <data name="login" xml:space="preserve">
-    <value>Σύνδεση</value>
+  <data name="confirm.pswd" xml:space="preserve">
+    <value>Επιβεβαίωση Κωδικού</value>
   </data>
-  <data name="login.account" xml:space="preserve">
-    <value>Συνδεθείτε στον Λογαριασμό σας</value>
+  <data name="fullname" xml:space="preserve">
+    <value>Ονοματεπώνυμο</value>
   </data>
   <data name="password" xml:space="preserve">
     <value>Κωδικός</value>
   </data>
+  <data name="register" xml:space="preserve">
+    <value>Εγγραφή</value>
+  </data>
+  <data name="register.new.account" xml:space="preserve">
+    <value>Δημιουργήστε νέο λογαριασμό</value>
+  </data>
   <data name="show.pswd" xml:space="preserve">
     <value>Εμφάνιση Κωδικού</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Ψευδώνυμο</value>
   </data>
 </root>
