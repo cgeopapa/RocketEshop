@@ -23,5 +23,15 @@ namespace RocketEshop.Controllers
                 _gamesService.FetchGoodRatedGames(3))
             );
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }

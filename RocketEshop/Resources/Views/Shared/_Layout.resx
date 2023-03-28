@@ -132,6 +132,9 @@
   <data name="contact.us" xml:space="preserve">
     <value>Contact Us</value>
   </data>
+  <data name="csv.insert" xml:space="preserve">
+    <value>Insert CSV</value>
+  </data>
   <data name="flag" xml:space="preserve">
     <value>gr.png</value>
   </data>

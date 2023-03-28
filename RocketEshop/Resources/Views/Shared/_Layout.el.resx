@@ -132,6 +132,9 @@
   <data name="contact.us" xml:space="preserve">
     <value>Επικοινωνία</value>
   </data>
+  <data name="csv.insert" xml:space="preserve">
+    <value>Εισαγωγή CSV</value>
+  </data>
   <data name="flag" xml:space="preserve">
     <value>en.png</value>
   </data>

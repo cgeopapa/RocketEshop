@@ -106,6 +106,15 @@ namespace RocketEshop.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert CSV.
+        /// </summary>
+        public static string csv_insert {
+            get {
+                return ResourceManager.GetString("csv.insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to gr.png.
         /// </summary>
         public static string flag {
