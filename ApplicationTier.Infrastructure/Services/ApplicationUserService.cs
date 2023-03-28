@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
-using RocketEshop.Infrastructure;
 using RocketEshop.Infrastructure.Repositories;
 
 namespace RocketEshop.Infrastructure.Services;
@@ -76,14 +75,8 @@ public class ApplicationUserService: EntityBaseRepository<ApplicationUser, strin
         return cart.Select(item => item.Game.Price * item.Amount).Sum();
     }
 
-    public int GetShoppingCartItemCount(string userId)
+    public int GetShoppingCartItemCount(string? userId)
     {
-        if(userId == null)
-        {
-            return 0;
-        }
-        var cart = context.Users.Include(user => user.ShoppingCart).First(user => user.Id == userId).ShoppingCart;
-        return cart.Count();
+        return userId == null ? 0 : context.Users.Include(user => user.ShoppingCart).First(user => user.Id == userId).ShoppingCart.Count;
     }
-
 }

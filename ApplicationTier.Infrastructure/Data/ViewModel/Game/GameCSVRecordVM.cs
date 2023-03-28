@@ -10,7 +10,7 @@ public class GameCSVRecordVM
     public string ImageUrl { get; set; }
     public int Quantity { get; set; }
     public Rating Rating { get; set; }
-    public DateTime ReleaseDate { get; set; }
+    public DateOnly ReleaseDate { get; set; }
     public string Description { get; set; }
     public string[] Genres { get; set; }
 }
