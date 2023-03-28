@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Infrastructure.Data.ViewModel;
 
@@ -56,23 +57,34 @@ public class ShoppingCartController: Controller
         _applicationUserService.RemoveItemFromUserCart(item, userId);
         return RedirectToAction(nameof(Index));
     }
-    
+
     public async Task<IActionResult> CompleteOrder()
     {
         string userId = GetUserId();
         string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
 
         var items = _applicationUserService.GetUserShoppingCart(userId);
+        if (items.Count == 0)
+        {
+            return View("EmptyCart");
+        }
+        else
+        {
 
-        await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
-        _applicationUserService.ClearUserShoppingCart(userId);
+            await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
+            _applicationUserService.ClearUserShoppingCart(userId);
+            //if (items != null)
+            //{
+            //    return View("EmptyCart");
 
-        return View("OrderCompleted");
+            //}
+            return View("OrderCompleted");
+        }
     }
-    
-    // PRIVATE - UTILS
-    
-    private string GetUserId()
+
+        // PRIVATE - UTILS
+
+        private string GetUserId()
     {
         string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         return userId;
