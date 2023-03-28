@@ -28,7 +28,6 @@ body {
 }
 .my-bg {
     background: rgba(27,28,34, 1);
-    height: 40px;
     background: radial-gradient(circle at 40%,rgba(82,69,255, 0.1),rgba(27,28,34, 1)  );
 }
 
@@ -38,10 +37,4 @@ body {
 
 .label-banner {
     background: rgba(27,28,34, 0.3);
-}
-
-@media only screen and (max-width: 1000px) {
-    .my-bg{
-        background: none;
-    }
 }
