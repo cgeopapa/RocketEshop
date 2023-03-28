@@ -4,24 +4,24 @@
 @model List<Order>
 
 @{ 
-    ViewData["Title"] = "All orders";
+    ViewData["Title"] = Localizer["all.orders"];
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <p>
-            <h4>List of all your orders</h4>
+            <h4>@Localizer["list.orders"]</h4>
         </p>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Items</th>
-                    <th>Total</th>
+                    <th>@Localizer["order.id"]</th>
+                    <th>@Localizer["items"]</th>
+                    <th>@Localizer["total"]</th>
                     @if (User.Identity.IsAuthenticated && User.IsInRole(UserRole.ADMIN.ToString()))
                     {
-                        <th>User</th>
+                        <th>@Localizer["user"]</th>
                     }
                 </tr>
             </thead>

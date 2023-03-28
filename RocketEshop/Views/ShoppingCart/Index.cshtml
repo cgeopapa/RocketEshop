@@ -3,22 +3,22 @@
 @model RocketEshop.Infrastructure.Data.ViewModel.ShoppingCartVM
 
 @{
-    ViewData["Title"] = "Shopping cart summary";
+    ViewData["Title"] = Localizer["summary.cart"];
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="text-center">
-            <h2>You shopping cart summary</h2>
+            <h2>@Localizer["summary.cart"]</h2>
         </div>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>Selected amount</th>
-                    <th>Game</th>
-                    <th>Price</th>
-                    <th>Subtotal</th>
+                    <th>@Localizer["selected.amount"]</th>
+                    <th>@Localizer["game"]</th>
+                    <th>@Localizer["price"]</th>
+                    <th>@Localizer["subtotal"]</th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@
             <tfoot>
                 <tr>
                     <td colspan="2"></td>
-                    <td><b>Total:</b></td>
+                    <td><b>@Localizer["total"]:</b></td>
                     <td>
                         @Model.ShoppingCartTotal.ToString("c")
                     </td>
@@ -58,12 +58,12 @@
         <div class="text-right">
             <div class="btn-group">
                 <a class="btn btn-outline-primary" asp-controller="ShoppingCart" asp-action="CompleteOrder">
-                Complete order
+                    @Localizer["complete.order"]
                 </a>
                 <div id="paypal-btn"></div>
                 <span style="padding:5px"></span>
                 <a class="btn btn-outline-success" asp-controller="Home" asp-action="Index">
-                    Add more items
+                    @Localizer["add.more"]
                 </a>
             </div>
         </div>
