@@ -13,4 +13,6 @@ public interface IApplicationUserService: IRepository<ApplicationUser, string>
     public void ClearUserShoppingCart(string userId);
 
     public decimal GetShoppingCartTotal(string userId);
+
+    public int GetShoppingCartItemCount(string userId);
 }

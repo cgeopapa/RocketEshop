@@ -4,7 +4,7 @@ using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
 using RocketEshop.Infrastructure.Repositories;
 
-namespace ApplicationTier.Infrastructure.Services;
+namespace RocketEshop.Infrastructure.Services;
 
 public class ApplicationUserService: EntityBaseRepository<ApplicationUser, string>, IApplicationUserService
 {
@@ -39,6 +39,7 @@ public class ApplicationUserService: EntityBaseRepository<ApplicationUser, strin
         {
             shoppingCartItem.Amount++;
         }
+        game.Quantity--;
         context.SaveChanges();
     }
 
@@ -58,7 +59,7 @@ public class ApplicationUserService: EntityBaseRepository<ApplicationUser, strin
                 cart.Remove(shoppingCartItem);
             }
         }
-
+        game.Quantity++;
         context.SaveChanges();
     }
 
@@ -75,9 +76,14 @@ public class ApplicationUserService: EntityBaseRepository<ApplicationUser, strin
         return cart.Select(item => item.Game.Price * item.Amount).Sum();
     }
 
-    private List<ShoppingCartItem> GetCart(string userId)
+    public int GetShoppingCartItemCount(string userId)
     {
-        return context.Users.Include(user => user.ShoppingCart)
-            .First(user => user.Id == userId).ShoppingCart;
+        if(userId == null)
+        {
+            return 0;
+        }
+        var cart = context.Users.Include(user => user.ShoppingCart).First(user => user.Id == userId).ShoppingCart;
+        return cart.Count();
     }
+
 }

@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using RocketEshop.Core.Enums
+@using RocketEshop.Infrastructure.Data.ViewComponents;
 @inject IViewLocalizer Localizer
 
 <!DOCTYPE html>
@@ -31,6 +32,9 @@
                 <button type="button" class="btn btn-outline-info mx-4" data-bs-toggle="tooltip" data-bs-title="@Localizer["change.language.tooltip"]" onclick="changeLanguage()">
                     <img src="@Localizer["flag"]" alt="lang_flag" height="16"/>
                 </button>
+                <a>
+                    @await Component.InvokeAsync("ShoppingCartIcon")
+                </a>
                 <partial name="_Identity.cshtml" />
             </div>
         </div>
