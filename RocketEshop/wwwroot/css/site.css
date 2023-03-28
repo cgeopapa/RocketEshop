@@ -44,3 +44,9 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+.log-bg{
+    background: rgba(82,69,255, 0.2);
+    color: white;
+    border-radius: 4px 4px;
+}
