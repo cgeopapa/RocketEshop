@@ -42,6 +42,10 @@ namespace RocketEshop.Controllers;
             {
                 return NotFound();
             }
+            if(item.Quantity <= 0)
+            {
+                return RedirectToAction(nameof(Index));
+            }
             _applicationUserService.AddItemToUserCart(item, userId);
             return RedirectToAction(nameof(Index));
         }
