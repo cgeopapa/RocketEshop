@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using RocketEshop.Core.Domain;
 using RocketEshop.Core.Enums;
 using RocketEshop.Core.Models;
 
@@ -53,11 +51,6 @@ namespace RocketEshop.Infrastructure.Data.ViewModel
             Title = game.Title;
             
             Price = game.Price;
-            if (Equals(CultureInfo.CurrentUICulture, new CultureInfo("en-US")))
-            {
-                Price *= ConvertionRate.USD;
-            }
-            
             ImageUrl = game.ImageUrl;
             Quantity = game.Quantity;
             Rating = game.Rating;

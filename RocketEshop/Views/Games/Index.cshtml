@@ -1,5 +1,4 @@
 ﻿@inject IViewLocalizer Localizer
-
 @using Microsoft.AspNetCore.Mvc.Localization
 @model IEnumerable<RocketEshop.Core.Models.Game>
 @{
@@ -51,7 +50,7 @@
                     @obj.Title
                 </td>
                 <td>
-                    @obj.Price.ToString("c")
+                    @obj.Price &euro;
                 </td>
                 <td>
                     @obj.Quantity

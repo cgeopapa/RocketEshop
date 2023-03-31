@@ -1,5 +1,4 @@
 using System.Globalization;
-using RocketEshop.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -8,6 +7,7 @@ using RocketEshop.Core.Enums;
 using RocketEshop.Core.Interfaces;
 using RocketEshop.Core.Models;
 using RocketEshop.Infrastructure;
+using RocketEshop.Infrastructure.Services;
 
 namespace RocketEshop
 {
@@ -83,7 +83,7 @@ namespace RocketEshop
             var supportedCultures = new[]
             {
                 new CultureInfo("en-US"),
-                new CultureInfo("el-GR")
+                new CultureInfo("el-FR")
             };
             RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions()
             {
