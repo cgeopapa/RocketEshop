@@ -62,7 +62,7 @@ namespace RocketEshop.Controllers
             {
                 Game game = await gameEntityFromGameCreateRequestDto(gameVm);
                 await _gamesService.AddAsync(game);
-                TempData["success"] = "GameViewModel added successfully!";
+                TempData["success"] = "Game added successfully!";
             }
             catch(Exception)
             {

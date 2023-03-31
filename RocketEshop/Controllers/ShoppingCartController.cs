@@ -44,6 +44,7 @@ namespace RocketEshop.Controllers;
             }
             if(item.Quantity <= 0)
             {
+                TempData["error"] = "There is no more items";
                 return RedirectToAction(nameof(Index));
             }
             _applicationUserService.AddItemToUserCart(item, userId);

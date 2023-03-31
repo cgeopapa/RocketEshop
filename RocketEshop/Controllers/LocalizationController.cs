@@ -9,6 +9,7 @@ namespace RocketEshop.Controllers
     {
         private readonly RequestLocalizationOptions localizationOptions;
         private readonly List<CultureInfo> cultureList;
+        
         public LocalizationController(RequestLocalizationOptions localizationOptions)
         {
             this.localizationOptions = localizationOptions;

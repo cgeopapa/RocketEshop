@@ -17,8 +17,9 @@ namespace RocketEshop.Infrastructure
 
             context.Database.EnsureCreated();
 
-            SeedGames(context);
-            SeedGenres(context);
+            // For testing purposes
+            // SeedGames(context);
+            // SeedGenres(context);
             
             await SeedRoles(context, roleManager);
             await SeedUsers(context, userManager);

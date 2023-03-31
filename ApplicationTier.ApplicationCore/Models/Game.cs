@@ -25,7 +25,7 @@ namespace RocketEshop.Core.Models
         public string ImageUrl { get; set; } = "";
 
         [Display(Name = "Game Quantity")]
-        [Range(0, 100000, ErrorMessage = "Quantity must be at least 0.")]
+        [Range(0, 100, ErrorMessage = "Quantity must be from 0 to 100.")]
         [Required(ErrorMessage = "Game Quantity is required")]
         public int Quantity { get; set; }
 
