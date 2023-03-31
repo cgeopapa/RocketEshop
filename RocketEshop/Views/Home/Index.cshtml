@@ -52,7 +52,7 @@
 <h5>@Localizer["looking.for.something"]</h5>
 <form asp-controller="Browse" asp-action="Search" class="d-flex my-4 px-4">
     <input name="QuickSearchFilter" class="form-control m-2" type="search" placeholder="Search">
-    <button class="btn btn-primary m-2" type="submit">Search</button>
+    <button class="btn btn-primary m-2" type="submit">@Localizer["search"]</button>
 </form>
 <div class="row mb-4">
     <h4>@Localizer["latest.additions"]</h4>
@@ -62,7 +62,7 @@
     }
     <form asp-controller="Browse" asp-action="Search" class="d-flex justify-content-center">
         <input name="Sorting" class="form-control m-2" type="hidden" value="@SortingFilter.ReleaseDateAsc">
-        <button class="btn btn-outline-primary" type="submit">Show more...</button>
+        <button class="btn btn-outline-primary" type="submit">@Localizer["show.more"]...</button>
     </form>
 </div>
 <div id="carouselExampleSlidesOnly " class="carousel slide mb-4" data-bs-ride="carousel">
@@ -86,7 +86,7 @@
     }
     <form asp-controller="Browse" asp-action="Search" class="d-flex justify-content-center">
         <input name="Sorting" class="form-control m-2" type="hidden" value="@SortingFilter.RatingAsc">
-        <button class="btn btn-outline-primary" type="submit">Show more...</button>
+        <button class="btn btn-outline-primary" type="submit">@Localizer["show.more"]...</button>
     </form>
 </div>
 <div class="row mb-4">

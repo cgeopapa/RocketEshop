@@ -88,6 +88,24 @@ namespace RocketEshop.Resources.Views.Home {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string search {
+            get {
+                return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show More.
+        /// </summary>
+        public static string show_more {
+            get {
+                return ResourceManager.GetString("show.more", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enjoy your favorite games with just a click..
         /// </summary>
         public static string slide1a {

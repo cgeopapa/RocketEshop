@@ -126,6 +126,12 @@
   <data name="looking.for.something" xml:space="preserve">
     <value>Ψάχνεις κάτι συγκεκριμένο;</value>
   </data>
+  <data name="search" xml:space="preserve">
+    <value>Αναζήτηση</value>
+  </data>
+  <data name="show.more" xml:space="preserve">
+    <value>Δείτε περισσότερα</value>
+  </data>
   <data name="slide1a" xml:space="preserve">
     <value>Απόλαυσε τα αγαπημένα σου παιχνίδια με το πάτημα ενός κουμπιού.</value>
   </data>
