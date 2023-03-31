@@ -158,6 +158,7 @@ namespace RocketEshop.Controllers
         public IActionResult CsvInsertConfirm()
         {
             List<Game> gameEntities = new List<Game>();
+            Dictionary<string, Genre> genres = new Dictionary<string, Genre>();
             foreach (GameCSVRecordVM gameCsvRecordVm in gamesFromCSV)
             {
                 Game game = new Game();
@@ -172,14 +173,20 @@ namespace RocketEshop.Controllers
                 game.GameGenreLink = new List<GameGenre>();
                 foreach (string genreName in gameCsvRecordVm.Genres)
                 {
-                    Genre? genre = _genresService.FetchGenreByName(genreName);
-                    if (genre != null)
+                    if (!genres.ContainsKey(genreName))
                     {
-                        GameGenre gameGenre = new GameGenre();
-                        gameGenre.Game = game;
-                        gameGenre.Genre = genre;
-                        game.GameGenreLink.Add(gameGenre);
+                        Genre? genre = _genresService.FetchGenreByName(genreName);
+                        if (genre == null)
+                        {
+                            genre = new Genre();
+                            genre.Name = genreName;
+                        }
+                        genres.Add(genreName, genre);
                     }
+                    GameGenre gameGenre = new GameGenre();
+                    gameGenre.Game = game;
+                    gameGenre.Genre = genres[genreName];
+                    game.GameGenreLink.Add(gameGenre);
                 }
 
                 gameEntities.Add(game);

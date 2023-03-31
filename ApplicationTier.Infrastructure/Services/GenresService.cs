@@ -15,7 +15,7 @@ namespace RocketEshop.Infrastructure.Services
 
         public Genre? FetchGenreByName(string name)
         {
-            return context.Genres.First(genre => genre.Name == name);
+            return context.Genres.FirstOrDefault(genre => genre.Name == name);
         }
     }
 }
