@@ -27,7 +27,7 @@
                         <p class="card-text"><b>@Localizer["release.date"]: </b>@Model.ReleaseDate.ToString("dd/MM/yy")</p>
                         <p class="card-text"><b>@Localizer["rating"]: </b>@Model.Rating</p>
                         <p class="card-text">
-                            <b>Genres: </b><br />
+                            <b>@Localizer["genres"]: </b><br />
                             @foreach (Genre genre in Model.Genres)
                             {
                                 <span class="badge rounded-pill text-bg-info">@genre.Name</span>
