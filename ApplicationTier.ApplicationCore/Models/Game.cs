@@ -13,6 +13,7 @@ namespace RocketEshop.Core.Models
 
         [Display(Name = "Game Title")]
         [Required(ErrorMessage = "Game Title is required")]
+        [StringLength(255)]
         public string Title { get; set; } = "";
 
         [Display(Name = "Game Price")]
@@ -22,6 +23,7 @@ namespace RocketEshop.Core.Models
 
         [Display(Name = "Game Image URL")]
         [Required(ErrorMessage = "Game Image URL is required")]
+        [StringLength(255)]
         public string ImageUrl { get; set; } = "";
 
         [Display(Name = "Game Quantity")]
@@ -39,6 +41,7 @@ namespace RocketEshop.Core.Models
 
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Description is required")]
+        [StringLength(2000)]
         public string Description { get; set; } = "";
 
         [Display(Name = "Genres")] 

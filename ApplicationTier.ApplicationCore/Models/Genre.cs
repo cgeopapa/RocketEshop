@@ -16,7 +16,7 @@ namespace RocketEshop.Core.Models
         public string Name { get; set; } = "";
 
         [Display(Name = "Description")]
-        [StringLength(200)]
+        [StringLength(255)]
         public string? Description { get; set; }
 
         [Display(Name = "Games")]

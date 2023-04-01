@@ -10,6 +10,7 @@ namespace RocketEshop.Core.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [StringLength(255)]
         public string Email { get; set; }
 
         public string UserId { get; set; }
